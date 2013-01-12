@@ -48,10 +48,6 @@ module.exports = function(app){
   };
   */
 
-
-  // home
-  app.get('/', routes.ui.home);
-
   // currently logged-in user
   app.get('/me', routes.ui.me.show);
   app.put('/me', routes.ui.me.update);
