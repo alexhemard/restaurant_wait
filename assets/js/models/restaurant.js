@@ -38,7 +38,7 @@
     },
 
     onRestaurantUpdate: function(data) {
-      var restaurant = this.find(data.restaurant._id);
+      var restaurant = this.get(data.restaurant._id);
       if(restaurant) {
         restaurant.set(data);
         console.log('Updated restaurant ' + data.restaurant._id);
@@ -47,7 +47,7 @@
     },
 
     declareWaitTime: function(restaurantId, optionId) {
-      var restaurant = this.find(restaurantId);
+      var restaurant = this.get(restaurantId);
       if(restaurant) {
         restaurant.declareWaitTime(optionId);
         console.log('Declared wait time ' + optionId + ' for restaurant ' + restaurantId);
