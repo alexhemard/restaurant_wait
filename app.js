@@ -22,6 +22,7 @@ var config = require('./config')
   , FacebookStrategy = require('passport-facebook').Strategy
   , MongoStore = require('connect-mongo')(express)
   , sessionStore = new MongoStore({ url: config.mongodb })
+  , sockets = require('./sockets');
 ;
 
 // set up passport authentication
@@ -138,8 +139,11 @@ app.configure(function(){
   if(config.useErrorHandler) app.use(express.errorHandler());
 });
 
-// Put all the routes in a seperate file -> routes.js
+// Put all the routes in a seperate file -> urls.js
 require('./urls')(app);
+
+// Start the sockets
+sockets(io);
 
 server.listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));

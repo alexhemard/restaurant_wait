@@ -19,7 +19,9 @@ module.exports = function(app){
   app.get('/api/me', routes.api.me.show);
   app.get('/api/users/:id', routes.api.users.show);
   app.get('/api/restaurants', routes.api.restaurants.index);
+  app.post('/api/restaurants', routes.api.restaurants.create);
   app.get('/api/restaurants/:id', routes.api.restaurants.show);
+
 
   // this catch-all route will send JSON for every API route that falls through to this point in the chain
   // WARNING: Sometimes they don't fall through to this point in the chain! Example:
@@ -49,6 +51,7 @@ module.exports = function(app){
   */
 
   // home
+  // home
   app.get('/', routes.ui.home);
 
   // currently logged-in user
@@ -58,6 +61,7 @@ module.exports = function(app){
   // restuarant stuff
   app.get('/restaurants', routes.ui.restaurants.index);
   app.post('/restaurants', routes.ui.restaurants.create);
+  app.get('/restaurants/:id', routes.ui.restaurants.show);
   app.put('/restaurants/:id', routes.ui.restaurants.update);
   app.delete('/restaurants/:id', routes.ui.restaurants.delete);
 
