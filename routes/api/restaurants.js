@@ -26,14 +26,18 @@ exports.create = function(req, res, next) {
   restaurant.location.lon = req.body.lon;
   //TODO finish this
 
-  restaurant.save(function(err, lunch) {
+  restaurant.save(function(err, restaurant) {
     if(err) throw err;
-    res.jsonData = lunch;
+    res.jsonData = restaurant;
     next();
   });
 };
 
 
 exports.update = function(req, res, next) {
-
+  restaurant.save(function(err, restaurant) {
+    if(err) throw err;
+    res.jsonData = restaurant;
+    next();
+  });
 };
