@@ -2,7 +2,6 @@ var config = require('./config')
 , routes = require('./routes/');
 
 module.exports = function(app){
-
   // API routes
   // Do not call res.send(), res.json(), etc. in API route functions
   // Instead, within each API route, set res.jsonData to the JSON data, then call next()
@@ -21,7 +20,6 @@ module.exports = function(app){
   app.get('/api/restaurants', routes.api.restaurants.index);
   app.post('/api/restaurants', routes.api.restaurants.create);
   app.get('/api/restaurants/:id', routes.api.restaurants.show);
-
 
   // this catch-all route will send JSON for every API route that falls through to this point in the chain
   // WARNING: Sometimes they don't fall through to this point in the chain! Example:
@@ -50,7 +48,7 @@ module.exports = function(app){
   };
   */
 
-  // home
+
   // home
   app.get('/', routes.ui.home);
 

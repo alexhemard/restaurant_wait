@@ -13,7 +13,10 @@ exports = module.exports = new Schema({
   cuisine: [String],
   description: String,
   phone: String,
-  priceRange: Number
+  priceRange: Number,
+  waitTimes: [{ session: Schema.Types.ObjectId, option: Number }]
 });
 
-
+exports.method('declareWaitTime', function(session, option) {
+  // TODO: implement
+});
