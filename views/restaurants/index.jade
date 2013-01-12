@@ -1,0 +1,19 @@
+extends ../layout
+
+block content
+
+  ul
+    for restaurant in restaurants
+      a(href="/restaurants/#{restaurant._id}")
+        li=restaurant.name
+
+
+  form.form-inline(action='/restaurants/', method='post')
+    .control-group
+      label.control-label Name
+      .controls
+        input(name='name', type='text', placeholder='Name')
+
+
+    button.btn.btn-primary Update
+

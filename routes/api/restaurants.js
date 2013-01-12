@@ -10,14 +10,14 @@ exports.index = function(req, res, next) {
 };
 
 exports.show = function(req, res, next) {
-  Restaurant.findById(id, function (err, restaurant) {
+  Restaurant.findById(req.params.id, function (err, restaurant) {
     if (err) return res.send(500);
-    return res.jsonData = restaurant;
+    res.jsonData = restaurant;
     next();
   });
 };
 
-exports.create = function(req, res) {
+exports.create = function(req, res, next) {
   var restaurant = new Restaurant();
   restaurant.name = req.body.name;
   restaurant.url = req.body.url;
@@ -28,7 +28,8 @@ exports.create = function(req, res) {
 
   restaurant.save(function(err, lunch) {
     if(err) throw err;
-    res.json(lunch);
+    res.jsonData = lunch;
+    next();
   });
 };
 
