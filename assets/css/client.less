@@ -1,6 +1,6 @@
 @import "bootstrap/bootstrap";
 
-@tileBorder : 10px;
+@radius : 10px;
 
 * {
   box-sizing: border-box;
@@ -27,10 +27,11 @@ body {
 }
 
 .resto-tile {
-  .box-shadow(0 0 10px rgba(0,0,0,.36));
-  .border-radius(@tileBorder);
+  .box-shadow(0 1px 7px 0px rgba(0,0,0, 0.3));
+  .border-radius(@radius);
 
   background-color: #fff;
+  border: 1px solid #c0bfc0;
 
   position: relative;
   margin: 20px;
@@ -39,21 +40,23 @@ body {
   list-style: none;
 
   header {
-    .border-top-left-radius(@tileBorder);
-    .border-top-right-radius(@tileBorder);
-
-    padding:5px;
-
-
+    img {
+      .border-top-left-radius(@radius);
+      .border-top-right-radius(@radius);
+    }
   }
 
   h3 {
 
   }
 
+  .contents {
+    padding: 5px;
+  }
+
   footer{
-    .border-bottom-left-radius(@tileBorder);
-    .border-bottom-right-radius(@tileBorder);
+    .border-bottom-left-radius(@radius);
+    .border-bottom-right-radius(@radius);
 
     background: #f1f1f1;
     border-top: 1px solid white;
