@@ -57,6 +57,7 @@ module.exports = function(app){
   app.put('/me', routes.ui.me.update);
 
   // restuarant stuff
+  app.get('/', routes.ui.restaurants.index);
   app.get('/restaurants', routes.ui.restaurants.index);
   app.post('/restaurants', routes.ui.restaurants.create);
   app.get('/restaurants/:id', routes.ui.restaurants.show);
