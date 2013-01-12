@@ -161,7 +161,7 @@ hr {
       background: url(/img/stripe.png) repeat-x center top;
 
       position: absolute;
-      top: 4px;
+      top: 0px;
       bottom: 0px;
       left: 0px;
       right: 0px;
@@ -178,12 +178,11 @@ hr {
 
       width: 25%;
       height: 10px;
-      display: inline-block;
+      float: left;
     }
 
     .none {
-      .border-top-left-radius(@radius);
-      .border-bottom-left-radius(@radius);
+
 
       #gradient > .vertical(@none, darken(@none, 7%));
 
@@ -203,8 +202,6 @@ hr {
     }
 
     .full {
-      .border-top-right-radius(@radius);
-      .border-bottom-right-radius(@radius);
 
       #gradient > .vertical(@full, darken(@full, 7%));
 
@@ -221,7 +218,7 @@ hr {
     background: #f1f1f1;
     border-top: 1px solid #d2d2d2;
 
-    padding:5px;
+    padding:5px 0 10px 0;
     position: relative;
   }
 
