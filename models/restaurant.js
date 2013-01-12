@@ -14,9 +14,14 @@ exports = module.exports = new Schema({
   description: String,
   phone: String,
   priceRange: Number,
-  waitTimes: [{ session: Schema.Types.ObjectId, option: Number }]
+  waitTimes: [{ option: Number }]
 });
 
-exports.method('declareWaitTime', function(session, option) {
-  // TODO: implement
+// i have no idea yet if this works
+exports.method('declareWaitTime', function(option) {
+  if(option < 1 || option > 4) return;
+
+  this.waitTimes.push({ option: option });
+
+  if(this.waitTimes.length > 5) waitTimes.shift();
 });
