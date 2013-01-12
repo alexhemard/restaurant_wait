@@ -5,7 +5,7 @@
 
 @unknown: #f34f4f;
 @long-wait: #f09512;
-@short-wait: #f3ed54;
+@short-wait: #e7dd38;
 @no-wait: #b9d031;
 
 
@@ -57,7 +57,7 @@ body {
   h3 {
     .border-radius(@radius - 5);
 
-    font-size: 16px;
+    font-size: 22px;
     background-color: rgba(0,0,0,0.6);
     color: #fff;
 
@@ -109,6 +109,71 @@ body {
     margin: 10px 0px;
   }
 
+  .ratings {
+    padding: 10px;
+
+    .rating-bar {
+      .clearfix();
+
+      position: relative;
+    }
+
+    .stripes {
+      background: url(/img/stripe.png) repeat-x center top;
+
+      position: absolute;
+      top: 4px;
+      bottom: 0px;
+      left: 0px;
+      right: 0px;
+      height: 10px;
+    }
+
+    .range {
+      .box-shadow(0 1px 0px 0px rgba(255,255,255,.4) inset);
+
+      border-color: hsl(117, 43%, 18%);
+      border-width: 1px;
+      border-right-width: 0px;
+      border-style: solid;
+
+      width: 25%;
+      height: 10px;
+      display: inline-block;
+    }
+
+    .no-wait {
+      .border-top-left-radius(@radius);
+      .border-bottom-left-radius(@radius);
+
+      #gradient > .vertical(@no-wait, darken(@no-wait, 7%));
+
+      border-color: darken(@no-wait, 15%);
+    }
+
+    .short-wait {
+      #gradient > .vertical(@short-wait, darken(@short-wait, 7%));
+
+      border-color: darken(@short-wait, 18%);
+    }
+
+    .long-wait {
+      #gradient > .vertical(@long-wait, darken(@long-wait, 7%));
+
+      border-color: darken(@long-wait, 15%);
+    }
+
+    .unknown {
+      .border-top-right-radius(@radius);
+      .border-bottom-right-radius(@radius);
+
+      #gradient > .vertical(@unknown, darken(@unknown, 7%));
+
+      border-color: darken(@unknown, 15%);
+      border-right-width: 1px;
+    }
+  }
+
   footer{
     .border-bottom-left-radius(@radius);
     .border-bottom-right-radius(@radius);
@@ -116,10 +181,6 @@ body {
     background: #f1f1f1;
     border-top: 1px solid white;
 
-    width: 100%;
-    position:absolute;
-    bottom:0;
-    left:0;
     padding:5px;
   }
 

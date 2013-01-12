@@ -37,18 +37,20 @@ block content
                     |  Call Now
             .rating-wrapper
         h4.rating-title
-        .rating-bar
-          .no-wait(data-option=1)
-          .small-wait(data-option=2)
-          .long-wait(data-option=3)
-          .full(data-option=4)
+        .ratings
+          .rating-bar
+            .stripes
+            .range.no-wait(data-option=1)
+            .range.short-wait(data-option=2)
+            .range.long-wait(data-option=3)
+            .range.unknown(data-option=4)
         footer.tile-footer
           .choices
             a(href="#", data-option=1).btn.btn-small. No Wait
-            a(href="#", data-option=2).btn.btn-small.small-wait Shore Wait
+            a(href="#", data-option=2).btn.btn-small.short-wait Shore Wait
             a(href="#", data-option=2).btn.btn-small.long-wait Long Wait
             a(href="#", data-option=2).btn.btn-small.unknown Unknown
-  
+
 
   form.form-inline(action='/restaurants/', method='post')
     .control-group
