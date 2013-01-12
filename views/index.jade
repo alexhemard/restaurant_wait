@@ -26,13 +26,13 @@ block content
           .rating-wrapper
           h4.rating-title
           .rating-bar
-            .no-wait
-            .small-wait
-            .long-wait
-            .full
+            .no-wait(data-option=1)
+            .small-wait(data-option=2)
+            .long-wait(data-option=3)
+            .full(data-option=4)
       footer.tile-footer
         .choices
-          a.button.no-wait No Wait
-          a.button.small-wait Shore Wait
-          a.button.long-wait Long Wait
-          a.button.unknown Unknown
+          a.button.no-wait(href="#", data-option=1) No Wait
+          a.button.small-wait(href="#", data-option=2) Shore Wait
+          a.button.long-wait(href="#", data-option=3) Long Wait
+          a.button.unknown(href="#", data-option=4) Unknown

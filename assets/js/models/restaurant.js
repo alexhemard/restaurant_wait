@@ -23,7 +23,7 @@
       this.collection.socket.emit('waitTime', { restaurant: this.id, option: optionId });
     },
 
-    getWaitTimeCounts: function() {
+    getWaitTimePercents: function() {
       throw 'not implemented';
     }
   });
@@ -39,8 +39,21 @@
 
     onRestaurantUpdate: function(data) {
       var restaurant = this.find(data.restaurant._id);
-      if(restaurant) restaurant.set(data);
-    }
+      if(restaurant) {
+        restaurant.set(data);
+        console.log('Updated restaurant ' + data.restaurant._id);
+      }
+      else console.log('Tried to update non-existent restaurant ' + data.restaurant._id);
+    },
+
+    declareWaitTime: function(restaurantId, optionId) {
+      var restaurant = this.find(restaurantId);
+      if(restaurant) {
+        restaurant.declareWaitTime(optionId);
+        console.log('Declared wait time ' + optionId + ' for restaurant ' + restaurantId);
+      }
+      else console.log('Tried to declare wait time ' + optionId + ' for non-existent restaurant ' + restaurantId);
+    },
   });
 
 })(window.App);

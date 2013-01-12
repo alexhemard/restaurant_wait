@@ -1,3 +1,4 @@
+//= require socket.io
 //= require jquery
 //= require jquery.validate
 //= require bootstrapManifest
@@ -22,56 +23,41 @@ $('body').on('touchstart.dropdown', '.dropdown-menu', function (e) { e.stopPropa
     },
 
     docReady: function() {
-      var _this = this;
+      this.restaurants = new App.Collections.Restaurant();
 
-      this.setupCurrentUser();
+      this.restaurants.on('change:waitTimes', _.bind(this.updateWaitTimeDisplay, this));
+      
+      $('.resto-tile').on('click', '.choices .button', _.bind(this.declareWaitTime, this));
 
-      $('#logoutButton').on('click', function(e) {
-        e.preventDefault();
-        _this.logout();
+      this.restaurants.listen();
+    },
+
+    getRestoTile: function(model) {
+      return $('#' + model.id);
+    },
+
+    updateWaitTimeDisplay: function(model) {
+      var percents = model.getWaitTimePercents()
+        , $restoTile = getRestoTile(model)
+        , $waitTimeBar
+      ;
+
+      _.each(percents, function(percent, option) {
+        $waitTimeBar = $restoTile.find('.rating-bar [data-option="' + option + '"]');
+        $waitTimeBar.animate({ width: percent + '%' });
       });
     },
 
-    setSignedIn: function() {
-      $('#currentUser').text(this.user.get('name'));
-      $('body').removeClass('noUser').addClass('hasUser');
-    },
+    declareWaitTime: function(e) {
+      var $button = $(e.currentTarget)
+        , optionId = $button.attr('data-option')
+        , $restoTile = $button.closest('.restoTile')
+        , restoId = $restoTile.attr('id');
+      ;
 
-    setSignedOut: function() {
-      this.user.clear();
-      $('body').removeClass('hasUser').addClass('noUser');
-    },
+      e.preventDefault();
 
-    setupCurrentUser: function() {
-      var _this = this;
-
-      this.user = new App.Models.Me();
-      this.user.fetch({
-        success: function(user) {
-          _this[user.id ? 'setSignedIn' : 'setSignedOut']();
-          $('body').removeClass('userNotFetched');
-        }
-      });
-    },
-
-    authSuccess: function() {
-      this.setupCurrentUser();
-      $('#signInModal').modal('hide');
-    },
-
-    authFailure: function() {
-      alert('TODO: Implement App.authFailure()');
-    },
-
-    logout: function() {
-      var _this = this;
-
-      $.ajax({
-        url: '/auth/logout',
-        success: function() {
-          _this.setSignedOut();
-        }
-      });
+      this.restaurants.declareWaitTime(restoId, optionId);
     }
 
   });
