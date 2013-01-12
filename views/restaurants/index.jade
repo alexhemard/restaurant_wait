@@ -1,0 +1,12 @@
+extends ../layout
+
+block content
+  form.form-inline(action='/restaurants/', method='post')
+    .control-group
+      label.control-label Name
+      .controls
+        input(name='name', type='text', placeholder='Name')
+
+
+    button.btn.btn-primary Update
+
