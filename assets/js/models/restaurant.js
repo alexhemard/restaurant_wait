@@ -11,36 +11,33 @@
 
   App.Models.Restaurant = App.Models.Base.extend({
 
-    initialize: function() {
-      this.subcollection('waitTimes', 'WaitTime', 'restaurant');
-    },
-
-    updateWaitTimes: function(waitTimes) {
-      this.waitTimes.noisyReset(waitTimes);
-    },
-
     declareWaitTime: function(optionId) {
       this.collection.socket.emit('waitTime', { restaurant: this.id, option: optionId });
     },
 
     getWaitTimeCounts: function() {
-      var counts = {
-        1: 0,
-        2: 0,
-        3: 0,
-        4: 0
-      };
-      this.waitTimes.each(function(waitTime, index) {
-        var option = waitTime.get('option');
-        counts[option] += 1;
+      var waitTimes = this.get('waitTimes')
+        , counts = {
+          1: 0,
+          2: 0,
+          3: 0,
+          4: 0
+        }
+      ;
+
+      _.each(waitTimes, function(waitTime) {
+        counts[waitTime.option] += 1;
       });
+
+      _.each(counts, function(count, option) { console.log(count + ' waitTimes for option ' + option)});
+
       return counts;
     },
 
     getWaitTimePercents: function() {
 
       var counts = this.getWaitTimeCounts()
-        , total = this.waitTimes.length
+        , total = _.keys(this.get('waitTimes')).length
         , percents = {}
       ;
 
