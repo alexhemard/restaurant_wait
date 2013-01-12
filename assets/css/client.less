@@ -1,6 +1,13 @@
 @import "bootstrap/bootstrap";
+@import "font-awesome";
 
-@radius : 10px;
+@radius: 10px;
+
+@unknown: #f34f4f;
+@long-wait: #f09512;
+@short-wait: #f3ed54;
+@no-wait: #b9d031;
+
 
 * {
   box-sizing: border-box;
@@ -37,8 +44,7 @@ body {
 
   position: relative;
   margin: 20px;
-  width: 245px;
-  height: 320px;
+  width: 315px;
   list-style: none;
 
   header {
@@ -67,6 +73,42 @@ body {
     padding: 5px;
   }
 
+  .info {
+    .clearfix();
+
+    margin-bottom: 15px;
+  }
+
+  .details {
+    float: left;
+    width: 190px;
+
+    .description {
+      font-size: 12px;
+    }
+
+    .address {
+      font-size: 12px;
+    }
+  }
+
+  .links {
+    float: right;
+    list-style-type: none;
+
+    .link {
+      margin: 5px 0px;
+    }
+  }
+
+  .wait-time {
+    text-align: center;
+    color: darken(@short-wait, 25%);
+    font-size: 24px;
+
+    margin: 10px 0px;
+  }
+
   footer{
     .border-bottom-left-radius(@radius);
     .border-bottom-right-radius(@radius);
@@ -79,6 +121,12 @@ body {
     bottom:0;
     left:0;
     padding:5px;
+  }
+
+  .choices {
+    .btn {
+      padding: 0px 5px;
+    }
   }
 }
 
