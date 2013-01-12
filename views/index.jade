@@ -37,13 +37,13 @@ block content
           .rating-wrapper
       h4.rating-title
       .rating-bar
-        .no-wait
-        .small-wait
-        .long-wait
-        .full
+        .no-wait(data-option=1)
+        .small-wait(data-option=2)
+        .long-wait(data-option=3)
+        .full(data-option=4)
       footer.tile-footer
         .choices
-          a(data-behavior="no-wait").btn.btn-small. No Wait
-          a(data-behavior="small-wait").btn.btn-small.small-wait Shore Wait
-          a(data-behavior="long-wait").btn.btn-small.long-wait Long Wait
-          a(data-behavior="unknown").btn.btn-small.unknown Unknown
+          a(href="#", data-option=1).btn.btn-small. No Wait
+          a(href="#", data-option=2).btn.btn-small.small-wait Shore Wait
+          a(href="#", data-option=2).btn.btn-small.long-wait Long Wait
+          a(href="#", data-option=2).btn.btn-small.unknown Unknown
