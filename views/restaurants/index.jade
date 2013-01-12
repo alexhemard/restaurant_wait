@@ -1,17 +1,58 @@
 extends ../layout
 
 block content
-  ul
+  ul.resto-tiles
     for restaurant in restaurants
-      a(href="/restaurants/#{restaurant._id}")
-        li=restaurant.name
-
+      li.resto-tile
+        header.tile-header
+          .resto-image
+            img(src="#{restaurant.photoURL || '/img/sample.png'}")
+            a(href="/restaurants/#{restaurant._id}")
+              h3.resto-name #{restaurant.name}
+        .contents
+          .wait-time 15-30min wait time
+          .info
+            .details
+              p.description
+                | For over 100 years, Acme has been satisfying the hungriest of people all
+                | over the world! It's quality you can taste in the fresh... more »
+  
+              p.address
+                | 724 Iberville Street
+                | 504.522.5973
+            .links
+              a.button.map 1.2mi
+              a.button.link Website
+              a.button.call Call Now
+            .rating-wrapper
+            h4.rating-title
+            .rating-bar
+              .no-wait
+              .small-wait
+              .long-wait
+              .full
+        footer.tile-footer
+          .choices
+            a.button.no-wait No Wait
+            a.button.small-wait Shore Wait
+            a.button.long-wait Long Wait
+            a.button.unknown Unknown
+  
 
   form.form-inline(action='/restaurants/', method='post')
     .control-group
       label.control-label Name
       .controls
         input(name='name', type='text', placeholder='Name')
+    .control-group
+      label.control-label Photo URL
+      .controls
+        input(name='photoURL', type='text', placeholder='Photo URL')
+    .control-group
+      label.control-label Phone
+      .controls
+        input(name='phone', type='text', placeholder='Phone')
+
 
 
     button.btn.btn-primary Update

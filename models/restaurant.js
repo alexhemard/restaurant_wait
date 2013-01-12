@@ -11,6 +11,7 @@ exports = module.exports = new Schema({
   address: String,
   location: {lat: Number, lon: Number},
   neighborhood: String,
+  photoURL: String,
   attire: String,
   cuisine: [String],
   description: String,
