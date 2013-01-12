@@ -1,5 +1,26 @@
 extends layout
 
 block content
-  h1= title
-  p Let's get coding.
+  h1#top-bar= title
+  ul.resto-tiles
+    li.resto-tile
+      header.tile-header
+        .resto-image
+          h3.resto-name Acme Oyster House
+      .contents
+        .lower-info
+          .rating-wrapper
+            h4.rating-title
+            .rating-bar
+              .no-wait
+              .small-wait
+              .long-wait
+              .full
+          .map-icon Map
+          .wait-time
+            | Estimated 
+            span short
+            |  wait
+      footer.tile-footer
+        .num-votes o 45
+        .share-btn Share

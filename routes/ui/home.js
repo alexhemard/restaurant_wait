@@ -1,3 +1,3 @@
 module.exports = function(req, res) {
-  res.render('index', { title: 'Express 3 Boilerplate' });
+  res.render('index', { title: 'Eat Now'});
 };

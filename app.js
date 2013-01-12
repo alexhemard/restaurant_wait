@@ -22,6 +22,7 @@ var config = require('./config')
   , FacebookStrategy = require('passport-facebook').Strategy
   , MongoStore = require('connect-mongo')(express)
   , sessionStore = new MongoStore({ url: config.mongodb })
+  , sockets = require('./sockets');
 ;
 
 // set up passport authentication
@@ -153,7 +154,8 @@ app.configure(function(){
 var sendJson = function(req, res) { res.json(res.jsonData); }
 app.get('/api/me', routes.api.me.show);
 app.get('/api/users/:id', routes.api.users.show);
-app.get('/api/restaurants', routes.api.restaurants.show);
+app.get('/api/restaurants', routes.api.restaurants.index);
+app.post('/api/restaurants', routes.api.restaurants.create);
 app.get('/api/restaurants/:id', routes.api.restaurants.show);
 
 // this catch-all route will send JSON for every API route that falls through to this point in the chain
@@ -212,6 +214,9 @@ if(config.facebook) {
 app.get('/auth/success', routes.ui.auth.success);
 app.get('/auth/failure', routes.ui.auth.failure)
 app.get('/auth/logout', routes.ui.auth.logout);
+
+// Start the sockets
+sockets(io);
 
 server.listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));

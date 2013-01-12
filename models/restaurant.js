@@ -5,14 +5,15 @@ var mongoose = exports.mongoose = require('mongoose')
 
 exports = module.exports = new Schema({
   name:  String,
-  address: String,
   url:   String,
-  phone: String,
-  priceRange: Number,
+  address: String,
+  location: {lat: Number, lon: Number},
   neighborhood: String,
   attire: String,
-  openFor: String,
   cuisine: [String],
+  description: String,
+  phone: String,
+  priceRange: Number
 });
 
 

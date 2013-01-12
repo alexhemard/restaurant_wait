@@ -1,7 +1,10 @@
 @import "bootstrap/bootstrap";
 
+@tileBorder : 10px;
+
+* {box-sizing: border-box;}
+
 body {
-  padding-top: 60px;
   padding-bottom: 40px;
   &.userNotFetched {
     .withoutUser, .withUser {
@@ -18,6 +21,23 @@ body {
       display: none;
     }
   }
-}
+  
+  #top-bar {width:100%;height:55px;text-align: center;background:white;color:#0fabbd;margin:0;font-size:28px;border-bottom:1px solid gray;}
+
+  ul { margin:0;
+    li {width:245px;height:320px;.box-shadow(0 0 10px rgba(0,0,0,.36));list-style: none;.border-radius(@tileBorder);position: relative;margin:20px;
+
+      header { .border-top-left-radius(@tileBorder);.border-top-right-radius(@tileBorder); padding:5px;
+        h3 {}
+      }
+
+      footer{ width:100%;border-top:1px solid white;position:absolute;bottom:0;left:0;background: #f1f1f1;.border-bottom-left-radius(@tileBorder);.border-bottom-right-radius(@tileBorder); padding:5px;}
+  
+    }
+  }
+  
+} /* body */
+
+
 
 @import "bootstrap/responsive";
