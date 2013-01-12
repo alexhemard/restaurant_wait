@@ -1,30 +1,21 @@
 doctype 5
 html
   head
+    meta(charset="utf-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge,chrome=1")
+    meta(name="description", content="")
+    meta(name="viewport", content="width=device-width")
+
+    link(rel="stylesheet", href="css/normalize.min.css")
+    link(rel="stylesheet", href="css/main.css")
+
+    script(src="js/vendor/modernizr-2.6.2.min.js")
+
     title= title
     != css('client')
-  body.userNotFetched
-    .navbar.navbar-fixed-top
-      .navbar-inner
-        .container-fluid
-          a.brand(href='/') Home
-          p.navbar-text.pull-right
-            ul.nav.pull-right
-              li.dropdown.withUser
-                a.dropdown-toggle(href='#', data-toggle='dropdown')
-                  span#currentUser
-                  &nbsp;
-                  b.caret
-                ul.dropdown-menu(role='menu')
-                  li
-                    a(href='/me') Profile
-                  li.divider
-                  li
-                    a#logoutButton(href='#') Sign out
-              li.withoutUser
-                a#signInButton(href='#signInModal', data-toggle='modal', data-target='#signInModal') Sign in
-    #main.container-fluid
-      block content
-    include users/signInModal
+
+
+  body
+    block content
     != jadeTemplates()
     != js('client')
