@@ -8,6 +8,8 @@
 
 body {
   background: url(/img/background.png);
+
+  font-family: 'Proxima Nova';
 }
 
 #top-bar {
@@ -47,7 +49,18 @@ body {
   }
 
   h3 {
+    .border-radius(@radius - 5);
 
+    font-size: 16px;
+    background-color: rgba(0,0,0,0.6);
+    color: #fff;
+
+    display: inline-block;
+    padding: 3px 10px;
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    line-height: 18px;
   }
 
   .contents {
