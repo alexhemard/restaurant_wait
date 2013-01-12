@@ -46,7 +46,7 @@ $('body').on('touchstart.dropdown', '.dropdown-menu', function (e) { e.stopPropa
         console.log('Setting resto ' + model.id + ' option ' + option + ' bar to ' + percent + '%');
         $waitTimeBar = $restoTile.find('.rating-bar [data-option="' + option + '"]');
         $waitTimeBar.animate({ width: percent + '%' }, function() {
-          $waitTimeBar[percent ? 'show' : 'hide']();
+          $(this)[percent ? 'show' : 'hide']();
         });
       });
     },
