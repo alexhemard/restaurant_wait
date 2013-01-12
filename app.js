@@ -22,6 +22,7 @@ var config = require('./config')
   , FacebookStrategy = require('passport-facebook').Strategy
   , MongoStore = require('connect-mongo')(express)
   , sessionStore = new MongoStore({ url: config.mongodb })
+  , sockets = require('./sockets');
 ;
 
 // set up passport authentication
@@ -212,6 +213,9 @@ if(config.facebook) {
 app.get('/auth/success', routes.ui.auth.success);
 app.get('/auth/failure', routes.ui.auth.failure)
 app.get('/auth/logout', routes.ui.auth.logout);
+
+// Start the sockets
+sockets(io);
 
 server.listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));

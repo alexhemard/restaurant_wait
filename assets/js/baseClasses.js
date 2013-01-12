@@ -47,6 +47,21 @@
           this.add(modelAttributes);
         }
       }
+    },
+
+    subcollection: function(attribute, collectionClassName, reverseRelationship) {
+
+      // e.g., this.places = new App.Collections.Place();
+      this[attribute] = new App.Collections[collectionClassName]();
+
+      // e.g., this.places.lunch = this;
+      if(this.parentName) this[attribute][parentName] = this;
+
+      // call noisy reset on the collection for each change to the attribute
+      var onChange = function() {
+        this[attribute].noisyReset(this.get(attribute));
+      };
+      this.on('add change:' + attribute, _.bind(onChange, this));
     }
   });
 
