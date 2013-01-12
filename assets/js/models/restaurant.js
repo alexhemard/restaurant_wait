@@ -23,15 +23,32 @@
       this.collection.socket.emit('waitTime', { restaurant: this.id, option: optionId });
     },
 
-    getWaitTimePercents: function() {
-      console.log('RETURNING FAKE PERCENTS');
-
-      return {
-        1: 5,
-        2: 25,
-        3: 40,
-        4: 30
+    getWaitTimeCounts: function() {
+      var counts = {
+        1: 0,
+        2: 0,
+        3: 0,
+        4: 0
       };
+      this.waitTimes.each(function(waitTime, index) {
+        var option = waitTime.get('option');
+        counts[option] += 1;
+      });
+      return counts;
+    },
+
+    getWaitTimePercents: function() {
+
+      var counts = this.getWaitTimeCounts()
+        , total = this.waitTimes.length
+        , percents = {}
+      ;
+
+      _.each(counts, function(count, option) {
+        percents[option] = total == 0 ? 0 : Math.round((counts[option] / total) * 100);
+      });
+
+      return percents;
     }
   });
 
