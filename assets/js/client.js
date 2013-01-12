@@ -38,11 +38,12 @@ $('body').on('touchstart.dropdown', '.dropdown-menu', function (e) { e.stopPropa
 
     updateWaitTimeDisplay: function(model) {
       var percents = model.getWaitTimePercents()
-        , $restoTile = getRestoTile(model)
+        , $restoTile = this.getRestoTile(model)
         , $waitTimeBar
       ;
 
       _.each(percents, function(percent, option) {
+        console.log('Setting resto ' + model.id + ' option ' + option + ' bar to ' + percent + '%');
         $waitTimeBar = $restoTile.find('.rating-bar [data-option="' + option + '"]');
         $waitTimeBar.animate({ width: percent + '%' });
       });

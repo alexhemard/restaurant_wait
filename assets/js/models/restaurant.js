@@ -24,7 +24,14 @@
     },
 
     getWaitTimePercents: function() {
-      throw 'not implemented';
+      console.log('RETURNING FAKE PERCENTS');
+
+      return {
+        1: 5,
+        2: 25,
+        3: 40,
+        4: 30
+      };
     }
   });
 
@@ -38,10 +45,11 @@
     },
 
     onRestaurantUpdate: function(data) {
-      var restaurant = this.get(data.restaurant._id);
+      console.log(data);
+      var restaurant = this.get(data._id);
       if(restaurant) {
         restaurant.set(data);
-        console.log('Updated restaurant ' + data.restaurant._id);
+        console.log('Updated restaurant ' + restaurant.id);
       }
       else console.log('Tried to update non-existent restaurant ' + data.restaurant._id);
     },

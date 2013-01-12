@@ -3,6 +3,7 @@ var mongoose = exports.mongoose = require('mongoose')
 , Schema = mongoose.Schema
 , WaitSchema = require('./wait')
 , ObjectId = Schema.ObjectId
+, _ = require('underscore')
 ;
 
 exports = module.exports = new Schema({
@@ -17,16 +18,23 @@ exports = module.exports = new Schema({
   description: String,
   phone: String,
   priceRange: Number,
-  waitTimes: [WaitSchema]
+  waitTimes: {type: [WaitSchema], default: []}
 });
 
 // i have no idea yet if this works
-exports.method('declareWaitTime', function(sessionId, option) {
+exports.method('declareWaitTime', function(option, sessionId) {
   if(option < 1 || option > 4) return;
-  this.waitTimes.findOne({'sessionId': sessionId}).remove();
-  this.waitTimes.push({ sessionId: sessionId, option: option });
+
+  this.waitTimes = _.filter(this.waitTimes, function(waitTime) { 
+      return waitTime.sessionId == sessionId;
+  });
+
+  this.waitTimes.push({sessionId: sessionId, option: option});
+
+  console.log(this.waitTimes);
+
   if(this.waitTimes.length > 5) waitTimes.shift();
   this.save(function(err, restaurant) {
-    // BREAK STUFF
+  // BREAK STUFF
   });
 });
