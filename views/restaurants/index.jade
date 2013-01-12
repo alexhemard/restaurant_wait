@@ -1,42 +1,53 @@
 extends ../layout
 
 block content
-  ul.resto-tiles
+  ul.resto-tiles(data-json=restaurants)
     for restaurant in restaurants
-      li.resto-tile
+      li.resto-tile(id=restaurant._id)
         header.tile-header
           .resto-image
-            img(src="#{restaurant.photoURL || '/img/sample.png'}")
+            img(src=restaurant.photoURL || '/img/sample.png')
             a(href="/restaurants/#{restaurant._id}")
-              h3.resto-name #{restaurant.name}
+              h3.resto-name= restaurant.name
         .contents
-          .wait-time 15-30min wait time
+          h4.wait-time 15-30min wait
           .info
             .details
               p.description
                 | For over 100 years, Acme has been satisfying the hungriest of people all
                 | over the world! It's quality you can taste in the fresh... more »
-  
+
               p.address
                 | 724 Iberville Street
+                br
                 | 504.522.5973
             .links
-              a.button.map 1.2mi
-              a.button.link Website
-              a.button.call Call Now
+              ul.unstyled
+                li.link
+                  a(data-behavior="map").btn.btn-small.map
+                    i.icon-map-marker
+                    |  1.2 miles
+                li.link
+                  a(data-behavior="website").btn.btn-small.website
+                    i.icon-link
+                    |  Website
+                li.link
+                  a(data-behavior="call").btn.btn-small.call
+                    i.icon-phone
+                    |  Call Now
             .rating-wrapper
-            h4.rating-title
-            .rating-bar
-              .no-wait
-              .small-wait
-              .long-wait
-              .full
+        h4.rating-title
+        .rating-bar
+          .no-wait(data-option=1)
+          .small-wait(data-option=2)
+          .long-wait(data-option=3)
+          .full(data-option=4)
         footer.tile-footer
           .choices
-            a.button.no-wait No Wait
-            a.button.small-wait Shore Wait
-            a.button.long-wait Long Wait
-            a.button.unknown Unknown
+            a(href="#", data-option=1).btn.btn-small. No Wait
+            a(href="#", data-option=2).btn.btn-small.small-wait Shore Wait
+            a(href="#", data-option=2).btn.btn-small.long-wait Long Wait
+            a(href="#", data-option=2).btn.btn-small.unknown Unknown
   
 
   form.form-inline(action='/restaurants/', method='post')

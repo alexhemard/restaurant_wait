@@ -23,11 +23,11 @@ $('body').on('touchstart.dropdown', '.dropdown-menu', function (e) { e.stopPropa
     },
 
     docReady: function() {
-      this.restaurants = new App.Collections.Restaurant();
+      this.restaurants = new App.Collections.Restaurant($('.resto-tiles').data('json'));
 
       this.restaurants.on('change:waitTimes', _.bind(this.updateWaitTimeDisplay, this));
       
-      $('.resto-tile').on('click', '.choices .button', _.bind(this.declareWaitTime, this));
+      $('.resto-tile').on('click', '.choices a[data-option]', _.bind(this.declareWaitTime, this));
 
       this.restaurants.listen();
     },
@@ -51,7 +51,7 @@ $('body').on('touchstart.dropdown', '.dropdown-menu', function (e) { e.stopPropa
     declareWaitTime: function(e) {
       var $button = $(e.currentTarget)
         , optionId = $button.attr('data-option')
-        , $restoTile = $button.closest('.restoTile')
+        , $restoTile = $button.closest('.resto-tile')
         , restoId = $restoTile.attr('id');
       ;
 
