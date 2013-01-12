@@ -26,7 +26,7 @@ exports.method('declareWaitTime', function(option, sessionId) {
   if(option < 1 || option > 4) return;
 
   this.waitTimes = _.filter(this.waitTimes, function(waitTime) { 
-      return waitTime.sessionId == sessionId;
+      return waitTime.sessionId != sessionId;
   });
 
   this.waitTimes.push({sessionId: sessionId, option: option});

@@ -4,7 +4,7 @@ var mongoose = exports.mongoose = require('mongoose')
   , ObjectId = Schema.ObjectId;
 
 exports = module.exports = new Schema({
-  sessionId: ObjectId, 
+  sessionId: String,
   option: Number 
 });
 
