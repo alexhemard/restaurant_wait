@@ -16,7 +16,7 @@
 body {
   background: url(/img/background.png);
 
-  font-family: 'Proxima Nova';
+  font-family: 'Open Sans', sans-serif;
 }
 
 hr {
@@ -49,9 +49,10 @@ hr {
   border: 1px solid #c0bfc0;
 
   position: relative;
-  margin: 20px;
+  margin: 30px;
   width: 315px;
   list-style: none;
+  display: inline-block;
 
   header {
     img {
@@ -64,6 +65,8 @@ hr {
     .border-radius(@radius - 5);
 
     font-size: 22px;
+    font-family: 'Oswald', sans-serif;
+    font-weight: normal;
     background-color: rgba(0,0,0,0.6);
     color: #fff;
 
@@ -108,10 +111,11 @@ hr {
 
   .links {
     .clearfix();
+    text-align: center;
 
     .link {
-      padding: 0px 11px;
-      float: left;
+      padding: 0px 6px;
+      display: inline-block;
     }
   }
 
@@ -227,9 +231,11 @@ hr {
   }
 
   .choices {
+    text-align: center;
+
     .btn {
       padding: 3px 10px;
-      margin: 0 4px;
+      margin: 0px 4px;
     }
 
     [class^="icon-"] {
