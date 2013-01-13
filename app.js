@@ -86,7 +86,7 @@ mongoose.connect(config.mongodb);
 // create app, server, and web sockets
 var app = express()
   , server = http.createServer(app)
-  , io = socketIo.listen(server)
+  , io = global.io = socketIo.listen(server)
 ;
 
 // Make socket.io a little quieter
