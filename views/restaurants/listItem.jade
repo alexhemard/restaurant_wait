@@ -1,9 +1,9 @@
 li.resto-tile(id=restaurant._id)
   header.tile-header
     .resto-image
-      img(src=restaurant.photoURL || '/img/sample.png')
+      img(src="/img/restaurants/" + restaurant.tourismBoard.ID + ".jpg" || '/img/sample.png')
       a(href="/restaurants/#{restaurant._id}")
-        h3.resto-name= restaurant.name
+        h3.resto-name= restaurant.tourismBoard.name1
       .link-buttons
         ul.links.unstyled
           li.link
@@ -11,13 +11,13 @@ li.resto-tile(id=restaurant._id)
               i.icon-map-marker
               |  Map
           li.link
-            a(data-behavior="website", href=restaurant.website).btn.btn-small.website
+            a(data-behavior="website", href='http://' + restaurant.tourismBoard.website).btn.btn-small.website
               i.icon-link
               |  Website
           li.link
-            a(data-behavior="call", href=restaurant.phone).btn.btn-small.call
+            a(data-behavior="call", href=restaurant.tourismBoard.phone).btn.btn-small.call
               i.icon-phone
-              |  504.123.4567
+              |  #{restaurant.tourismBoard.phone}
   .wait-color(data-behavior="wait-color")
   .contents
     h4.wait-time
@@ -36,8 +36,7 @@ li.resto-tile(id=restaurant._id)
       hr
     .info
       .details
-        p.cuisine
-          | Seafood, Sandwiches, Po-boys
+        p.cuisine= restaurant.tourismBoard.shortDescription
         //- p.description
         //-   | For over 100 years, Acme has been satisfying the hungriest of people all
         //-   | over the world! It's quality you can taste in the fresh... more »

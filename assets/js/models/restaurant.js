@@ -51,9 +51,9 @@
 
       var total = _.reduce(counts, function(result, count) { return result + count}, 0);
 
-      var choice = basket / total;
+      var choice = total == 0 ? 0 : Math.ceil(basket / total) -1;
 
-      return bs[Math.ceil(choice-1)]
+      return bs[Math.ceil(choice)]
     },
 
     getWaitTimeCounts: function() {
@@ -76,6 +76,8 @@
     },
 
     getWaitTimePercents: function() {
+
+      console.log(this.toJSON());
 
       var counts = this.getWaitTimeCounts()
         , total = _.keys(this.get('waitTimes')).length

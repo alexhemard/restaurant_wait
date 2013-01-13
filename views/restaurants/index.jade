@@ -11,7 +11,7 @@ block content
   //- .find-food-btn.btn
     //- i.icon-screenshot
     //- | Find Food Nearby
-  ul.unstyled.resto-tiles(data-json=restaurants)
+  ul.unstyled.resto-tiles(data-json="#{JSON.stringify(restaurants)}")
     for restaurant in restaurants
       include listItem
 
