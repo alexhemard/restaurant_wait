@@ -1,7 +1,7 @@
 li.resto-tile(id=restaurant._id)
   header.tile-header
     .resto-image
-      img(src=restaurant.photoURL || '/img/sample.png')
+      img(src=restaurant.photoURL || '/img/large-placeholder.gif')
       a(href="/restaurants/#{restaurant._id}")
         h3.resto-name= restaurant.tourismBoard.name1
       .link-buttons
