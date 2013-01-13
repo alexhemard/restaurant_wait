@@ -8,6 +8,7 @@ exports.acceptData = function(req, res, next) {
     if(err) res.send(404);
     restaurant.declareWaitTime(data.avail, 'twilio');
     restaurant.save(); // We don't need to wait for the save to succeed
+    io.sockets.emit('restaurant', restaurant);
     res.send(200);
   });
 };
