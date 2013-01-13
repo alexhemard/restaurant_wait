@@ -53,7 +53,7 @@
 
       var choice = basket / total;
 
-      return bs[Math.floor(choice)]
+      return bs[Math.ceil(choice-1)]
     },
 
     getWaitTimeCounts: function() {
