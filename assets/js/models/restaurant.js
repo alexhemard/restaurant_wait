@@ -31,7 +31,7 @@
           color: "long"
         },
         {
-          name: "Not Seating",
+          name: "No Seating :(",
           color: "full"
         }
       ]
