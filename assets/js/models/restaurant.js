@@ -31,7 +31,7 @@
           color: "long"
         },
         {
-          name: "More Than 1 Hour",
+          name: "No Seating :(",
           color: "full"
         }
       ]
