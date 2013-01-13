@@ -26,6 +26,7 @@ $('body').on('touchstart.dropdown', '.dropdown-menu', function (e) { e.stopPropa
     docReady: function() {
 
       $('.resto-image img').on('error', function() {
+        console.log("hit");
         $(this).attr('src', '/img/large-placeholder.gif');
       });
 
@@ -73,7 +74,7 @@ $('body').on('touchstart.dropdown', '.dropdown-menu', function (e) { e.stopPropa
         , $restoTile = $button.closest('.resto-tile')
         , restoId = $restoTile.attr('id');
       ;
-      
+
       $('.choices a[data-option]').removeClass('down');
       $(e.currentTarget).addClass('down');
 
