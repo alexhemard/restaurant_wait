@@ -15,6 +15,12 @@
       this.collection.socket.emit('waitTime', { restaurant: this.id, option: optionId });
     },
 
+    getWaitTimeText: function() {
+      var waitTimes = this.get('waitTimes');
+        //calculate or something
+        return "15-20 min"
+    },
+
     getWaitTimeCounts: function() {
       var waitTimes = this.get('waitTimes')
         , counts = {
