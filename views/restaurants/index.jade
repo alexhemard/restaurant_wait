@@ -37,9 +37,9 @@ block content
                     i.icon-link
                     |  Website
                 li.link
-                  a(data-behavior="call").btn.btn-small.call
+                  a(data-behavior="call", href="tel:1-504-123-3456").btn.btn-small.call
                     i.icon-phone
-                    |  504.123.3456
+                    |  504.123.4567
             .details
               p.cuisine
                 | Seafood, Sandwiches, Po-boys
@@ -47,7 +47,7 @@ block content
               //-   | For over 100 years, Acme has been satisfying the hungriest of people all
               //-   | over the world! It's quality you can taste in the fresh... more »
         footer.tile-footer
-          .choices-title.mini-title How Long's The Wait
+          .choices-title.mini-title How Long's The Wait?
           .choices
             a(href="#", data-option=1).btn.none
               i.icon-none-circle
@@ -62,21 +62,22 @@ block content
               i.icon-full-circle
               | Full
 
-  form.form-inline(action='/restaurants/', method='post')
-    .control-group
-      label.control-label Name
-      .controls
-        input(name='name', type='text', placeholder='Name')
-    .control-group
-      label.control-label Photo URL
-      .controls
-        input(name='photoURL', type='text', placeholder='Photo URL')
-    .control-group
-      label.control-label Phone
-      .controls
-        input(name='phone', type='text', placeholder='Phone')
+
+  //- form.form-inline(action='/restaurants/', method='post')
+  //-   .control-group
+  //-     label.control-label Name
+  //-     .controls
+  //-       input(name='name', type='text', placeholder='Name')
+  //-   .control-group
+  //-     label.control-label Photo URL
+  //-     .controls
+  //-       input(name='photoURL', type='text', placeholder='Photo URL')
+  //-   .control-group
+  //-     label.control-label Phone
+  //-     .controls
+  //-       input(name='phone', type='text', placeholder='Phone')
 
 
 
-    button.btn.btn-primary Update
+  //-   button.btn.btn-primary Update
 
