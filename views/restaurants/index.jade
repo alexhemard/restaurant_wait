@@ -1,6 +1,12 @@
 extends ../layout
 
 block content
+  header.top-bar
+    img.logo(src='/img/eat-now-logo.png')
+    .about-btn.btn
+      i.icon-food About This Project
+  .find-food-btn.btn
+    i.icon-screenshot Find Food Nearby
   ul.resto-tiles(data-json=restaurants)
     for restaurant in restaurants
       li.resto-tile(id=restaurant._id)
