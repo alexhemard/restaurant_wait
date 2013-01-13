@@ -3,13 +3,15 @@ extends ../layout
 block content
   header.top-bar
     img.logo(src='/img/eat-now-logo.png')
-    .about-btn.btn
+
+  .about-btn
+    a.btn
       i.icon-food
       |  About This Project
-  .find-food-btn.btn
-    i.icon-screenshot
-    | Find Food Nearby
-  ul.resto-tiles(data-json=restaurants)
+  //- .find-food-btn.btn
+    //- i.icon-screenshot
+    //- | Find Food Nearby
+  ul.unstyled.resto-tiles(data-json=restaurants)
     for restaurant in restaurants
       include listItem
 

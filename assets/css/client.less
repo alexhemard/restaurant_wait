@@ -16,9 +16,9 @@
 
 body {
   background: url(/img/background.png);
-
+  text-align: center;
   font-family: 'Open Sans', sans-serif;
-  margin-left: -20px;
+
   padding: 0;
 }
 
@@ -41,42 +41,38 @@ hr {
   height: 65px;
   margin: 0;
   padding-top:5px;
-
-  .about-btn {
-    font-family: "Open Sans",sans-serif;
-    padding:8px;
-
-    position: absolute;
-    top: 12px;
-    right: 12px;
-  }
-
 }
 
 .btn [class^="icon-"] {
   margin-right:7px;
 }
 
+.about-btn {
+  font-family: "Open Sans",sans-serif;
+
+  padding:8px;
+  margin: 15px 0 0 0;
+  display: inline-block;
+}
 
 .find-food-btn {
   .box-shadow(0 1px 7px 0px rgba(0,0,0, 0.3));
   .border-radius(@radius);
 
-  font-size: 26px;
+  font-size: 18px;
   line-height: normal;
 
-  width:@tile-width;
-  padding: 18px;
+  min-width:@tile-width;
+  padding: 8px 24px;
   margin:20px 0 0 20px;
 }
 
 .resto-tiles {
-  margin: 0;
   text-align: center;
 }
 
 .resto-tile {
-  .box-shadow(0 1px 7px 0px rgba(0,0,0, 0.3));
+  .box-shadow(0 1px 6px 0px rgba(0,0,0, 0.15));
   .border-radius(@radius);
 
   background-color: #fff;
