@@ -15,6 +15,12 @@
       this.collection.socket.emit('waitTime', { restaurant: this.id, option: optionId });
     },
 
+    getWaitTimeText: function() {
+      var waitTimes = this.get('waitTimes');
+        //calculate or something
+        return {text: "15-20 min", type: "long"}
+    },
+
     getWaitTimeCounts: function() {
       var waitTimes = this.get('waitTimes')
         , counts = {
@@ -42,7 +48,7 @@
       ;
 
       _.each(counts, function(count, option) {
-        percents[option] = total == 0 ? 0 : Math.round((counts[option] / total) * 100);
+        percents[option] = total == 0 ? 0 : (counts[option] / total) * 94;
       });
 
       return percents;

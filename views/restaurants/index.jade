@@ -15,11 +15,11 @@ block content
             img(src=restaurant.photoURL || '/img/sample.png')
             a(href="/restaurants/#{restaurant._id}")
               h3.resto-name= restaurant.name
-        .wait-color
+        .wait-color(data-behavior="wait-color")
         .contents
           h4.wait-time
             i.icon-time
-            | 15-30min
+            span.time-text 15-30min
           .rating-wrapper
             hr
             span.rating-title.mini-title Wait Breakdown
@@ -35,26 +35,25 @@ block content
             .link-buttons
               ul.links.unstyled
                 li.link
-                  a(data-behavior="map").btn.btn-small.map
+                  a(data-behavior="map", href=restaurant.mapLink).btn.btn-small.map
                     i.icon-map-marker
-                    |  1.2 miles
+                    |  Map
                 li.link
-                  a(data-behavior="website").btn.btn-small.website
+                  a(data-behavior="website", href=restaurant.website).btn.btn-small.website
                     i.icon-link
                     |  Website
                 li.link
-                  a(data-behavior="call").btn.btn-small.call
+                  a(data-behavior="call", href=restaurant.phone).btn.btn-small.call
                     i.icon-phone
-                    |  Call Now
+                    |  504.123.4567
             .details
               p.cuisine
                 | Seafood, Sandwiches, Po-boys
-              p.description
-                | For over 100 years, Acme has been satisfying the hungriest of people all
-                | over the world! It's quality you can taste in the fresh... more »
+              //- p.description
+              //-   | For over 100 years, Acme has been satisfying the hungriest of people all
+              //-   | over the world! It's quality you can taste in the fresh... more »
         footer.tile-footer
-          hr
-          span.choices-title.mini-title How Long's The Wait
+          .choices-title.mini-title How Long's The Wait?
           .choices
             a(href="#", data-option=1).btn.none
               i.icon-none-circle
@@ -69,21 +68,23 @@ block content
               i.icon-full-circle
               | Full
 
-  form.form-inline(action='/restaurants/', method='post')
-    .control-group
-      label.control-label Name
-      .controls
-        input(name='name', type='text', placeholder='Name')
-    .control-group
-      label.control-label Photo URL
-      .controls
-        input(name='photoURL', type='text', placeholder='Photo URL')
-    .control-group
-      label.control-label Phone
-      .controls
-        input(name='phone', type='text', placeholder='Phone')
+
+
+  //- form.form-inline(action='/restaurants/', method='post')
+  //-   .control-group
+  //-     label.control-label Name
+  //-     .controls
+  //-       input(name='name', type='text', placeholder='Name')
+  //-   .control-group
+  //-     label.control-label Photo URL
+  //-     .controls
+  //-       input(name='photoURL', type='text', placeholder='Photo URL')
+  //-   .control-group
+  //-     label.control-label Phone
+  //-     .controls
+  //-       input(name='phone', type='text', placeholder='Phone')
 
 
 
-    button.btn.btn-primary Update
+  //-   button.btn.btn-primary Update
 

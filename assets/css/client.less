@@ -11,6 +11,8 @@
 @none: #b9d031;
 
 
+
+
 * {
   box-sizing: border-box;
 }
@@ -18,7 +20,9 @@
 body {
   background: url(/img/background.png);
 
-  font-family: 'Proxima Nova';
+  font-family: 'Open Sans', sans-serif;
+  margin-left: -20px;
+  padding: 0;
 }
 
 hr {
@@ -63,6 +67,7 @@ hr {
 
 .resto-tiles {
   margin: 0;
+  text-align: center;
 }
 
 .resto-tile {
@@ -73,9 +78,10 @@ hr {
   border: 1px solid #c0bfc0;
 
   position: relative;
-  margin: 20px;
   width: @tile-width;
+  margin: 30px 30px;
   list-style: none;
+  display: inline-block;
 
   header {
     img {
@@ -88,11 +94,13 @@ hr {
     .border-radius(@radius - 5);
 
     font-size: 22px;
+    font-family: 'Oswald', sans-serif;
+    font-weight: normal;
     background-color: rgba(0,0,0,0.6);
     color: #fff;
 
     display: inline-block;
-    padding: 3px 10px;
+    padding: 8px 10px;
     position: absolute;
     top: 5px;
     left: 5px;
@@ -132,17 +140,32 @@ hr {
 
   .links {
     .clearfix();
+    text-align: center;
 
     .link {
-      padding: 0px 11px;
-      float: left;
+      padding: 0px 5px 8px 5px;
+      display: inline-block;
+    }
+
+    .btn {
+      font-size: 12px;
     }
   }
 
   .wait-color {
+    -webkit-transition: background-color 1s linear;
+    -moz-transition: background-color 1s linear;
+    -o-transition: background-color 1s linear;
+    transition: background-color 1s linear;
+
     background-color: @short;
 
     height: 8px;
+
+    &.full { background-color: @full };
+    &.long { background-color: @long };
+    &.short { background-color: @short };
+    &.none { background-color: @none };
   }
 
   .wait-time {
@@ -185,7 +208,7 @@ hr {
       background: url(/img/stripe.png) repeat-x center top;
 
       position: absolute;
-      top: 4px;
+      top: 0px;
       bottom: 0px;
       left: 0px;
       right: 0px;
@@ -200,14 +223,18 @@ hr {
       border-right-width: 0px;
       border-style: solid;
 
-      width: 25%;
+      width: 0%;
       height: 10px;
-      display: inline-block;
+      float: left;
+      transition: width 0.5s ease-in-out;
+      -moz-transition: width 0.5s ease-in-out; /* FF 4 */
+      -webkit-transition: width 0.5s ease-in-out; /* Safari & Chrome */
+      -o-transition: width 0.5s ease-in-out; /* Opera */
+
     }
 
     .none {
-      .border-top-left-radius(@radius);
-      .border-bottom-left-radius(@radius);
+
 
       #gradient > .vertical(@none, darken(@none, 7%));
 
@@ -227,8 +254,6 @@ hr {
     }
 
     .full {
-      .border-top-right-radius(@radius);
-      .border-bottom-right-radius(@radius);
 
       #gradient > .vertical(@full, darken(@full, 7%));
 
@@ -238,20 +263,27 @@ hr {
   }
 
   footer{
+    .box-shadow(0px 1px 0 0 rgba(255,255,255,0.9) inset);
     .border-bottom-left-radius(@radius);
     .border-bottom-right-radius(@radius);
 
     background: #f1f1f1;
-    border-top: 1px solid white;
+    border-top: 1px solid #d2d2d2;
 
-    padding:5px;
+    padding:5px 0 10px 0;
     position: relative;
   }
 
+  .choices-title {
+    margin-bottom: 5px;
+  }
+
   .choices {
+    text-align: center;
+
     .btn {
       padding: 3px 10px;
-      margin: 0 4px;
+      margin: 0px 4px;
     }
 
     [class^="icon-"] {
