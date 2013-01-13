@@ -48,8 +48,10 @@ $('body').on('touchstart.dropdown', '.dropdown-menu', function (e) { e.stopPropa
         $waitTimeBar = $restoTile.find('.rating-bar [data-option="' + option + '"]');
         $waitTimeBar.width(percent + '%');
         $waitTimeText = $restoTile.find('.time-text');
-        $waitTimeText.html(model.getWaitTimeText());
-        $("[data-behavior='wait-color']").attr("class", "wait-color " + model.getWaitTimeText().type);
+
+        var info = model.getWaitTimeText();
+        $waitTimeText.html(info.name);
+        $("[data-behavior='wait-color']").attr("class", "wait-color " + info.color);
 
       });
       console.log(percents);
