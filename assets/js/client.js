@@ -56,7 +56,7 @@ $('body').on('touchstart.dropdown', '.dropdown-menu', function (e) { e.stopPropa
 
         var info = model.getWaitTimeText();
         $waitTimeText.html(info.name);
-        $("[data-behavior='wait-color']").attr("class", "wait-color " + info.color);
+        $("[data-behavior='wait-color']", $restoTile).attr("class", "wait-color " + info.color);
 
       });
       console.log(percents);
