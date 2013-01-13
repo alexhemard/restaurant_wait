@@ -24,6 +24,11 @@ $('body').on('touchstart.dropdown', '.dropdown-menu', function (e) { e.stopPropa
     },
 
     docReady: function() {
+
+      $('.resto-image img').on('error', function() {
+        $(this).attr('src', '/img/large-placeholder.gif');
+      });
+
       this.restaurants = new App.Collections.Restaurant($('.resto-tiles').data('json'));
 
       this.restaurants.on('change:waitTimes', _.bind(this.updateWaitTimeDisplay, this));

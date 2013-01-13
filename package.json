@@ -33,6 +33,7 @@
     "supervisor": "*"
   },
   "subdomain": "swagbasket",
+  "domains": ["eatnownola.com", "www.eatnownola.com"],
   "engines": {
     "node": "0.8.x"
   }
