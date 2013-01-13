@@ -26,7 +26,7 @@ $('body').on('touchstart.dropdown', '.dropdown-menu', function (e) { e.stopPropa
       this.restaurants = new App.Collections.Restaurant($('.resto-tiles').data('json'));
 
       this.restaurants.on('change:waitTimes', _.bind(this.updateWaitTimeDisplay, this));
-      
+
       $('.resto-tile').on('click', '.choices a[data-option]', _.bind(this.declareWaitTime, this));
 
       this.restaurants.each(_.bind(function(r) { this.updateWaitTimeDisplay(r); }, this));
@@ -48,8 +48,11 @@ $('body').on('touchstart.dropdown', '.dropdown-menu', function (e) { e.stopPropa
         $waitTimeBar = $restoTile.find('.rating-bar [data-option="' + option + '"]');
         $waitTimeBar.width(percent + '%');
         $waitTimeText = $restoTile.find('.time-text');
-        $waitTimeText.html(model.getWaitTimeText());
+        $waitTimeText.html(model.getWaitTimeText().text);
+        $("[data-behavior='wait-color']").attr("class", "wait-color " + model.getWaitTimeText().type);
+
       });
+      console.log(percents);
     },
 
     declareWaitTime: function(e) {

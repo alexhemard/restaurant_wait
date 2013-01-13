@@ -9,6 +9,8 @@
 @none: #b9d031;
 
 
+
+
 * {
   box-sizing: border-box;
 }
@@ -127,9 +129,19 @@ hr {
   }
 
   .wait-color {
+    -webkit-transition: background-color 1s linear;
+    -moz-transition: background-color 1s linear;
+    -o-transition: background-color 1s linear;
+    transition: background-color 1s linear;
+
     background-color: @short;
 
     height: 8px;
+
+    &.full { background-color: @full };
+    &.long { background-color: @long };
+    &.short { background-color: @short };
+    &.none { background-color: @none };
   }
 
   .wait-time {

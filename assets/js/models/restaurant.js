@@ -18,7 +18,7 @@
     getWaitTimeText: function() {
       var waitTimes = this.get('waitTimes');
         //calculate or something
-        return "15-20 min"
+        return {text: "15-20 min", type: "long"}
     },
 
     getWaitTimeCounts: function() {
