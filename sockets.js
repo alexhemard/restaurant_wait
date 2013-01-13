@@ -11,7 +11,7 @@ module.exports = function(io) {
 
         restaurant.declareWaitTime(data.option, socket.handshake.sessionID);
         restaurant.save(); // We don't need to wait for the save to succeed
-        socket.emit('restaurant', restaurant); // Send the updated restaurant
+        io.sockets.emit('restaurant', restaurant); // Send the updated restaurant
       });
     });
   });
