@@ -7,17 +7,7 @@ var mongoose = exports.mongoose = require('mongoose')
 ;
 
 exports = module.exports = new Schema({
-  name:  String,
-  url:   String,
-  address: String,
-  location: {lat: Number, lon: Number},
-  neighborhood: String,
-  photoURL: String,
-  attire: String,
-  cuisine: [String],
-  description: String,
-  phone: String,
-  priceRange: Number,
+  tourismBoard: { type: Schema.Types.Mixed, default: {} },
   waitTimes: {type: [WaitSchema], default: []}
 });
 

@@ -8,7 +8,7 @@ block content
   .find-food-btn.btn
     i.icon-screenshot
     | Find Food Nearby
-  ul.resto-tiles(data-json=restaurants)
+  ul.resto-tiles(data-json="#{JSON.stringify(restaurants)}")
     for restaurant in restaurants
       include listItem
 

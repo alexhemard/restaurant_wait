@@ -42,6 +42,8 @@
 
     getWaitTimePercents: function() {
 
+      console.log(this.toJSON());
+
       var counts = this.getWaitTimeCounts()
         , total = _.keys(this.get('waitTimes')).length
         , percents = {}

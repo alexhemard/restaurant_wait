@@ -26,7 +26,8 @@
     "connect-redis": "*",
     "twitter-bootstrap": "*",
     "async": "*",
-    "underscore": "*"
+    "underscore": "*",
+    "csv": "*"
   },
   "devDependencies": {
     "supervisor": "*"
