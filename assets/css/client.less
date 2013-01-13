@@ -3,6 +3,8 @@
 
 @radius: 10px;
 
+@tile-width: 315px;
+
 @full: #f34f4f;
 @long: #f09512;
 @short: #e7dd38;
@@ -25,16 +27,38 @@ hr {
   margin: 0;
 }
 
-#top-bar {
+.top-bar {
   text-align: center;
-  background: white;
+  background: url('../img/banner-bg.gif') repeat-x left bottom;
   color: #0fabbd;
   font-size: 28px;
-  border-bottom: 1px solid gray;
+  .box-shadow(0 1px 4px 0px rgba(0,0,0, 0.3));
 
   width: 100%;
-  height: 55px;
+  height: 65px;
   margin: 0;
+  padding-top:5px;
+  
+  .about-btn {
+    font-family: "Open Sans",sans-serif;
+    padding:8px;
+    
+    position: absolute;
+    top: 12px;
+    right: 12px;
+  }
+  
+}
+
+.find-food-btn {
+  font-size: 26px;
+  line-height: normal;
+
+  width:@tile-width;
+  padding: 18px;
+  .box-shadow(0 1px 7px 0px rgba(0,0,0, 0.3));
+  .border-radius(@radius);
+  margin:20px 0 0 20px;
 }
 
 .resto-tiles {
@@ -50,7 +74,7 @@ hr {
 
   position: relative;
   margin: 20px;
-  width: 315px;
+  width: @tile-width;
   list-style: none;
 
   header {
