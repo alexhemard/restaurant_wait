@@ -42,7 +42,7 @@
       ;
 
       _.each(counts, function(count, option) {
-        percents[option] = total == 0 ? 0 : (counts[option] / total) * 100;
+        percents[option] = total == 0 ? 0 : (counts[option] / total) * 94;
       });
 
       return percents;
