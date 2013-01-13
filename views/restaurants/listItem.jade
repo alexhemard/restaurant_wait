@@ -7,13 +7,18 @@ li.resto-tile(id=restaurant._id)
       .link-buttons
         ul.links.unstyled
           li.link
-            a(data-behavior="map", href=restaurant.mapLink).btn.btn-small.map
+            a(data-behavior="map", href="http://maps.google.com/?q=#{restaurant.tourismBoard.address1} #{restaurant.tourismBoard.city} #{restaurant.tourismBoard.zipCode}").btn.btn-small.map
               i.icon-map-marker
               |  Map
           li.link
-            a(data-behavior="website", href='http://' + restaurant.tourismBoard.website).btn.btn-small.website
-              i.icon-link
-              |  Website
+            if (restaurant.tourismBoard.URL == null)
+              a(data-behavior="website", href="http://#{restaurant.tourismBoard.URL}").btn.btn-small.website
+                i.icon-link
+                  |  Website
+            else
+              a(data-behavior="website", href="http://www.neworleansonline.com/directory/location.php?locationID=#{restaurant.tourismBoard.ID}").btn.btn-small.website
+                i.icon-link
+                  |  Website
           li.link
             a(data-behavior="call", href=restaurant.tourismBoard.phone).btn.btn-small.call
               i.icon-phone
@@ -23,6 +28,15 @@ li.resto-tile(id=restaurant._id)
     h4.wait-time
       i.icon-time
       span.time-text 15-30min
+    hr
+    .info
+      .details
+        p.description= restaurant.tourismBoard.shortDescription
+          a.read-more
+            |  read more &raquo;
+        //- p.description
+        //-   | For over 100 years, Acme has been satisfying the hungriest of people all
+        //-   | over the world! It's quality you can taste in the fresh... more »
     .rating-wrapper
       hr
       span.rating-title.mini-title Wait Breakdown
@@ -34,12 +48,7 @@ li.resto-tile(id=restaurant._id)
           .range.long(data-option=3)
           .range.full(data-option=4)
       hr
-    .info
-      .details
-        p.cuisine= restaurant.tourismBoard.shortDescription
-        //- p.description
-        //-   | For over 100 years, Acme has been satisfying the hungriest of people all
-        //-   | over the world! It's quality you can taste in the fresh... more »
+
   footer.tile-footer
     .choices-title.mini-title How Long's The Wait?
     .choices

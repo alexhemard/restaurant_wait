@@ -6,6 +6,7 @@
 //= require backbone
 //= require baseClasses
 //= require_tree ./models
+//= require dotdotdot
 
 // bootstrap hack to stop dropdowns from disappearing on mobile
 $('body').on('touchstart.dropdown', '.dropdown-menu', function (e) { e.stopPropagation(); });
@@ -31,6 +32,10 @@ $('body').on('touchstart.dropdown', '.dropdown-menu', function (e) { e.stopPropa
 
       this.restaurants.each(_.bind(function(r) { this.updateWaitTimeDisplay(r); }, this));
       this.restaurants.listen();
+      $(".details").dotdotdot({
+        after: "a.read-more",
+        height: 70
+      });
     },
 
     getRestoTile: function(model) {
