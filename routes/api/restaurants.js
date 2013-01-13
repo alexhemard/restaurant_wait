@@ -3,7 +3,7 @@ var models = require('../../models')
 
 exports.index = function(req, res, next) {
   //TODO return closest restaurants
-  Restaurant.find().limit(20).lean().exec(function(err,restaurants) {
+  Restaurant.find().sort('_id').limit(40).lean().exec(function(err,restaurants) {
     res.jsonData = restaurants;
     next();
   });
