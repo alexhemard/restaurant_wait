@@ -51,9 +51,9 @@
 
       var total = _.reduce(counts, function(result, count) { return result + count}, 0);
 
-      var choice = total / basket;
+      var choice = basket / total;
 
-      return bs[4 - Math.ceil(4*choice)]
+      return bs[Math.floor(choice)]
     },
 
     getWaitTimeCounts: function() {
