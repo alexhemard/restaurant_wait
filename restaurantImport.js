@@ -11,6 +11,8 @@ var fs = require('fs')
 
 mongoose.connect(config.mongodb);
 
+Restaurant.find({}).remove();
+
 csv().from.stream(fs.createReadStream(__dirname + '/restaurantImport.csv'))
   .on('record', function(data, index) {
 
@@ -36,3 +38,4 @@ csv().from.stream(fs.createReadStream(__dirname + '/restaurantImport.csv'))
     console.log(error.message);
   })
 ;
+
