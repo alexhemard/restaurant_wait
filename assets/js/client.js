@@ -63,6 +63,9 @@ $('body').on('touchstart.dropdown', '.dropdown-menu', function (e) { e.stopPropa
         , $restoTile = $button.closest('.resto-tile')
         , restoId = $restoTile.attr('id');
       ;
+      
+      $('.choices a[data-option]').removeClass('down');
+      $(e.currentTarget).addClass('down');
 
       e.preventDefault();
 
