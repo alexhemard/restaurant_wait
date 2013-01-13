@@ -15,6 +15,20 @@ block content
             img(src=restaurant.photoURL || '/img/sample.png')
             a(href="/restaurants/#{restaurant._id}")
               h3.resto-name= restaurant.name
+            .link-buttons
+              ul.links.unstyled
+                li.link
+                  a(data-behavior="map", href=restaurant.mapLink).btn.btn-small.map
+                    i.icon-map-marker
+                    |  Map
+                li.link
+                  a(data-behavior="website", href=restaurant.website).btn.btn-small.website
+                    i.icon-link
+                    |  Website
+                li.link
+                  a(data-behavior="call", href=restaurant.phone).btn.btn-small.call
+                    i.icon-phone
+                    |  504.123.4567
         .wait-color(data-behavior="wait-color")
         .contents
           h4.wait-time
@@ -32,20 +46,6 @@ block content
                 .range.full(data-option=4)
             hr
           .info
-            .link-buttons
-              ul.links.unstyled
-                li.link
-                  a(data-behavior="map", href=restaurant.mapLink).btn.btn-small.map
-                    i.icon-map-marker
-                    |  Map
-                li.link
-                  a(data-behavior="website", href=restaurant.website).btn.btn-small.website
-                    i.icon-link
-                    |  Website
-                li.link
-                  a(data-behavior="call", href=restaurant.phone).btn.btn-small.call
-                    i.icon-phone
-                    |  504.123.4567
             .details
               p.cuisine
                 | Seafood, Sandwiches, Po-boys

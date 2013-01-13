@@ -42,26 +42,27 @@ hr {
   height: 65px;
   margin: 0;
   padding-top:5px;
-  
+
   .about-btn {
     font-family: "Open Sans",sans-serif;
     padding:8px;
-    
+
     position: absolute;
     top: 12px;
     right: 12px;
   }
-  
+
 }
 
 .find-food-btn {
+  .box-shadow(0 1px 7px 0px rgba(0,0,0, 0.3));
+  .border-radius(@radius);
+
   font-size: 26px;
   line-height: normal;
 
   width:@tile-width;
   padding: 18px;
-  .box-shadow(0 1px 7px 0px rgba(0,0,0, 0.3));
-  .border-radius(@radius);
   margin:20px 0 0 20px;
 }
 
@@ -84,6 +85,8 @@ hr {
   display: inline-block;
 
   header {
+    position: relative;
+
     img {
       .border-top-left-radius(@radius);
       .border-top-right-radius(@radius);
@@ -135,7 +138,13 @@ hr {
   }
 
   .link-buttons {
-    margin-bottom: 15px;
+    // margin-bottom: 15px;
+
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    right: 0;
+    height: 30px;
   }
 
   .links {
