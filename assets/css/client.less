@@ -10,9 +10,6 @@
 @short: #e7dd38;
 @none: #b9d031;
 
-
-
-
 * {
   box-sizing: border-box;
 }
@@ -32,11 +29,13 @@ hr {
 }
 
 .top-bar {
+  #gradient > .vertical(#8b281e, darken(#8b281e, 3%));
+  .box-shadow(0 1px 4px 0px rgba(0,0,0, 0.3));
+
+  min-width: 375px;
   text-align: center;
-  background: url('../img/banner-bg.gif') repeat-x left bottom;
   color: #0fabbd;
   font-size: 28px;
-  .box-shadow(0 1px 4px 0px rgba(0,0,0, 0.3));
 
   width: 100%;
   height: 65px;
@@ -131,6 +130,7 @@ hr {
     .cuisine {
       font-size: 16px;
       text-align: center;
+      letter-spacing: -1px;
     }
 
     .description {
@@ -248,8 +248,6 @@ hr {
     }
 
     .none {
-
-
       #gradient > .vertical(@none, darken(@none, 7%));
 
       border-color: darken(@none, 15%);

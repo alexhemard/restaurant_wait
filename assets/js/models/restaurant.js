@@ -11,14 +11,49 @@
 
   App.Models.Restaurant = App.Models.Base.extend({
 
+
     declareWaitTime: function(optionId) {
       this.collection.socket.emit('waitTime', { restaurant: this.id, option: optionId });
     },
 
     getWaitTimeText: function() {
-      var waitTimes = this.get('waitTimes');
-        //calculate or something
-        return {text: "15-20 min", type: "long"}
+      var bs = [
+        {
+          name: "No Wait",
+          color: "none"
+        },
+        {
+          name: "15-30min",
+          color: "short"
+        },
+        {
+          name: "30-60min",
+          color: "long"
+        },
+        {
+          name: "More Than 1 Hour",
+          color: "full"
+        }
+      ]
+      , waitTimes = this.get('waitTimes')
+      , counts = [0,0,0,0]
+      ;
+
+      _.each(waitTimes, function(waitTime) {
+        counts[waitTime.option-1] += 1;
+      });
+
+      var swag = _.zip(counts, [1,2,3,4]);
+
+      var basket = _.reduce(swag, function(result, arr) {
+        return result + (arr[0] * arr[1]);
+      },0);
+
+      var total = _.reduce(counts, function(result, count) { return result + count}, 0);
+
+      var choice = basket / total;
+
+      return bs[Math.ceil(choice-1)]
     },
 
     getWaitTimeCounts: function() {
