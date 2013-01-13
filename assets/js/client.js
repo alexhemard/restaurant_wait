@@ -29,6 +29,7 @@ $('body').on('touchstart.dropdown', '.dropdown-menu', function (e) { e.stopPropa
       
       $('.resto-tile').on('click', '.choices a[data-option]', _.bind(this.declareWaitTime, this));
 
+      this.restaurants.each(_.bind(function(r) { this.updateWaitTimeDisplay(r); }, this));
       this.restaurants.listen();
     },
 
