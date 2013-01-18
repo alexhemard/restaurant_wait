@@ -9,9 +9,10 @@ exports.acceptData = function(req, res, next) {
       console.log(err);
       return res.send(404);
     }
+    console.log('|' + data.id + '|');
     r.declareWaitTime(data.avail, 'twilio');
     r.save(); // We don't need to wait for the save to succeed
-    io.sockets.emit('restaurant', r);
+    io.sockets.emit('update', { restaurantId: r.id, waitTimes: r.waitTimes });
     res.send(200);
   });
 };

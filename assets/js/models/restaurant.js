@@ -11,7 +11,6 @@
 
   App.Models.Restaurant = App.Models.Base.extend({
 
-
     declareWaitTime: function(optionId) {
       this.collection.socket.emit('waitTime', { restaurant: this.id, option: optionId });
     },
@@ -70,14 +69,12 @@
         counts[waitTime.option] += 1;
       });
 
-      _.each(counts, function(count, option) { console.log(count + ' waitTimes for option ' + option)});
-
       return counts;
     },
 
     getWaitTimePercents: function() {
 
-      console.log(this.toJSON());
+      //console.log(this.toJSON());
 
       var counts = this.getWaitTimeCounts()
         , total = _.keys(this.get('waitTimes')).length
@@ -98,27 +95,42 @@
 
     listen: function() {
       this.socket = io.connect();
-      this.socket.on('restaurant', _.bind(this.onRestaurantUpdate, this));
+      this.socket.on('update', _.bind(this.onRestaurantUpdate, this));
+    },
+
+    comparator: function(a, b) {
+      if(App.coords == null) return 0;
+
+      var aData = a.get('tourismBoard');
+      var bData = b.get('tourismBoard');
+
+      var aCoords = [aData.latitude, aData.longitude];
+      var bCoords = [bData.latitude, bData.longitude];
+
+      var aDistance = App.milesFrom(aCoords);
+      var bDistance = App.milesFrom(bCoords);
+
+      return aDistance - bDistance;
     },
 
     onRestaurantUpdate: function(data) {
       console.log(data);
-      var restaurant = this.get(data._id);
+      var restaurant = this.get(data.restaurantId);
       if(restaurant) {
-        restaurant.set(data);
-        console.log('Updated restaurant ' + restaurant.id);
+        restaurant.set({ waitTimes: data.waitTimes });
+        //console.log('Updated restaurant ' + restaurant.id);
       }
-      else console.log('Tried to update non-existent restaurant ' + data.restaurant._id);
+      //else console.log('Tried to update non-existent restaurant ' + data.restaurant._id);
     },
 
     declareWaitTime: function(restaurantId, optionId) {
       var restaurant = this.get(restaurantId);
       if(restaurant) {
         restaurant.declareWaitTime(optionId);
-        console.log('Declared wait time ' + optionId + ' for restaurant ' + restaurantId);
+        //console.log('Declared wait time ' + optionId + ' for restaurant ' + restaurantId);
       }
-      else console.log('Tried to declare wait time ' + optionId + ' for non-existent restaurant ' + restaurantId);
-    },
+      //else console.log('Tried to declare wait time ' + optionId + ' for non-existent restaurant ' + restaurantId);
+    }
   });
 
 })(window.App);

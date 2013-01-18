@@ -71,7 +71,7 @@
 
     render: function() {
       var viewParams = this.model.toJSON();
-      this.$el.html(jade.templates[this.template + '.jade'](viewParams));
+      this.setElement($(jade.templates[this.template + '.jade'](viewParams)));
       this.delegateEvents();
       return this;
     }

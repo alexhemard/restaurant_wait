@@ -1,6 +1,6 @@
 {
   "name": "swagbasket",
-  "version": "0.0.1-14",
+  "version": "0.0.1-19",
   "private": true,
   "scripts": {
     "start": "node app.js"
@@ -33,7 +33,10 @@
     "supervisor": "*"
   },
   "subdomain": "swagbasket",
-  "domains": ["eatnownola.com", "www.eatnownola.com"],
+  "domains": [
+    "eatnownola.com",
+    "www.eatnownola.com"
+  ],
   "engines": {
     "node": "0.8.x"
   }

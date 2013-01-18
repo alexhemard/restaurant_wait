@@ -1,28 +1,28 @@
-li.resto-tile(id=restaurant._id)
+li.resto-tile(id=_id)
   header.tile-header
     .resto-image
-      img(src="/img/restaurants/" + restaurant.tourismBoard.ID + ".jpg" || '/img/large-placeholder.gif')
-      a(href="/restaurants/#{restaurant._id}")
-        h3.resto-name= restaurant.tourismBoard.name1
+      img(src="/img/restaurants/" + tourismBoard.ID + ".jpg" || '/img/large-placeholder.gif')
+      a(href="/restaurants/#{_id}")
+        h3.resto-name= tourismBoard.name1
       .link-buttons
         ul.links.unstyled
           li.link
-            a(data-behavior="map", href="http://maps.google.com/?q=#{restaurant.tourismBoard.address1} #{restaurant.tourismBoard.city} #{restaurant.tourismBoard.zipCode}").btn.btn-small.map
+            a(data-behavior="map", href="http://maps.google.com/?q=#{tourismBoard.address1} #{tourismBoard.city} #{tourismBoard.zipCode}").btn.btn-small.map
               i.icon-map-marker
               |  Map
           li.link
-            if (restaurant.tourismBoard.URL == null)
-              a(data-behavior="website", href="http://#{restaurant.tourismBoard.URL}").btn.btn-small.website
+            if (tourismBoard.URL == null)
+              a(data-behavior="website", href="http://#{tourismBoard.URL}").btn.btn-small.website
                 i.icon-link
                   |  Website
             else
-              a(data-behavior="website", href="http://www.neworleansonline.com/directory/location.php?locationID=#{restaurant.tourismBoard.ID}").btn.btn-small.website
+              a(data-behavior="website", href="http://www.neworleansonline.com/directory/location.php?locationID=#{tourismBoard.ID}").btn.btn-small.website
                 i.icon-link
                   |  Website
           li.link
-            a(data-behavior="call", href=restaurant.tourismBoard.phone).btn.btn-small.call
+            a(data-behavior="call", href=tourismBoard.phone).btn.btn-small.call
               i.icon-phone
-              |  #{restaurant.tourismBoard.phone}
+              |  #{tourismBoard.phone}
   .wait-color(data-behavior="wait-color")
   .contents
     h4.wait-time
@@ -31,7 +31,7 @@ li.resto-tile(id=restaurant._id)
     hr
     .info
       .details
-        p.description= restaurant.tourismBoard.shortDescription
+        p.description= tourismBoard.shortDescription
           a.read-more
             |  read more &raquo;
         //- p.description
