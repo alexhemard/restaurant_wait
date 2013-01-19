@@ -35,7 +35,7 @@ $('body').on('touchstart.dropdown', '.dropdown-menu', function (e) { e.stopPropa
       this.restoList = new App.Views.RestaurantsList({ el: '.resto-tiles', model: this.restaurants });
       this.restoList.render();
       this.restaurants.listen();
-      
+
       $(".details").dotdotdot({
         after: "a.read-more",
         height: 70
@@ -90,6 +90,7 @@ $('body').on('touchstart.dropdown', '.dropdown-menu', function (e) { e.stopPropa
       this.coords = coords;
       console.log('NEW POSITION');
       console.log(coords);
+      this.restoList.sort();
     }
 
   });

@@ -10,6 +10,10 @@ exports.index = function(req, res, next) {
 };
 
 exports.show = function(req, res, next) {
+  var coords = null;
+  if(req.body.coords) coords = req.body.coords.split(',').map(function(x) { return parseInt(x, 10); });
+  // TODO: Do something with coords
+
   Restaurant.findById(req.params.id, function (err, restaurant) {
     if (err) return res.send(500);
     res.jsonData = restaurant;
