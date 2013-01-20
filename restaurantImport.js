@@ -26,6 +26,8 @@ csv().from.stream(fs.createReadStream(__dirname + '/restaurantImport.csv'))
       for(var i = 0; i < data.length; i++) recordObject[labels[i]] = data[i];
       restaurant = new Restaurant();
       restaurant.tourismBoard = recordObject;
+      restaurant.location = [recordObject['latitude'],recordObject['longitude']];
+      console.log(restaurant.location);
       _(Math.floor(Math.random() * 6) + 1).times(function(n) { restaurant.declareWaitTime(Math.floor(Math.random() * 4) + 1, 'swag'+n)});
       restaurant.markModified('tourismBoard');
       restaurant.save(function(err) {
