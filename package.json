@@ -27,7 +27,8 @@
     "twitter-bootstrap": "*",
     "async": "*",
     "underscore": "*",
-    "csv": "*"
+    "csv": "*",
+    "mysql": "2.0.0-alpha5"
   },
   "devDependencies": {
     "supervisor": "*"
