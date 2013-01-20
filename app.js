@@ -89,6 +89,25 @@ var app = express()
   , io = global.io = socketIo.listen(server)
 ;
 
+// Make socket.io use RedisStore
+var RedisStore = require('socket.io/lib/stores/redis')
+  , redis  = require('socket.io/node_modules/redis')
+  , pub    = redis.createClient()
+  , sub    = redis.createClient()
+  , client = redis.createClient(config.socketsRedis.port, config.socketsRedis.url);
+;
+
+pub.auth(config.socketsRedis.authString, function (err) { if (err) throw err; });
+sub.auth(config.socketsRedis.authString, function (err) { if (err) throw err; });
+client.auth(config.socketsRedis.authString, function (err) { if (err) throw err; });
+
+io.set('store', new RedisStore({
+  redis    : redis,
+  redisPub : pub,
+  redisSub : sub,
+  redisClient : client
+}));
+
 // Make socket.io a little quieter
 io.set('log level', 1);
 // Give socket.io access to the passport user from Express
@@ -106,7 +125,7 @@ io.set('authorization', passportSocketIo.authorize({
 }));
 
 app.configure(function(){
-  app.set('port', process.env.PORT || 3000);
+  app.set('port', process.env.PORT || 3001);
   app.set('views', __dirname + '/views');
   app.set('view engine', 'jade');
 

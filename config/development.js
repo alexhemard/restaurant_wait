@@ -14,3 +14,10 @@ exports.facebook = {
   clientSecret: 'my client secret',
   callbackURL: 'http://127.0.0.1:3000/auth/facebook/callback'
 };
+
+exports.socketsRedis = {
+  port: null,
+  url: null,
+  password: null,
+  authString: null
+}
