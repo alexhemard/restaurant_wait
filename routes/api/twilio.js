@@ -1,12 +1,13 @@
 var twilio = require('twilio')
-  , twilioClient = twilio('AC6485244d7f813a3c021ae99619461623', '7f0f4a6d57924d3f0134a4d1b8921b4c')
+  , config = require('../../config')
+  , twilioClient = twilio(config.twilio.account, config.twilio.token)
   , models = require('../../models')
   , Restaurant = models.Restaurant
 ;
 
 // middleware to check that the request came from Twilio
 exports.validateRequest = function(req, res, next) {
-  if(!twilio.validateExpressRequest(req, '7f0f4a6d57924d3f0134a4d1b8921b4c')) return res.send(404);
+  if(!twilio.validateExpressRequest(req, config.twilio.token)) return res.send(404);
   next();
 };
 
