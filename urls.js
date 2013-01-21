@@ -20,7 +20,10 @@ module.exports = function(app){
   app.get('/api/restaurants', routes.api.restaurants.index);
   app.post('/api/restaurants', routes.api.restaurants.create);
   app.get('/api/restaurants/:id', routes.api.restaurants.show);
-  app.post('/api/twilio', routes.api.twilio.acceptData);
+  // twilio stuffs
+  app.all('/api/twilio/*', routes.api.twilio.validateRequest);
+  app.post('/api/twilio/sms', routes.api.twilio.sms);
+  app.post('/api/twilio/voice', routes.api.twilio.voice);
 
   // this catch-all route will send JSON for every API route that falls through to this point in the chain
   // WARNING: Sometimes they don't fall through to this point in the chain! Example:
