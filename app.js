@@ -22,7 +22,8 @@ var config = require('./config')
   , FacebookStrategy = require('passport-facebook').Strategy
   , MongoStore = require('connect-mongo')(express)
   , sessionStore = new MongoStore({ url: config.mongodb })
-  , sockets = require('./sockets');
+  , sockets = require('./sockets')
+  , twilio = require('twilio')
 ;
 
 // set up passport authentication
