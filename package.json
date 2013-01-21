@@ -1,6 +1,6 @@
 {
   "name": "swagbasket",
-  "version": "0.0.1-19",
+  "version": "0.0.1-39",
   "private": true,
   "scripts": {
     "start": "node app.js"
@@ -27,7 +27,8 @@
     "twitter-bootstrap": "*",
     "async": "*",
     "underscore": "*",
-    "csv": "*"
+    "csv": "*",
+    "twilio": "*"
   },
   "devDependencies": {
     "supervisor": "*"
