@@ -24,6 +24,7 @@ module.exports = function(app){
   app.all('/api/twilio/*', routes.api.twilio.validateRequest);
   app.post('/api/twilio/sms', routes.api.twilio.sms);
   app.post('/api/twilio/voice', routes.api.twilio.voice);
+  app.post('/api/twilio/voice/waitEntered', routes.api.twilio.voiceWaitEntered);
 
   // this catch-all route will send JSON for every API route that falls through to this point in the chain
   // WARNING: Sometimes they don't fall through to this point in the chain! Example:
