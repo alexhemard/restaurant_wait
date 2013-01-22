@@ -29,16 +29,8 @@ $('body').on('touchstart.dropdown', '.dropdown-menu', function (e) { e.stopPropa
     },
 
     docReady: function() {
-      var _this = this;
-
       this.restaurants = new App.Collections.Restaurant();
       this.restoList = new App.Views.RestaurantsList({ el: '.resto-tiles', model: this.restaurants });
-
-      $(".details").dotdotdot({
-        after: "a.read-more",
-        height: 70
-      });
-
       this.doLocation();
     },
 
@@ -47,25 +39,20 @@ $('body').on('touchstart.dropdown', '.dropdown-menu', function (e) { e.stopPropa
     },
 
     geoSuccess: function(position) {
-      //console.log(position);
       var newCoords = [position.coords.latitude, position.coords.longitude];
+
       if(position.timestamp > this.coordsUpdated) {
         if(this.coords == null || this.milesFrom(newCoords) >= this.MILES_BEFORE_UPDATE) {
           this.doNewPosition(newCoords, position.timestamp);
         }
       }
-      else {
-        console.log('WTF');
-      }
     },
 
     geoError: function() {
-      console.log("FAILED TO GEOLOCATE - USER DENIED?");
-      this.updateRestaurants(); // no location
+      this.updateRestaurants(); // proceed with no location
     },
 
     milesFrom: function(pair) {
-
       var radians = function(degrees) { return degrees * Math.PI/180; }
         , lat1 = radians(pair[0])
         , lon1 = radians(pair[1])
@@ -78,25 +65,21 @@ $('body').on('touchstart.dropdown', '.dropdown-menu', function (e) { e.stopPropa
         , multiplier = 3961 // mean radius of the earth (miles) at 39 degrees from the equator
         , miles = greatCircle * multiplier
       ;
-
-      //console.log("Miles: " + miles);
       return miles;
-
     },
 
     doNewPosition: function(coords, timestamp) {
       var firstTime = this.coords == null;
+
       this.coordsUpdated = timestamp;
       this.coords = coords;
-      console.log('NEW POSITION');
-      console.log(coords);
 
       if(firstTime) {
-        // The first time, we just grab what we get
+        // The first time, we automatically update (because there are no restaurants on-screen yet)
         this.updateRestaurants();
       }
       else {
-        // TODO: Ask user if they'd like to update restaurants list
+        // TODO: After the first time, ask the user if they'd like to update restaurants list
       }
     },
 

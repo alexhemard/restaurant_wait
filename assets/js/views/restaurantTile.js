@@ -13,6 +13,17 @@
       this.model.on('change:waitTimes', _.bind(this.updateWaitTimeDisplay, this));
     },
 
+    render: function() {
+      var retVal = App.Views.Base.prototype.render.apply(this, arguments);
+
+      $(".details").dotdotdot({
+        after: "a.read-more",
+        height: 70
+      });
+
+      return retVal;
+    },
+
     updateWaitTimeDisplay: function() {
       var percents = this.model.getWaitTimePercents()
         , $waitTimeBar
