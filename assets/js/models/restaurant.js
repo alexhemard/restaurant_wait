@@ -114,7 +114,7 @@
     },
 
     onRestaurantUpdate: function(data) {
-      console.log(data);
+      // console.log(data);
       var restaurant = this.get(data.restaurantId);
       if(restaurant) {
         restaurant.set({ waitTimes: data.waitTimes });
