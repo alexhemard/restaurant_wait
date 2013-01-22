@@ -93,6 +93,17 @@
 
     model: App.Models.Restaurant,
 
+    url: function() {
+      var url = '/api/restaurants';
+      if(this.coords) url += '?coords=' + this.coords.join(',');
+      return url;
+    },
+
+    updateLocation: function(coords, fetchOptions) {
+      this.coords = coords;
+      this.fetch(fetchOptions);
+    },
+
     listen: function() {
       this.socket = io.connect();
       this.socket.on('update', _.bind(this.onRestaurantUpdate, this));

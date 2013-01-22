@@ -31,10 +31,8 @@ $('body').on('touchstart.dropdown', '.dropdown-menu', function (e) { e.stopPropa
     docReady: function() {
       var _this = this;
 
-      this.restaurants = new App.Collections.Restaurant($('.resto-tiles').data('json'));
+      this.restaurants = new App.Collections.Restaurant();
       this.restoList = new App.Views.RestaurantsList({ el: '.resto-tiles', model: this.restaurants });
-      this.restoList.render();
-      this.restaurants.listen();
 
       $(".details").dotdotdot({
         after: "a.read-more",
@@ -63,6 +61,7 @@ $('body').on('touchstart.dropdown', '.dropdown-menu', function (e) { e.stopPropa
 
     geoError: function() {
       console.log("FAILED TO GEOLOCATE - USER DENIED?");
+      this.updateRestaurants(); // no location
     },
 
     milesFrom: function(pair) {
@@ -86,12 +85,24 @@ $('body').on('touchstart.dropdown', '.dropdown-menu', function (e) { e.stopPropa
     },
 
     doNewPosition: function(coords, timestamp) {
+      var firstTime = this.coords == null;
       this.coordsUpdated = timestamp;
       this.coords = coords;
       console.log('NEW POSITION');
       console.log(coords);
-      this.restoList.sort();
-    }
+
+      if(firstTime) {
+        // The first time, we just grab what we get
+        this.updateRestaurants();
+      }
+      else {
+        // TODO: Ask user if they'd like to update restaurants list
+      }
+    },
+
+    updateRestaurants: function() {
+      this.restaurants.updateLocation(this.coords);
+    },
 
   });
 
