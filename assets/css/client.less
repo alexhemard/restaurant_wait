@@ -67,6 +67,8 @@ hr {
   margin:20px 0 0 20px;
 }
 
+.hidden {display: none;}
+
 .resto-tiles {
   text-align: center;
 }
@@ -199,13 +201,9 @@ hr {
     position: relative;
   }
 
-  .rating-title {
+  .toggle-graph-btn {
     background-color: #fff;
 
-    position: absolute;
-    top: -9px;
-    left: 50%;
-    margin-left: -54px;
     padding: 0px 6px;
   }
 
@@ -214,14 +212,68 @@ hr {
     text-transform: uppercase;
     text-align: center;
   }
+  
+  .graph {
+    margin:0;
+    list-style: none;
+    
+    .bar-wrapper {
+      display: inline-block;
+      text-align: center;
 
-  .ratings {
+      width:25%;  
+      .bar {
+        .box-shadow(0 1px 0px 0px rgba(255,255,255,.4) inset);
+  
+/*
+        border-color: hsl(117, 43%, 18%);
+        border-width: 1px;
+        border-right-width: 0px;
+        border-style: solid;
+*/
+        border:none;
+        margin:auto;
+  
+        width: 40px;
+        height:30px; 
+        max-height: 30px;
+        transition: width 0.5s ease-in-out;
+        -moz-transition: width 0.5s ease-in-out; /* FF 4 */
+        -webkit-transition: width 0.5s ease-in-out; /* Safari & Chrome */
+        -o-transition: width 0.5s ease-in-out; /* Opera */
+  
+      }
+
+    }
+    
+  }
+
+  .graph-wrapper {
+/*     display: none; */
+
     margin: 15px;
 
     .rating-bar {
       .clearfix();
 
       position: relative;
+    }
+
+    .graph-labels{
+      list-style: none;
+      
+      margin:0;
+    
+      .label {
+        display: inline-block;
+        
+        width:25%;
+        color:gray;
+        background:white;
+        text-shadow:none;
+        
+      }
+      
     }
 
     .stripes {
@@ -233,24 +285,6 @@ hr {
       left: 0px;
       right: 0px;
       height: 10px;
-    }
-
-    .range {
-      .box-shadow(0 1px 0px 0px rgba(255,255,255,.4) inset);
-
-      border-color: hsl(117, 43%, 18%);
-      border-width: 1px;
-      border-right-width: 0px;
-      border-style: solid;
-
-      width: 0%;
-      height: 10px;
-      float: left;
-      transition: width 0.5s ease-in-out;
-      -moz-transition: width 0.5s ease-in-out; /* FF 4 */
-      -webkit-transition: width 0.5s ease-in-out; /* Safari & Chrome */
-      -o-transition: width 0.5s ease-in-out; /* Opera */
-
     }
 
     .none {

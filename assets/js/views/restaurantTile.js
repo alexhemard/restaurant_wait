@@ -6,7 +6,8 @@
 
     events: {
       'error .resto-image img': 'onImageError',
-      'click .choices a[data-option]': 'onClickWaitTimeButton'
+      'click .choices a[data-option]': 'onClickWaitTimeButton',
+      'click .toggle-graph-btn' : 'onClickToggleGraphBtn'
     },
 
     initialize: function() {
@@ -46,7 +47,16 @@
       $button.addClass('down');
 
       this.model.collection.declareWaitTime(this.model.id, optionId);
+    },
+    
+    onClickToggleGraphBtn : function(e) {
+      
+      e.preventDefault();
+      
+      $(e.target).parent('.contents').find('.graph-wrapper').toggle();  
+      
     }
+    
   });
 
 })(window.App);

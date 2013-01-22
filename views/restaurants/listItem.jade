@@ -28,25 +28,35 @@ li.resto-tile(id=_id)
     h4.wait-time
       i.icon-time
       span.time-text 15-30min
-    hr
+    a.toggle-graph-btn.mini-title.btn
+      i.icon-angle-down 
+      | View Voting Graph
+    .graph-wrapper
+      ul.graph
+        li.bar-wrapper
+          .bar.none(data-option=1)
+        li.bar-wrapper
+          .bar.short(data-option=2)
+        li.bar-wrapper
+          .bar.long(data-option=3)
+        li.bar-wrapper
+          .bar.full(data-option=4)
+      hr
+      ul.graph-labels
+        li.label None
+        li.label Short
+        li.label Long
+        li.label Full
     .info
       .details
+        .tags #{tourismBoard.tags}
         p.description= tourismBoard.shortDescription
           a.read-more
             |  read more &raquo;
         //- p.description
         //-   | For over 100 years, Acme has been satisfying the hungriest of people all
         //-   | over the world! It's quality you can taste in the fresh... more »
-    .rating-wrapper
-      hr
-      span.rating-title.mini-title Wait Breakdown
-      .ratings
-        .rating-bar
-          .stripes
-          .range.none(data-option=1)
-          .range.short(data-option=2)
-          .range.long(data-option=3)
-          .range.full(data-option=4)
+      
 
   footer.tile-footer
     .choices-title.mini-title How Long's The Wait?
