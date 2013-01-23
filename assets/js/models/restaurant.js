@@ -95,7 +95,7 @@
 
     url: function() {
       var url = '/api/restaurants';
-      if(this.coords) url += '?coords=' + this.coords.join(',');
+      if(this.coords) url += '?location=' + this.coords.join(',');
       return url;
     },
 

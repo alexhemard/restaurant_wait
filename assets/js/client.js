@@ -19,6 +19,7 @@ $('body').on('touchstart.dropdown', '.dropdown-menu', function (e) { e.stopPropa
     coords: null,
     coordsUpdated: 0,
     MILES_BEFORE_UPDATE: 0.25,
+    d: [29.950226, -90.081102],
 
     init: function() {
       var _this = this;
@@ -49,6 +50,7 @@ $('body').on('touchstart.dropdown', '.dropdown-menu', function (e) { e.stopPropa
     },
 
     geoError: function() {
+      this.coords = this.SUPERDOME_COORDS;
       this.updateRestaurants(); // proceed with no location
     },
 
