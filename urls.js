@@ -15,8 +15,6 @@ module.exports = function(app){
      };
      */
   var sendJson = function(req, res) { res.json(res.jsonData); }
-  app.get('/api/me', routes.api.me.show);
-  app.get('/api/users/:id', routes.api.users.show);
   app.get('/api/restaurants', routes.api.restaurants.index);
   app.post('/api/restaurants', routes.api.restaurants.create);
   app.get('/api/restaurants/:id', routes.api.restaurants.show);
@@ -53,10 +51,6 @@ module.exports = function(app){
   };
   */
 
-  // currently logged-in user
-  app.get('/me', routes.ui.me.show);
-  app.put('/me', routes.ui.me.update);
-
   // restuarant stuff
   app.get('/', routes.ui.restaurants.index);
   app.get('/restaurants', routes.ui.restaurants.index);
@@ -64,28 +58,5 @@ module.exports = function(app){
   app.get('/restaurants/:id', routes.ui.restaurants.show);
   app.put('/restaurants/:id', routes.ui.restaurants.update);
   app.delete('/restaurants/:id', routes.ui.restaurants.delete);
-
-  // user profiles
-  app.get('/users/:id', routes.ui.users.show);
-
-  // authentication
-  if(config.enableGuestLogin) {
-    app.post('/auth/guest', routes.ui.auth.guest);
-  }
-  if(config.enableEmailLogin) {
-    app.post('/auth/registerEmail', routes.ui.auth.registerEmail);
-    app.post('/auth/email', routes.ui.auth.email);
-  }
-  if(config.twitter) {
-    app.get('/auth/twitter', routes.ui.auth.twitter);
-    app.get('/auth/twitter/callback', routes.ui.auth.twitterCallback);
-  }
-  if(config.facebook) {
-    app.get('/auth/facebook', routes.ui.auth.facebook);
-    app.get('/auth/facebook/callback', routes.ui.auth.facebookCallback);
-  }
-  app.get('/auth/success', routes.ui.auth.success);
-  app.get('/auth/failure', routes.ui.auth.failure)
-  app.get('/auth/logout', routes.ui.auth.logout);
 
 }

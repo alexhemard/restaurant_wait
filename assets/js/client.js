@@ -1,6 +1,5 @@
 //= require socket.io
 //= require jquery
-//= require jquery.validate
 //= require bootstrapManifest
 //= require underscore
 //= require backbone
@@ -31,6 +30,7 @@ $('body').on('touchstart.dropdown', '.dropdown-menu', function (e) { e.stopPropa
 
     docReady: function() {
       this.restaurants = new App.Collections.Restaurant();
+      this.restaurants.listen();
       this.restoList = new App.Views.RestaurantsList({ el: '.resto-tiles', model: this.restaurants });
       this.doLocation();
     },
