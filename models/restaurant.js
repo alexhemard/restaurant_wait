@@ -8,10 +8,15 @@ var mongoose = exports.mongoose = require('mongoose')
 
 exports = module.exports = new Schema({
   tourismBoard: { type: Schema.Types.Mixed, default: {} },
+  location: {type: [Number], index: '2d'},
   waitTimes: {type: [WaitSchema], default: []}
 });
 
-// i have no idea yet if this works
+exports.statics.findNear = function(location) {
+  //console.log({location: { $near: location.reverse() }});
+  return this.find({location: { $nearSphere: location.reverse() }});
+}
+
 exports.method('declareWaitTime', function(option, sessionId) {
   if(option < 1 || option > 4) return;
 

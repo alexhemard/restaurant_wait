@@ -22,7 +22,8 @@ var config = require('./config')
   , FacebookStrategy = require('passport-facebook').Strategy
   , MongoStore = require('connect-mongo')(express)
   , sessionStore = new MongoStore({ url: config.mongodb })
-  , sockets = require('./sockets');
+  , sockets = require('./sockets')
+  , twilio = require('twilio')
 ;
 
 // set up passport authentication
@@ -88,6 +89,36 @@ var app = express()
   , server = http.createServer(app)
   , io = global.io = socketIo.listen(server)
 ;
+
+// Make socket.io use RedisStore when config.socketsRedis exists
+if(config.socketsRedis) (function() {
+
+  var RedisStore = require('socket.io/lib/stores/redis')
+    , redis  = require('socket.io/node_modules/redis')
+    , url = config.socketsRedis.url
+    , port = config.socketsRedis.port
+    , password = config.socketsRedis.password
+    , pub    = redis.createClient(port, url)
+    , sub    = redis.createClient(port, url)
+    , client = redis.createClient(port, url)
+  ;
+
+  console.log(password);
+
+  if(password) {
+    pub.auth(password, function (err) { if (err) throw err; });
+    sub.auth(password, function (err) { if (err) throw err; });
+    client.auth(password, function (err) { if (err) throw err; });
+  }
+
+  io.set('store', new RedisStore({
+    redis    : redis,
+    redisPub : pub,
+    redisSub : sub,
+    redisClient : client
+  }));
+
+})();
 
 // Make socket.io a little quieter
 io.set('log level', 1);

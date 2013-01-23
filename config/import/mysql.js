@@ -61,7 +61,6 @@ mysqlConn.query("select * from places inner join restaurantDetails on places.pla
 
 
 function createRestaurant(details, cuisines) {
-  console.log(details.placeID);
   var restaurant = Restaurant.findOne({ 'tourismBoard.placeID': details.placeID }, function (err, restaurant) {
     console.log(restaurant == null);
     if (restaurant == null) {
@@ -70,8 +69,10 @@ function createRestaurant(details, cuisines) {
     else {
       console.log(restaurant);
     }
+
     restaurant.tourismBoard = details;
     restaurant.tourismBoard.cuisines = cuisines;
+    restaurant.location = [details.longitude, details.latitude];
 
     _(Math.floor(Math.random() * 6) + 1).times(function(n) {
       restaurant.declareWaitTime(Math.floor(Math.random() * 4) + 1, 'swag'+n)

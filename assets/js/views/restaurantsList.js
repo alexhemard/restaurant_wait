@@ -4,6 +4,7 @@
 
     initialize: function() {
       this.tileViews = {};
+      this.model.on('reset', _.bind(this.render, this));
     },
 
     render: function() {

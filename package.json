@@ -1,6 +1,6 @@
 {
   "name": "swagbasket",
-  "version": "0.0.1-19",
+  "version": "0.0.1-46",
   "private": true,
   "scripts": {
     "start": "node app.js"
@@ -28,6 +28,7 @@
     "async": "*",
     "underscore": "*",
     "csv": "*",
+    "twilio": "*",
     "mysql": "2.0.0-alpha5"
   },
   "devDependencies": {
