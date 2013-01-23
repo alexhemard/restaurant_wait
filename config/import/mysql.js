@@ -17,7 +17,6 @@ var mysqlConn = mysql.createConnection({
 mysqlConn.connect();
 mongoose.connect(config.mongodb);
 
-
 // From phone call with JP (1/20/2013):
 // Select all the places that are still open
 // but avoid the following food types
@@ -40,7 +39,7 @@ mysqlConn.query("select * from places inner join restaurantDetails on places.pla
     mysqlConn.end();
     console.log("Closed mysql connection...");
 
-    Restaurant.find({}).remove();
+    // Restaurant.find({}).remove();
     console.log("Emptied out current restaurants from mongo...");
 
     rows.forEach(function(row) {
@@ -62,17 +61,26 @@ mysqlConn.query("select * from places inner join restaurantDetails on places.pla
 
 
 function createRestaurant(details, cuisines) {
-  var restaurant = new Restaurant();
-  restaurant.tourismBoard = details;
-  restaurant.tourismBoard.cuisines = cuisines;
+  console.log(details.placeID);
+  var restaurant = Restaurant.findOne({ 'tourismBoard.placeID': details.placeID }, function (err, restaurant) {
+    console.log(restaurant == null);
+    if (restaurant == null) {
+      restaurant = new Restaurant();
+    }
+    else {
+      console.log(restaurant);
+    }
+    restaurant.tourismBoard = details;
+    restaurant.tourismBoard.cuisines = cuisines;
 
-  _(Math.floor(Math.random() * 6) + 1).times(function(n) {
-    restaurant.declareWaitTime(Math.floor(Math.random() * 4) + 1, 'swag'+n)
-  });
+    _(Math.floor(Math.random() * 6) + 1).times(function(n) {
+      restaurant.declareWaitTime(Math.floor(Math.random() * 4) + 1, 'swag'+n)
+    });
 
-  restaurant.markModified('tourismBoard');
-  restaurant.save(function(err, data) {
-    if(err) throw err;
-    console.log("Saved " + restaurant.tourismBoard.name1);
+    restaurant.markModified('tourismBoard');
+    restaurant.save(function(err, data) {
+      if(err) throw err;
+      console.log("Saved " + restaurant.tourismBoard.name1);
+    });
   });
 }
