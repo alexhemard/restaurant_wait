@@ -28,7 +28,8 @@
     "async": "*",
     "underscore": "*",
     "csv": "*",
-    "twilio": "*"
+    "twilio": "*",
+    "mysql": "2.0.0-alpha5"
   },
   "devDependencies": {
     "supervisor": "*"

@@ -13,8 +13,8 @@ exports = module.exports = new Schema({
 });
 
 exports.statics.findNear = function(location) {
-  console.log({location: { $near: location}});
-  return this.find({location: { $nearSphere: location}});
+  //console.log({location: { $near: location.reverse() }});
+  return this.find({location: { $nearSphere: location.reverse() }});
 }
 
 exports.method('declareWaitTime', function(option, sessionId) {

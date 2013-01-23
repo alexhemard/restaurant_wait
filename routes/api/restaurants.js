@@ -3,13 +3,13 @@ var models = require('../../models')
 
 exports.index = function(req, res, next) {
   var location = null;
-  console.log(req.query);
+
   if(req.query.location) {
     location = req.query.location.split(',').map(function(x) { return parseFloat(x, 10); });
-    //TODO dry this up
-    console.log(location);
-    console.log(Restaurant.schema.methods);
+
     Restaurant.findNear(location).limit(40).lean().exec(function(err,restaurants) {
+      console.log(err);
+      console.log(restaurants.length);
       res.jsonData = restaurants;
       next();
     });

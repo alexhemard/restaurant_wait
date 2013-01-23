@@ -1,6 +1,6 @@
 {
   "name": "swagbasket",
-  "version": "0.0.1-28",
+  "version": "0.0.1-46",
   "dependencies": {
     "express": {
       "version": "3.0.3",
@@ -434,6 +434,14 @@
         },
         "jwt-simple": {
           "version": "0.1.0"
+        }
+      }
+    },
+    "mysql": {
+      "version": "2.0.0-alpha5",
+      "dependencies": {
+        "require-all": {
+          "version": "0.0.3"
         }
       }
     },
