@@ -18,8 +18,11 @@ exports.index = function(req, res, next) {
 }
 
 exports.show = function(req, res, next) {
-  // TODO: Do something with coords
-  Restaurant.findById(req.params.id, function (err, restaurant) {
+  var query = {$or: [{slug: req.params.id}]};
+  if (req.params.id.match(/^[0-9a-fA-F]{24}$/)) {
+    query.$or.push({_id: req.params.id});
+  }
+  Restaurant.findOne(query, function (err, restaurant) {
     if (err) return res.send(500);
     res.jsonData = restaurant;
     next();
