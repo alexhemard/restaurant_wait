@@ -9,7 +9,7 @@ var twilio = require('twilio')
 
 mongoose.connect(config.mongodb);
 
-Restaurant.find({ 'tourismBoard.twilio': 0, 'twilio.phone': undefined }).limit(10).exec(function(err, restaurants) {
+Restaurant.find({ 'tourismBoard.twilio': 1, 'twilio.phone': undefined }).exec(function(err, restaurants) {
 
   var provisionNumber = function(restaurant, callback) {
     twilioClient.request({
