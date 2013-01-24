@@ -11,12 +11,12 @@ li.resto-tile(id=_id)
               i.icon-map-marker
               |  Map
           li.link
-            if (tourismBoard.URL == null)
-              a(data-behavior="website", href="http://#{tourismBoard.URL}").btn.btn-small.website
+            if (tourismBoard.url)
+              a(data-behavior="website", href="http://#{tourismBoard.url}", target="_blank").btn.btn-small.website
                 i.icon-link
                   |  Website
             else
-              a(data-behavior="website", href="http://www.neworleansonline.com/directory/location.php?locationID=#{tourismBoard.ID}").btn.btn-small.website
+              a(data-behavior="website", href="http://www.neworleansonline.com/directory/location.php?locationID=#{tourismBoard.placeID}", target="_blank").btn.btn-small.website
                 i.icon-link
                   |  Website
           li.link
@@ -31,7 +31,7 @@ li.resto-tile(id=_id)
     hr
     .info
       .details
-        p.description= tourismBoard.shortDescription
+        p.description= tourismBoard.description
           a.read-more
             |  read more &raquo;
         //- p.description
