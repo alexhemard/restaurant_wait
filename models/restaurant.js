@@ -12,10 +12,9 @@ exports = module.exports = new Schema({
   waitTimes: {type: [WaitSchema], default: []}
 });
 
-exports.statics.findNear = function(location) {
-  //console.log({location: { $near: location.reverse() }});
-  return this.find({location: { $nearSphere: location.reverse() }});
-}
+exports.static('findNear',function(location) {
+  return this.find({location: { $near: location}});
+});
 
 exports.method('declareWaitTime', function(option, sessionId) {
   if(option < 1 || option > 4) return;
