@@ -21,7 +21,7 @@
 
         itemView.$el.detach();
         itemView.render().$el.appendTo(this.$el);
-        // setTimeout(function() { itemView.updateWaitTimeDisplay() }, 1000);
+        setTimeout(function() { itemView.updateWaitTimeDisplay() }, 1000);
 
       }, this));
 
