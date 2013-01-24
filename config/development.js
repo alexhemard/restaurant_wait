@@ -21,10 +21,10 @@ exports.facebook = {
 //   password: '283803f32cc90c73b1270f74e55b3666'
 // };
 
-// This is Joel's demo account
+// NOTMC Test Credentials - THESE CANNOT BUY PHONE NUMBERS FOR REAL
 exports.twilio = {
-  account: 'AC6485244d7f813a3c021ae99619461623',
-  token: '7f0f4a6d57924d3f0134a4d1b8921b4c',
+  account: 'AC4159d49dcf636c0ee4454747153f470f',
+  token: '25674d4e42f21209ba26b64cf4541e18',
   application: 'AP5bf78e6aa4ba48da90b4c01a6ebcdd9d'
 };
 
