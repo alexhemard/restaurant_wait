@@ -6,8 +6,9 @@ exports.index = function(req, res, next) {
     res.jsonData = restaurants;
     next();
   }
-  if(req.body && req.body.location) {
-    var location = req.body.location.split(',').map(function(x) { return parseFloat(x, 10); });  
+
+  if(req.query && req.query.location) {
+    var location = req.query.location.split(',').map(function(x) { return parseFloat(x, 10); });
     Restaurant.findNear(location).limit(40).lean().exec(callback); 
   } else {
     Restaurant.find().sort('_id').limit(40).lean().exec(callback);
