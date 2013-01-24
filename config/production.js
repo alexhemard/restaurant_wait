@@ -11,8 +11,9 @@ exports.socketsRedis = {
   password: '283803f32cc90c73b1270f74e55b3666'
 };
 
-// TODO - Switch to NOTMC account
+// This is NOTMC's real account
 exports.twilio = {
-  account: 'AC6485244d7f813a3c021ae99619461623',
-  token: '7f0f4a6d57924d3f0134a4d1b8921b4c'
+  account: 'AC20b5cb6e81f6a56c0887dac33d5c10e1',
+  token: '2821686ca49e315068dcc0bfbfe3aca0',
+  application: 'AP267190721b56867bd1c6cc79c606cc2f'
 };

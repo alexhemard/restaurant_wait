@@ -24,5 +24,8 @@ exports.facebook = {
 // This is Joel's demo account
 exports.twilio = {
   account: 'AC6485244d7f813a3c021ae99619461623',
-  token: '7f0f4a6d57924d3f0134a4d1b8921b4c'
+  token: '7f0f4a6d57924d3f0134a4d1b8921b4c',
+  application: 'AP5bf78e6aa4ba48da90b4c01a6ebcdd9d'
 };
+
+
