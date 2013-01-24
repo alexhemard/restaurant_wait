@@ -1,14 +1,18 @@
 (function(App) {
-  
+
   App.Views.RestaurantsList = App.Views.Base.extend({
 
     initialize: function() {
       this.tileViews = {};
+      this.model.on('reset', _.bind(this.render, this));
+
+      $("body").spin();
     },
 
     render: function() {
-      this.model.each(_.bind(function(restaurant) {
 
+
+      this.model.each(_.bind(function(restaurant) {
         // build tile view if it doesn't exist
         var itemView = this.tileViews[restaurant.id]
         if(!itemView) {
@@ -20,6 +24,8 @@
         setTimeout(function() { itemView.updateWaitTimeDisplay() }, 1000);
 
       }, this));
+
+      $("body").spin(false);
     },
 
     // re-sorts the tiles according to the sort order of the model collection

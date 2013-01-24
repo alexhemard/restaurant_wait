@@ -13,22 +13,20 @@
     "less-middleware": "*",
     "mongoose": "*",
     "mongoose-types": "*",
-    "passport": "*",
-    "passport-local": "*",
-    "passport-twitter": "*",
-    "passport-facebook": "*",
     "bcrypt": "*",
     "connect-assets": "*",
     "socket.io": "*",
     "socket.io-client": "*",
-    "passport.socketio": "*",
     "connect-mongo": "*",
     "connect-redis": "*",
     "twitter-bootstrap": "*",
     "async": "*",
     "underscore": "*",
     "csv": "*",
-    "twilio": "*"
+    "twilio": "*",
+    "mysql": "2.0.0-alpha5",
+    "cron": "*",
+    "time": "*"
   },
   "devDependencies": {
     "supervisor": "*"

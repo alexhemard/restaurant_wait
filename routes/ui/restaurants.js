@@ -1,9 +1,7 @@
 var restaurants = require('../api/restaurants');
 
 exports.index = function(req, res) {
-  restaurants.index(req, res, function() {
-    res.render('restaurants/index', {title:'Restaurants', restaurants:res.jsonData});
-  });
+  res.render('restaurants/index', { title: 'Restaurants' });
 };
 
 exports.create = function(req, res) {

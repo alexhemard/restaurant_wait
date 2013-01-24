@@ -3,35 +3,9 @@ extends ../layout
 block content
   header.top-bar
     img.logo(src='/img/eat-now-logo.png')
-
-  //- .about-btn
-  //-   a.btn
-  //-     i.icon-food
-  //-     |  About This Project
-  //- .find-food-btn.btn
-    //- i.icon-screenshot
-    //- | Find Food Nearby
-  ul.unstyled.resto-tiles(data-json="#{JSON.stringify(restaurants)}")
-    //- for restaurant in restaurants
-    //-   include listItem
-
-
-
-  //- form.form-inline(action='/restaurants/', method='post')
-  //-   .control-group
-  //-     label.control-label Name
-  //-     .controls
-  //-       input(name='name', type='text', placeholder='Name')
-  //-   .control-group
-  //-     label.control-label Photo URL
-  //-     .controls
-  //-       input(name='photoURL', type='text', placeholder='Photo URL')
-  //-   .control-group
-  //-     label.control-label Phone
-  //-     .controls
-  //-       input(name='phone', type='text', placeholder='Phone')
-
-
-
-  //-   button.btn.btn-primary Update
+  .content-wrapper
+    ul.unstyled.resto-tiles
+    a.btn.btn-small.update-position-btn
+      i.icon-map-marker
+      | Update My Position
 

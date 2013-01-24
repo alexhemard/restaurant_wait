@@ -82,7 +82,7 @@
       ;
 
       _.each(counts, function(count, option) {
-        percents[option] = total == 0 ? 0 : (counts[option] / total) * 94;
+        percents[option] = total == 0 ? 0 : (counts[option] / total) * 100;
       });
 
       return percents;
@@ -92,6 +92,17 @@
   App.Collections.Restaurant = App.Collections.Base.extend({
 
     model: App.Models.Restaurant,
+
+    url: function() {
+      var url = '/api/restaurants';
+      if(this.coords) url += '?location=' + this.coords.join(',');
+      return url;
+    },
+
+    updateLocation: function(coords, fetchOptions) {
+      this.coords = coords;
+      this.fetch(fetchOptions);
+    },
 
     listen: function() {
       this.socket = io.connect();
@@ -114,7 +125,7 @@
     },
 
     onRestaurantUpdate: function(data) {
-      console.log(data);
+      // console.log(data);
       var restaurant = this.get(data.restaurantId);
       if(restaurant) {
         restaurant.set({ waitTimes: data.waitTimes });

@@ -14,18 +14,27 @@
   box-sizing: border-box;
 }
 
+html {
+  height: 100%;
+}
+
 body {
   background: url(/img/background.png);
   text-align: center;
   font-family: 'Open Sans', sans-serif;
 
   padding: 0;
+  height: 100%;
 }
 
 hr {
   height: 1px;
   background-color: #d1d1d1;
   margin: 0;
+}
+
+.content-wrapper {
+  height: 100%;
 }
 
 .top-bar {
@@ -53,6 +62,12 @@ hr {
   padding:8px;
   margin: 15px 0 0 0;
   display: inline-block;
+}
+
+.update-position-btn {
+  position:absolute;
+  top:16px;
+  right:12px;
 }
 
 .find-food-btn {
@@ -90,7 +105,7 @@ hr {
     position: relative;
 
     .resto-image {
-      background: url(../img/large-placeholder.gif) no-repeat center top;
+      // background: url(../img/large-placeholder.gif) no-repeat center top;
 
       height: 185px;
       overflow: hidden;
@@ -120,24 +135,29 @@ hr {
 
   .contents {
     padding: 5px;
+    
+    height:185px;
   }
 
   .info {
     .clearfix();
 
+    padding: 0 10px;
     margin-top: 15px;
-    height:70px;
+  }
+
+  .cuisine-tags {
+    font-size: 14px;
+    text-align: left;
+		font-style: italic;
+		font-weight: bold;
+		
+		margin-bottom:3px;
   }
 
   .details {
-    padding: 0 10px;
 
-    .cuisine {
-      font-size: 14px;
-      text-align: center;
-      letter-spacing: -1px;
-    }
-
+    height:70px;
     .description {
       font-size: 14px;
       text-align: left;
@@ -180,9 +200,12 @@ hr {
     /* -o-transition: background-color 0.5s linear; */
     /* transition: background-color 0.5s linear; */
 
-    background-color: @short;
+    font-size: 11px;
+    font-style: italic;
+    text-align: right;
 
-    height: 16px;
+    padding-right: 12px;
+    height: 20px;
 
     &.full { background-color: @full };
     &.long { background-color: @long };
@@ -194,7 +217,7 @@ hr {
     text-align: center;
     font-size: 32px;
 
-    margin: 12px 0 20px 0;
+    margin: 12px 0;
   }
 
   .rating-wrapper {
@@ -203,8 +226,15 @@ hr {
 
   .toggle-graph-btn {
     background-color: #fff;
+    background-image:none;
+    font-size:10px;
+    line-height: 16px;
+    .border-radius(0px);
 
-    padding: 0px 6px;
+    padding: 0px 0px;
+    width:100%;
+    
+    i {font-size:1.4em;}
   }
 
   .mini-title {
@@ -220,8 +250,12 @@ hr {
     .bar-wrapper {
       display: inline-block;
       text-align: center;
+      position: relative;
 
-      width:25%;  
+      width:25%;
+      height:30px; 
+      max-height: 30px;
+      
       .bar {
         .box-shadow(0 1px 0px 0px rgba(255,255,255,.4) inset);
   
@@ -233,14 +267,16 @@ hr {
 */
         border:none;
         margin:auto;
+        position: absolute;
+        bottom:0;
+        left:25%;
   
         width: 40px;
-        height:30px; 
-        max-height: 30px;
-        transition: width 0.5s ease-in-out;
-        -moz-transition: width 0.5s ease-in-out; /* FF 4 */
-        -webkit-transition: width 0.5s ease-in-out; /* Safari & Chrome */
-        -o-transition: width 0.5s ease-in-out; /* Opera */
+        min-height:3px;
+        transition: height 0.5s ease-in-out;
+        -moz-transition: height 0.5s ease-in-out; /* FF 4 */
+        -webkit-transition: height 0.5s ease-in-out; /* Safari & Chrome */
+        -o-transition: height 0.5s ease-in-out; /* Opera */
   
       }
 
@@ -249,15 +285,9 @@ hr {
   }
 
   .graph-wrapper {
-/*     display: none; */
+    display: none;
 
-    margin: 15px;
-
-    .rating-bar {
-      .clearfix();
-
-      position: relative;
-    }
+    margin: 15px 15px 0px;
 
     .graph-labels{
       list-style: none;

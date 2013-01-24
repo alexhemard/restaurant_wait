@@ -16,70 +16,13 @@ var config = require('./config')
   , lessMiddleware = require('less-middleware')
   , models = require('./models')
   , User = models.User
-  , passport = require('passport')
-  , LocalStrategy = require('passport-local').Strategy
-  , TwitterStrategy = require('passport-twitter').Strategy
-  , FacebookStrategy = require('passport-facebook').Strategy
   , MongoStore = require('connect-mongo')(express)
   , sessionStore = new MongoStore({ url: config.mongodb })
   , sockets = require('./sockets')
   , twilio = require('twilio')
+  , CronJob = require('cron').CronJob
+  , mysqlImport = require('./config/import/mysql')
 ;
-
-// set up passport authentication
-if(config.enableGuestLogin) {
-  passport.use('guest', new LocalStrategy(
-    {
-      usernameField: 'name',
-    },
-    // doesn't actually use password, just records name
-    function(name, password, done) {
-      process.nextTick(function() {
-        User.authGuest(name, done);
-      });
-    }
-  ));
-}
-if(config.enableEmailLogin) {
-  passport.use('email', new LocalStrategy(
-    {
-      usernameField: 'email'
-    },
-    function(email, password, done) {
-      process.nextTick(function() {
-        User.authEmail(email, password, done);
-      });
-    }
-  ));
-}
-if(config.twitter) {
-  passport.use(new TwitterStrategy(
-    config.twitter,
-    function(token, tokenSecret, profile, done) {
-      process.nextTick(function() {
-        User.authTwitter(token, tokenSecret, profile, done);
-      });
-    }
-  ));
-}
-if(config.facebook) {
-  passport.use(new FacebookStrategy(
-    config.facebook,
-    function(accessToken, refreshToken, profile, done) {
-      process.nextTick(function() {
-        User.authFacebook(accessToken, refreshToken, profile, done);
-      });
-    }
-  ));
-}
-passport.serializeUser(function(user, done) {
-  done(null, user.id);
-});
-passport.deserializeUser(function(id, done) {
-  User.findById(id, function(err, user) {
-    done(err, user);
-  });
-});
 
 // connect the database
 mongoose.connect(config.mongodb);
@@ -122,19 +65,6 @@ if(config.socketsRedis) (function() {
 
 // Make socket.io a little quieter
 io.set('log level', 1);
-// Give socket.io access to the passport user from Express
-io.set('authorization', passportSocketIo.authorize({
-  passport: passport,
-  sessionKey: 'connect.sid',
-  sessionStore: sessionStore,
-  sessionSecret: config.sessionSecret,
-  success: function(data, accept) {
-    accept(null, true);
-  },
-  fail: function(data, accept) { // keeps socket.io from bombing when user isn't logged in
-    accept(null, true);
-  }
-}));
 
 app.configure(function(){
   app.set('port', process.env.PORT || 3000);
@@ -160,10 +90,8 @@ app.configure(function(){
   app.use(express.methodOverride());
   app.use(express.cookieParser(config.sessionSecret));
   app.use(express.session({ store: sessionStore }));
-  app.use(passport.initialize());
-  app.use(passport.session());
   app.use(app.router);
-  
+
   app.use(lessMiddleware({ src: __dirname + '/public' }));
   app.use(express.static(path.join(__dirname, 'public')));
 
@@ -176,6 +104,13 @@ require('./urls')(app);
 // Start the sockets
 sockets(io);
 
+// Start the web server
 server.listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));
 });
+
+// set up cron job for MySQL import every day at 3am CST (9am GMT/UTC)
+new CronJob('00 00 09 * * *', function() {
+  try { mysqlImport(); }
+  catch(e) { console.log(e); }
+}, null, true, 'UTC');
