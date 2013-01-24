@@ -91,7 +91,7 @@ app.configure(function(){
   app.use(express.cookieParser(config.sessionSecret));
   app.use(express.session({ store: sessionStore }));
   app.use(app.router);
-  
+
   app.use(lessMiddleware({ src: __dirname + '/public' }));
   app.use(express.static(path.join(__dirname, 'public')));
 

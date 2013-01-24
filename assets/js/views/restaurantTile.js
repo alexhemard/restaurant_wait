@@ -1,16 +1,15 @@
 (function(App) {
-  
+
   App.Views.RestaurantTile = App.Views.Base.extend({
 
     template: 'restaurants/listItem',
 
     events: {
-      'error .resto-image img': 'onImageError',
       'click .choices a[data-option]': 'onClickWaitTimeButton'
     },
 
     initialize: function() {
-      this.model.on('change:waitTimes', _.bind(this.updateWaitTimeDisplay, this));
+      this.model.on('change:waitTimes', _.bind(this.updateWaitTimeDisplay, this))
     },
 
     render: function() {
@@ -19,6 +18,12 @@
       $(".details").dotdotdot({
         after: "a.read-more",
         height: 70
+      });
+
+      // Load place holder if image does not load
+      // (cannot use jquery events because error events do not bubble)
+      this.$el.find('.resto-image img').error(function() {
+        $(this).attr('src', '/img/large-placeholder.gif');
       });
 
       return retVal;
@@ -40,10 +45,6 @@
         this.$("[data-behavior='wait-color']").attr("class", "wait-color " + info.color);
 
       }, this));
-    },
-
-    onImageError: function(e) {
-      $(e.currentTarget).attr('src', '/img/large-placeholder.gif');
     },
 
     onClickWaitTimeButton: function(e) {

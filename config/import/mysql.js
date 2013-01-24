@@ -65,12 +65,12 @@ module.exports = function() {
 
   function createRestaurant(details, cuisines) {
     var restaurant = Restaurant.findOne({ 'tourismBoard.placeID': details.placeID }, function (err, restaurant) {
-      console.log(restaurant == null);
       if (restaurant == null) {
         restaurant = new Restaurant();
+        console.log("Creating record for " + details.name1);
       }
       else {
-        console.log(restaurant);
+        console.log("Found record for " + details.name1);
       }
 
       restaurant.tourismBoard = details;
@@ -83,7 +83,11 @@ module.exports = function() {
 
       restaurant.markModified('tourismBoard');
       restaurant.save(function(err, data) {
-        if(err) throw err;
+        if(err) {
+          console.log("Mongo error with " + details.name1 + ".  Message is " + err.message);
+          // console.log(restaurant);
+          // throw err;
+        }
         console.log("Saved " + restaurant.tourismBoard.name1);
       });
     });
