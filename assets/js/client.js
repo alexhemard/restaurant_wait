@@ -7,6 +7,8 @@
 //= require_tree ./models
 //= require_tree ./views
 //= require dotdotdot
+//= require spinner
+
 
 // bootstrap hack to stop dropdowns from disappearing on mobile
 $('body').on('touchstart.dropdown', '.dropdown-menu', function (e) { e.stopPropagation(); });
