@@ -5,7 +5,6 @@
     template: 'restaurants/listItem',
 
     events: {
-      'error .resto-image img': 'onImageError',
       'click .choices a[data-option]': 'onClickWaitTimeButton',
       'click .toggle-graph-btn' : 'onClickToggleGraphBtn'
     },
