@@ -5,10 +5,11 @@
     initialize: function() {
       this.tileViews = {};
       this.model.on('reset', _.bind(this.render, this));
+      $('.info-btn').on('click', _.bind(this.onClickInfoBtn, this));
 
       $("body").spin();
     },
-
+    
     render: function() {
 
 
@@ -33,6 +34,11 @@
       this.model.each(_.bind(function(restaurant) {
         this.tileViews[restaurant.id].$el.detach().appendTo(this.$el);
       }, this));
+    },
+    
+    onClickInfoBtn : function (e) {
+      e.preventDefault();
+      console.log('Info Page Popup');
     }
 
   });
