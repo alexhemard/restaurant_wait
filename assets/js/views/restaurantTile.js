@@ -89,7 +89,7 @@
       this.$('.btn-text').html('Hide Votes'); // change btn text
 
       // Toggle font awesome icon
-      this.$('.toggle-graph-btn i').toggleClass('icon-angle-down icon-angle-up');
+      this.$('.toggle-graph-btn i').toggleClass('icon-chevron-down icon-chevron-up');
 
       this.$('.details').slideToggle('fast',
          _.bind(
@@ -109,7 +109,7 @@
           this.$('.btn-text').html('View Votes'); // change btn text back
           
           // Toggle font awesome icon
-          this.$('.toggle-graph-btn i').toggleClass('icon-angle-down icon-angle-up');
+          this.$('.toggle-graph-btn i').toggleClass('icon-chevron-down icon-chevron-up');
         
         },this) );      
 

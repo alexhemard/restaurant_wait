@@ -5,7 +5,7 @@
     initialize: function() {
       this.tileViews = {};
       this.model.on('reset', _.bind(this.render, this));
-      $('.info-btn').on('click', _.bind(this.onClickInfoBtn, this));
+      $('.about-btn').on('click', _.bind(this.onClickAboutBtn, this));
 
       $("body").spin();
     },
@@ -36,9 +36,9 @@
       }, this));
     },
     
-    onClickInfoBtn : function (e) {
+    onClickAboutBtn : function (e) {
       e.preventDefault();
-      console.log('Info Page Popup');
+      console.log('About Page Popup');
     }
 
   });

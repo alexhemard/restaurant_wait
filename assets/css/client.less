@@ -44,7 +44,7 @@ hr {
 
   min-width: 375px;
   text-align: center;
-  color: #0fabbd;
+  color: white;
   font-size: 28px;
 
   width: 100%;
@@ -52,6 +52,19 @@ hr {
   margin: 0;
   padding-top:5px;
   position: relative;
+  
+  .btn-link {
+    color:white;
+    text-shadow: none;   
+
+    &:hover{
+      color:white;
+      text-decoration: none;
+      
+      .btn-text {border-bottom: 1px solid white;}
+    }
+     
+  }
 }
 
 .update-position-btn {
@@ -61,37 +74,47 @@ hr {
   left:12px;
 }
 
-.info-btn {
-  color:white;
-  text-shadow: none;
-
+.about-btn {  
   position:absolute;
   top:50%;
   margin-top:-15px;
   right:12px;
+  .btn-text {border-bottom:1px dotted white;}
+  
+  i {
+    margin: 0px 0px 0px 7px;    
+  }
+}
 
-  &:hover{
-    color:white;
-    text-decoration: none;
-    
-    .btn-text {border-bottom: 1px dotted white;}
+.about-menu {
+  #gradient > .vertical(darken(#8b281e, 3%), #8b281e);
+  list-style: none;
+  
+  position: absolute;
+  top:65px;
+  right:0px;
+  z-index: 100;
+  padding:0;
+  margin:0;
+  
+  li  {
+    width:100%;
+    display: block;
   }
   
-/*   i {color:#521e18;} */
+  a {
+    margin:7px;
+    
+    &:hover {
+      background-color: lighten(#8b281e, 12%)
+    }
+  }
+    
 }
 
 .btn [class^="icon-"] {
   margin-right:7px;
 }
-
-.about-btn {
-  font-family: "Open Sans",sans-serif;
-
-  padding:8px;
-  margin: 15px 0 0 0;
-  display: inline-block;
-}
-
 
 .find-food-btn {
   .box-shadow(0 1px 7px 0px rgba(0,0,0, 0.3));
@@ -254,7 +277,8 @@ hr {
   }
 
   .toggle-graph-btn {
-    background-color: #f1f1f1;
+    @bgColor : #f1f1f1;
+    background-color: @bgColor;
     background-image:none;
     font-size:10px;
     line-height: 16px;
@@ -263,9 +287,26 @@ hr {
 
     padding: 0px 0px;
     width:90%;
+
+    // Hover state
+    &:hover {
+      text-decoration: none;
+      background-color: darken(@bgColor, 2%);
+      *background-color: darken(@bgColor, 8%); /* Buttons in IE7 don't get borders, so darken on hover */
+      background-position: 0 -15px;
+  
+      // transition is only when going to hover, otherwise the background
+      // behind the gradient (there for IE<=9 fallback) gets mismatched
+      .transition(background-color .1s linear);
+    }
+
+
     
     .btn-text {font-size:10px;}
-    i {font-size:1.4em;}
+    i {
+      color:#888;
+      margin: 0px 0px 0px 7px;
+    }
   }
 
   .mini-title {

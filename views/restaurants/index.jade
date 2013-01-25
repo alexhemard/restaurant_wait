@@ -5,11 +5,17 @@ block content
     img.logo(src='/img/eat-now-logo.png')
     img.logo-small.hidden(src='/img/eat-now-logo-sm.png')
     a.btn.btn-small.update-position-btn
-      i.icon-map-marker
-      | Update My Location
-    a.btn.btn-link.info-btn
-      i.icon-info-sign
-      span.btn-text What is Eat Now?
+      i.icon-repeat
+      | Refresh Location
+    a.btn.btn-link.about-btn
+      span.btn-text About
+      i.icon-caret-down
+    ul.about-menu
+      li.how-to-use-btn
+        a.btn.btn-link(data-behavior="how-to-use") How do I use Eat Now?
+      li.register-btn
+        a.btn.btn-link(data-behavior="how-to-register") Register your restaurant...
+          
   .content-wrapper
     ul.unstyled.resto-tiles
 
