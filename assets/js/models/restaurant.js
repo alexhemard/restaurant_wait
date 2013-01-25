@@ -87,9 +87,11 @@
         , total = _.keys(this.get('waitTimes')).length
         , percents = {}
       ;
-
+      
+      var maxCount = _.max(counts);
+            
       _.each(counts, function(count, option) {
-        percents[option] = total == 0 ? 0 : (counts[option] / total) * 100;
+        percents[option] = total == 0 ? 0 : (counts[option] / maxCount) * 100;
       });
 
       return percents;
