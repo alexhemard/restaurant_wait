@@ -62,43 +62,60 @@
     },
     
     onClickToggleGraphBtn : function(e) {
-      
+            
       e.preventDefault();
+      var $tile = this.$el,
+          $button = $(e.currentTarget);
+
+        var showGraph = _.bind(this.showGraph, this),
+            hideGraph = _.bind(this.hideGraph, this);
+
+
+      if ($button.hasClass('closed') ) {  // if graph is hidden
       
-      var $tile = $('#'+this.model.id);
-      
-
-			if ($(e.currentTarget).hasClass('closed') ) {  // if graph is hidden
-			
-			  $(e.currentTarget).find('.btn-text').html('Hide Votes'); // change btn text
-
-        // Toggle font awesome icon
-        $tile.find('.toggle-graph-btn i').toggleClass('icon-angle-down icon-angle-up');
-
-
-	      $tile.find('.details').slideToggle('fast', function () {
-		      $tile.find('.graph-wrapper').slideToggle('fast');
-	      });
-	      
-      } else { // if graph is visible 
-      
-	      $tile.find('.graph-wrapper').slideToggle('fast', function () {
-
-		      $tile.find('.details').slideToggle('fast', function () {
-
-    			  $(e.currentTarget).find('.btn-text').html('View Votes'); // change btn text back
-  		      
-            // Toggle font awesome icon
-            $tile.find('.toggle-graph-btn i').toggleClass('icon-angle-down icon-angle-up');
-  		      
-		      });      
-
-	      });  
-	      
+        showGraph();      
+        
+      } else { // if graph is visible
+        
+        hideGraph();
+        
       } //end if/else
       
-      $tile.find('.toggle-graph-btn').toggleClass('open closed');
-    }
+      this.$('.toggle-graph-btn').toggleClass('open closed');
+    }, // end onClickToggleGraphBtn
+    
+    showGraph : function() {
+
+      this.$('.btn-text').html('Hide Votes'); // change btn text
+
+      // Toggle font awesome icon
+      this.$('.toggle-graph-btn i').toggleClass('icon-angle-down icon-angle-up');
+
+      this.$('.details').slideToggle('fast',
+         _.bind(
+           function () {
+              this.$('.graph-wrapper').slideToggle('fast');
+            },
+          this)
+        );
+    }, // end showGraph()
+    
+    hideGraph : function() {
+    
+      this.$('.graph-wrapper').slideToggle('fast', _.bind(function () {
+          
+        this.$('.details').slideToggle('fast', _.bind( function () {
+
+          this.$('.btn-text').html('View Votes'); // change btn text back
+          
+          // Toggle font awesome icon
+          this.$('.toggle-graph-btn i').toggleClass('icon-angle-down icon-angle-up');
+        
+        },this) );      
+
+      },this) );  
+      
+    } // end hideGraph()
     
   });
 
