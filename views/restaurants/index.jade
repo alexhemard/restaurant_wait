@@ -3,9 +3,13 @@ extends ../layout
 block content
   header.top-bar
     img.logo(src='/img/eat-now-logo.png')
-  .content-wrapper
-    ul.unstyled.resto-tiles
+    img.logo-small.hidden(src='/img/eat-now-logo-sm.png')
     a.btn.btn-small.update-position-btn
       i.icon-map-marker
-      | Update My Position
+      | Update My Location
+    a.btn.btn-link.info-btn
+      i.icon-info-sign
+      span.btn-text What is Eat Now?
+  .content-wrapper
+    ul.unstyled.resto-tiles
 

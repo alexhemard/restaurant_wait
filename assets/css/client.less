@@ -9,6 +9,7 @@
 @long: #f09512;
 @short: #e7dd38;
 @none: #b9d031;
+@no-data: #f1f1f1;
 
 * {
   box-sizing: border-box;
@@ -50,6 +51,33 @@ hr {
   height: 65px;
   margin: 0;
   padding-top:5px;
+  position: relative;
+}
+
+.update-position-btn {
+  position:absolute;
+  top:50%;
+  margin-top:-13px;
+  left:12px;
+}
+
+.info-btn {
+  color:white;
+  text-shadow: none;
+
+  position:absolute;
+  top:50%;
+  margin-top:-15px;
+  right:12px;
+
+  &:hover{
+    color:white;
+    text-decoration: none;
+    
+    .btn-text {border-bottom: 1px dotted white;}
+  }
+  
+/*   i {color:#521e18;} */
 }
 
 .btn [class^="icon-"] {
@@ -64,11 +92,6 @@ hr {
   display: inline-block;
 }
 
-.update-position-btn {
-  position:absolute;
-  top:16px;
-  right:12px;
-}
 
 .find-food-btn {
   .box-shadow(0 1px 7px 0px rgba(0,0,0, 0.3));
@@ -107,7 +130,7 @@ hr {
     .resto-image {
       // background: url(../img/large-placeholder.gif) no-repeat center top;
 
-      height: 185px;
+      height: 184px;
       overflow: hidden;
     }
     img {
@@ -144,6 +167,7 @@ hr {
 
     padding: 0 10px;
     margin-top: 15px;
+    max-height:70px;
   }
 
   .cuisine-tags {
@@ -211,6 +235,9 @@ hr {
     &.long { background-color: @long };
     &.short { background-color: @short };
     &.none { background-color: @none };
+    &.no-data {background-color: @no-data};
+    
+    .resto-verified {display: none;}
   }
 
   .wait-time {
@@ -225,15 +252,17 @@ hr {
   }
 
   .toggle-graph-btn {
-    background-color: #fff;
+    background-color: #f1f1f1;
     background-image:none;
     font-size:10px;
     line-height: 16px;
     .border-radius(0px);
+    .box-shadow(0 1px 2px 0px rgba(0,0,0,.2));
 
     padding: 0px 0px;
-    width:100%;
+    width:90%;
     
+    .btn-text {font-size:10px;}
     i {font-size:1.4em;}
   }
 
@@ -253,8 +282,7 @@ hr {
       position: relative;
 
       width:25%;
-      height:30px; 
-      max-height: 30px;
+      height:40px;
       
       .bar {
         .box-shadow(0 1px 0px 0px rgba(255,255,255,.4) inset);
@@ -272,7 +300,7 @@ hr {
         left:25%;
   
         width: 40px;
-        min-height:3px;
+        min-height:2px;
         transition: height 0.5s ease-in-out;
         -moz-transition: height 0.5s ease-in-out; /* FF 4 */
         -webkit-transition: height 0.5s ease-in-out; /* Safari & Chrome */
@@ -407,3 +435,4 @@ hr {
 
 
 @import "bootstrap/responsive";
+@import "client-responsive";

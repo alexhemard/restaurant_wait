@@ -30,13 +30,20 @@
           color: "long"
         },
         {
-          name: "No Seating :(",
+          name: "No Seating",
           color: "full"
+        },
+        {
+          name: "No Data",
+          color: "no-data"
         }
       ]
       , waitTimes = this.get('waitTimes')
       , counts = [0,0,0,0]
       ;
+      
+      // uncomment to test with "no-data"
+      //waitTimes = [];
 
       _.each(waitTimes, function(waitTime) {
         counts[waitTime.option-1] += 1;
@@ -50,8 +57,8 @@
 
       var total = _.reduce(counts, function(result, count) { return result + count}, 0);
 
-      var choice = total == 0 ? 0 : Math.ceil(basket / total) -1;
-
+      var choice = total == 0 ? 4 : Math.ceil(basket / total) -1;
+      
       return bs[Math.ceil(choice)]
     },
 
