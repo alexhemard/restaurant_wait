@@ -9,7 +9,8 @@ var mongoose = exports.mongoose = require('mongoose')
 exports = module.exports = new Schema({
   tourismBoard: { type: Schema.Types.Mixed, default: {} },
   location: {type: [Number], index: '2d'},
-  waitTimes: {type: [WaitSchema], default: []}
+  waitTimes: {type: [WaitSchema], default: []},
+  twilio: { type: Schema.Types.Mixed, default: {} }
 });
 
 exports.static('findNear',function(location) {
