@@ -4,11 +4,11 @@
 //= require underscore
 //= require backbone
 //= require baseClasses
+//= require router
 //= require_tree ./models
 //= require_tree ./views
 //= require dotdotdot
 //= require spinner
-
 
 // bootstrap hack to stop dropdowns from disappearing on mobile
 $('body').on('touchstart.dropdown', '.dropdown-menu', function (e) { e.stopPropagation(); });
@@ -25,12 +25,16 @@ $('body').on('touchstart.dropdown', '.dropdown-menu', function (e) { e.stopPropa
     init: function() {
       var _this = this;
 
+      Backbone.history.start({pushState: true});
+
       $(function() {
-        _this.docReady();
+        // holla
       });
     },
 
-    docReady: function() {
+    router: new App.Router,
+
+    restaurantIndex: function() {
       this.restaurants = new App.Collections.Restaurant();
       this.restaurants.listen();
       this.restoList = new App.Views.RestaurantsList({ el: '.resto-tiles', model: this.restaurants });
