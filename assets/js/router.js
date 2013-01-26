@@ -24,7 +24,7 @@
     },
 
     about: function (id) {
-      App.currentView = new App.Views.About({ el: '.resto-tiles'});
+      App.currentView = new App.Views.About({ el: '.content-wrapper'});
       App.currentView.render();
     },
 
