@@ -84,7 +84,7 @@ module.exports = function() {
         console.log("Found record for " + details.name1);
       }
       restaurant.name = details.name1;
-      restaurant.slug = slug(details.name1.toLowerCase());
+      restaurant.slug = slug(details.name1.toLowerCase().replace(/'/gi, ''));
       restaurant.tourismBoard = details;
       restaurant.tourismBoard.cuisines = cuisines;
       restaurant.tourismBoard.neighborhoods = neighborhoods;

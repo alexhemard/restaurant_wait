@@ -2,7 +2,7 @@ li.resto-tile(id=_id)
   header.tile-header
     .resto-image
       img(src="http://www.neworleansonline.com/images/eatnownola/" + tourismBoard.placeID + ".jpg")
-      a(href="/restaurants/#{_id}")
+      a(href="/restaurants/#{slug ? slug : _id}")
         h3.resto-name= tourismBoard.name1
       .link-buttons
         ul.links.unstyled
@@ -20,7 +20,7 @@ li.resto-tile(id=_id)
                 i.icon-link
                   |  Website
           li.link
-            a(data-behavior="call", href=tourismBoard.phone).btn.btn-small.call
+            a(data-behavior="call", href="tel:+1#{tourismBoard.phone.replace(/[^0-9]/gi, '')}").btn.btn-small.call
               i.icon-phone
               |  #{tourismBoard.phone}
   .wait-color(data-behavior="wait-color")
