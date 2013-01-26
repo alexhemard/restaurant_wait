@@ -57,6 +57,8 @@ module.exports = function() {
         var details = {};
         _.each(row, function(value, key, list) {
           if (_.contains(cuisineFields, key) && value > 0) {
+            key = key.replace( /([A-Z])/g, " $1" );
+            key = key.charAt(0).toUpperCase() + key.slice(1);
             cuisines.push(key);
           }
           else if (_.contains(neighborhoodFields, key)) {
