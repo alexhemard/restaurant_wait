@@ -54,7 +54,6 @@ module.exports = function() {
             details[key] = value;
           }
         });
-
         createRestaurant(details, cuisines);
       });
 
@@ -65,6 +64,7 @@ module.exports = function() {
 
   function createRestaurant(details, cuisines) {
     var restaurant = Restaurant.findOne({ 'tourismBoard.placeID': details.placeID }, function (err, restaurant) {
+      console.log(err);
       if (restaurant == null) {
         restaurant = new Restaurant();
         console.log("Creating record for " + details.name1);
