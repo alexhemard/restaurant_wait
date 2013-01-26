@@ -7,6 +7,8 @@
 
   h1 {font-size:32px;}
   h3 {font-size:19px;}
+  
+  .desktop-hidden.phone-display {display: inherit;}
 
   .top-bar {
 /*     height:100px; */
@@ -16,23 +18,30 @@
     top:0;
     left:0;
     z-index: 100;
-    padding-top:0;
+    padding-top:3px;
     
     .logo {display: none;}
-   
-    .logo-small {
-      display: inline;
-      position: absolute;
-      top:7px;
-      right:12px;
-    }
-    
+       
     .about-btn {
       font-size: 12px;
       
       bottom:7px;
       top:auto;
     }
+  }
+  
+  #screw-bootstrap.navbar {
+    margin-top:5px;
+    
+    .navbar-inner {
+      min-height: 1px;
+      padding:0 0 0 5px;
+    }
+    
+    li > a {
+      padding:5px 10px;
+    }
+    
   }
     
   .resto-tiles{padding-top:50px;}

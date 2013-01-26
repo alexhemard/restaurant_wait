@@ -5,12 +5,11 @@ extends ../layout
 block content
   header.top-bar.clearfix
     img.logo(src='/img/eat-now-logo.png', alt="Eat Now! New Orleans")
+    a.brand.desktop-hidden.phone-display.logo-small
+      img(src='/img/eat-now-logo-sm.png', alt="Eat Now")
     #screw-bootstrap.navbar.navbar-static.pull-left
       .navbar-inner
         .container
-          a.brand
-            | Eat Now!
-            //img(src='/img/eat-now-logo-inline-sm.png')
           ul.nav(role="navigation")
             li.dropdown
               a.dropdown-toggle(role="button", data-toggle="dropdown")
