@@ -9,13 +9,15 @@
 
       $("body").spin();
     },
-    
+
     render: function() {
 
 
       this.model.each(_.bind(function(restaurant) {
+        console.log("hit1");
         // build tile view if it doesn't exist
         var itemView = this.tileViews[restaurant.id]
+
         if(!itemView) {
           itemView = this.tileViews[restaurant.id] = new App.Views.RestaurantTile({ model: restaurant });
         }
@@ -26,6 +28,11 @@
 
       }, this));
 
+      $(".details").dotdotdot({
+        after: "a.read-more",
+        height: 70
+      });
+
       $("body").spin(false);
     },
 
@@ -35,7 +42,7 @@
         this.tileViews[restaurant.id].$el.detach().appendTo(this.$el);
       }, this));
     },
-    
+
     onClickAboutBtn : function (e) {
       e.preventDefault();
       console.log('About Page Popup');

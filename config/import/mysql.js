@@ -1,13 +1,14 @@
 module.exports = function() {
   console.log('MYSQL IMPORT STARTED');
 
-  var mysql      = require('mysql')
-    , mongoose   = require('mongoose')
-    , _          = require('underscore')
-    , models     = require(__dirname + '/../../models')
-    , config     = require(__dirname + '/../')
-    , Restaurant = models.Restaurant
-    , restaurants = []
+  var mysql        = require('mysql')
+    , mongoose     = require('mongoose')
+    , _            = require('underscore')
+    , models       = require(__dirname + '/../../models')
+    , config       = require(__dirname + '/../')
+    , twilioImport = require(__dirname + '/twilio')
+    , Restaurant   = models.Restaurant
+    , restaurants  = []
 
   var mysqlConn = mysql.createConnection({
     host     : '64.131.88.82',
@@ -42,9 +43,6 @@ module.exports = function() {
       mysqlConn.end();
       console.log("Closed mysql connection...");
 
-      // Restaurant.find({}).remove();
-      console.log("Emptied out current restaurants from mongo...");
-
       rows.forEach(function(row) {
         var cuisines = [];
         var details = {};
@@ -59,6 +57,8 @@ module.exports = function() {
 
         createRestaurant(details, cuisines);
       });
+
+      twilioImport();
     }
   );
 

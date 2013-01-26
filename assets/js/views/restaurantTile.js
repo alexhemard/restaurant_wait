@@ -16,11 +16,6 @@
     render: function() {
       var retVal = App.Views.Base.prototype.render.apply(this, arguments);
 
-      $(".details").dotdotdot({
-        after: "a.read-more",
-        height: 70
-      });
-
       // Load place holder if image does not load
       // (cannot use jquery events because error events do not bubble)
       this.$el.find('.resto-image img').error(function() {
@@ -60,9 +55,9 @@
 
       this.model.collection.declareWaitTime(this.model.id, optionId);
     },
-    
+
     onClickToggleGraphBtn : function(e) {
-            
+
       e.preventDefault();
       var $tile = this.$el,
           $button = $(e.currentTarget);
@@ -72,18 +67,18 @@
 
 
       if ($button.hasClass('closed') ) {  // if graph is hidden
-      
-        showGraph();      
-        
+
+        showGraph();
+
       } else { // if graph is visible
-        
+
         hideGraph();
-        
+
       } //end if/else
-      
+
       this.$('.toggle-graph-btn').toggleClass('open closed');
     }, // end onClickToggleGraphBtn
-    
+
     showGraph : function() {
 
       this.$('.btn-text').html('Hide Votes'); // change btn text
@@ -99,24 +94,24 @@
           this)
         );
     }, // end showGraph()
-    
+
     hideGraph : function() {
-    
+
       this.$('.graph-wrapper').slideToggle('fast', _.bind(function () {
-          
+
         this.$('.details').slideToggle('fast', _.bind( function () {
 
           this.$('.btn-text').html('View Votes'); // change btn text back
-          
+
           // Toggle font awesome icon
           this.$('.toggle-graph-btn i').toggleClass('icon-chevron-down icon-chevron-up');
-        
-        },this) );      
 
-      },this) );  
-      
+        },this) );
+
+      },this) );
+
     } // end hideGraph()
-    
+
   });
 
 })(window.App);
