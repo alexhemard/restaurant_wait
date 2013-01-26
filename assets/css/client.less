@@ -54,30 +54,30 @@ hr {
   margin: 0;
   padding-top:5px;
   position: relative;
-  
+
   .btn-link {
     color:white;
-    text-shadow: none;   
+    text-shadow: none;
 
     &:hover{
       color:white;
       text-decoration: none;
-      
+
       .btn-text {border-bottom: 1px solid white;}
     }
-     
+
   }
 }
 
-.about-btn {  
+.about-btn {
   position:absolute;
   top:50%;
   margin-top:-15px;
   right:12px;
   .btn-text {border-bottom:1px dotted white;}
-  
+
   i {
-    margin: 0px 0px 0px 7px;    
+    margin: 0px 0px 0px 7px;
   }
 }
 
@@ -96,20 +96,20 @@ hr {
   margin:0;
   width:20%;
   min-width:230px;
-  
+
   li  {
     width:100%;
     display: block;
   }
-  
+
   a {
     margin:7px;
-    
+
     &:hover {
       background-color: desaturate(lighten(@red, 8%), 15%);
     }
   }
-    
+
 }
 
 .btn [class^="icon-"] {
@@ -151,7 +151,7 @@ hr {
     position: relative;
 
     .resto-image {
-      // background: url(../img/large-placeholder.gif) no-repeat center top;
+      background: url(../img/large-placeholder.gif) no-repeat center top;
 
       height: 184px;
       overflow: hidden;
@@ -181,7 +181,7 @@ hr {
 
   .contents {
     padding: 5px;
-    
+
     height:185px;
   }
 
@@ -198,7 +198,7 @@ hr {
     text-align: left;
 		font-style: italic;
 		font-weight: bold;
-		
+
 		margin-bottom:3px;
   }
 
@@ -261,7 +261,7 @@ hr {
     &.short { background-color: @short };
     &.none { background-color: @none };
     &.no-data {background-color: @no-data};
-    
+
     .resto-verified {display: none;}
   }
 
@@ -294,14 +294,14 @@ hr {
       background-color: darken(@bgColor, 2%);
       *background-color: darken(@bgColor, 8%); /* Buttons in IE7 don't get borders, so darken on hover */
       background-position: 0 -15px;
-  
+
       // transition is only when going to hover, otherwise the background
       // behind the gradient (there for IE<=9 fallback) gets mismatched
       .transition(background-color .1s linear);
     }
 
 
-    
+
     .btn-text {font-size:10px;}
     i {
       color:#888;
@@ -314,11 +314,11 @@ hr {
     text-transform: uppercase;
     text-align: center;
   }
-  
+
   .graph {
     margin:0;
     list-style: none;
-    
+
     .bar-wrapper {
       display: inline-block;
       text-align: center;
@@ -326,10 +326,10 @@ hr {
 
       width:25%;
       height:40px;
-      
+
       .bar {
         .box-shadow(0 1px 0px 0px rgba(255,255,255,.4) inset);
-  
+
 /*
         border-color: hsl(117, 43%, 18%);
         border-width: 1px;
@@ -341,18 +341,18 @@ hr {
         position: absolute;
         bottom:0;
         left:25%;
-  
+
         width: 40px;
         min-height:2px;
         transition: height 0.5s ease-in-out;
         -moz-transition: height 0.5s ease-in-out; /* FF 4 */
         -webkit-transition: height 0.5s ease-in-out; /* Safari & Chrome */
         -o-transition: height 0.5s ease-in-out; /* Opera */
-  
+
       }
 
     }
-    
+
   }
 
   .graph-wrapper {
@@ -362,19 +362,19 @@ hr {
 
     .graph-labels{
       list-style: none;
-      
+
       margin:0;
-    
+
       .label {
         display: inline-block;
-        
+
         width:25%;
         color:gray;
         background:white;
         text-shadow:none;
-        
+
       }
-      
+
     }
 
     .stripes {
@@ -505,10 +505,10 @@ hr {
   .box-shadow(0 1px 6px 0px rgba(0,0,0, 0.15));
   .border-radius(@radius);
   margin:0px auto;
-  
-  float:none;  
+
+  float:none;
   padding:20px 30px 30px;
-  
+
   h1 {text-align: center;}
 }
 

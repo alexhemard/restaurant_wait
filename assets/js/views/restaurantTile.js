@@ -19,7 +19,7 @@
       // Load place holder if image does not load
       // (cannot use jquery events because error events do not bubble)
       this.$el.find('.resto-image img').error(function() {
-        $(this).attr('src', '/img/large-placeholder.gif');
+        $(this).remove();
       });
 
       return retVal;
