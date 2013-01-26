@@ -33,9 +33,9 @@ exports.sms = function(req, res) {
         sendSms('This is a valid EatNowNola number, but it has no associated restaurant.');
         return;
       }
-      restaurant.declareWaitTime(waitTimeOption, userNumber);
+      restaurant.declareVendorWaitTime(waitTimeOption, userNumber);
       restaurant.save(); // no need to wait for save to complete
-      io.sockets.emit('update', { restaurantId: restaurant.id, waitTimes: restaurant.waitTimes }); // Send the updated waitTimes
+      io.sockets.emit('update', { restaurantId: restaurant.id, waitTimes: restaurant.waitTimes, vendorWaitTime: restaurant.vendorWaitTime }); // Send the updated waitTimes
       sendSms('Wait time updated!');
     });
   }
@@ -104,9 +104,9 @@ exports.voiceWaitEntered = function(req, res) {
       twilres.say('This is a valid Eat Now Nola number, but it has no associated restaurant.').hangup();
     }
     else {
-      restaurant.declareWaitTime(waitTimeOption, userNumber);
+      restaurant.declareVendorWaitTime(waitTimeOption, userNumber);
       restaurant.save(); // no need to wait for save to complete
-      io.sockets.emit('update', { restaurantId: restaurant.id, waitTimes: restaurant.waitTimes }); // Send the updated waitTimes
+      io.sockets.emit('update', { restaurantId: restaurant.id, waitTimes: restaurant.waitTimes, vendorWaitTime: restaurant.vendorWaitTime }); // Send the updated waitTimes
       twilres.say('Thank you. The wait time has been updated. Goodbye.').hangup();
     }
 
