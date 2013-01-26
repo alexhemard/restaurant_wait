@@ -70,7 +70,10 @@
     template: null,
 
     render: function() {
-      var viewParams = this.model.toJSON();
+      var viewParams = {};
+      if(this.model) {
+        viewParams = this.model.toJSON();
+      }
       this.setElement($(jade.templates[this.template + '.jade'](viewParams)));
       this.delegateEvents();
       return this;

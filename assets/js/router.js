@@ -4,6 +4,7 @@
     routes: {
       "restaurants/:id": "restaurantShow",
       "restaurants": "restaurantIndex",
+      "about": "about",
       "*assets": "default"
     },
 
@@ -20,6 +21,11 @@
       restaurant.fetch();
       App.currentView = new App.Views.Restaurant({ el: '.resto-tiles', model: restaurant });
       restaurant.fetch();
+    },
+
+    about: function (id) {
+      App.currentView = new App.Views.About({ el: '.resto-tiles'});
+      App.currentView.render();
     },
 
     default: function (page) {

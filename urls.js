@@ -56,7 +56,8 @@ module.exports = function(app){
   app.get('/restaurants', routes.ui.restaurants.index);
   app.post('/restaurants', routes.ui.restaurants.create);
   app.get('/restaurants/:id', routes.ui.restaurants.show);
-  app.put('/restaurants/:id', routes.ui.restaurants.update);
+  app.put('/restaurants/:id', routes.ui.restaurants.update)
+  app.get('*', routes.ui.restaurants.index);
   app.delete('/restaurants/:id', routes.ui.restaurants.delete);
 
 }
