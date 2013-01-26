@@ -87,6 +87,8 @@ hr {
 }
 
 .about-menu {
+  display: none;
+
   #gradient > .vertical(darken(#8b281e, 3%), #8b281e);
   list-style: none;
   
@@ -106,7 +108,7 @@ hr {
     margin:7px;
     
     &:hover {
-      background-color: lighten(#8b281e, 12%)
+      background-color: desaturate(lighten(#8b281e, 12%), 20%);
     }
   }
     
@@ -474,6 +476,27 @@ hr {
       border: 1px solid darken(@none, 10%);
     }
   }
+} //end .resto-tile
+
+.about-wrapper {
+  margin:30px;
+}
+
+.about-page {
+  text-align: left;
+  background:white;
+  .box-shadow(0 1px 6px 0px rgba(0,0,0, 0.15));
+  .border-radius(@radius);
+  margin:0px auto;
+  
+  float:none;  
+  padding:20px 30px 30px;
+  
+  h1 {text-align: center;}
+}
+
+.about-sections {
+  dt {margin-top:7px;}
 }
 
 
