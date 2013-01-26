@@ -108,7 +108,7 @@ sockets(io);
 server.listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));
 });
-mysqlImport();
+
 // set up cron job for MySQL import every day at 3am CST (9am GMT/UTC)
 new CronJob('00 00 09 * * *', function() {
   try { mysqlImport(); }

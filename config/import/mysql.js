@@ -58,7 +58,7 @@ module.exports = function() {
         createRestaurant(details, cuisines);
       });
 
-      // twilioImport();
+      twilioImport();
     }
   );
 
