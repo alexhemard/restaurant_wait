@@ -1,43 +1,48 @@
 extends ../layout
 
+//- var args = [{showDropdown: false}]
+
 block content
-  header.top-bar
-    img.logo(src='/img/eat-now-logo.png')
-    .navbar.navbar-static.pull-left
+  header.top-bar.clearfix
+    img.logo(src='/img/eat-now-logo.png', alt="Eat Now! New Orleans")
+    #screw-bootstrap.navbar.navbar-static.pull-left
       .navbar-inner
         .container
           a.brand
-            img(src='/img/eat-now-logo-inline-sm.png')
+            | Eat Now!
+            //img(src='/img/eat-now-logo-inline-sm.png')
           ul.nav(role="navigation")
             li.dropdown
               a.dropdown-toggle(role="button", data-toggle="dropdown")
-                | Dropown 1
+                | Filter & Search
                 b.caret
-                ul.dropdown-menu.search-and-filter-menu(role="menu")
-                  li
-                    select
-                      option Filter by Neighborhood
-                      option Neighb 1
-                      option Neighb 2
-                      option Neighb 3
-                  li
-                    select
-                      option Filter by Cuisine
-                      option Cuisine 1
-                      option Cuisine 2
-                      option Cuisine 3
-                  li.divider
-                  li
-                    a Search Box
+              ul.dropdown-menu.search-and-filter-menu(role="menu")
+                li
+                  select
+                    option Filter by Neighborhood
+                    option Neighb 1
+                    option Neighb 2
+                    option Neighb 3
+                li
+                  select
+                    option Filter by Cuisine
+                    option Cuisine 1
+                    option Cuisine 2
+                    option Cuisine 3
+                li.divider
+                li
+                  a Search Box
             li.dropdown
               a.dropdown-toggle(role="button", data-toggle="dropdown")
-                | Dropown 2
+                | About
                 b.caret
-                ul.dropdown-menu.about-menu(role="menu")
-                  li
-                    a(data-behavior="how-to-use", href='/about/') How do I use Eat Now?
-                  li
-                    a(data-behavior="how-to-register", href='/about/') Register your restaurant...     
+              ul.dropdown-menu(role="menu")
+                li
+                  a(data-behavior="how-to-use", href='/about/')
+                    |How do I use Eat Now?
+                li
+                  a(data-behavior="how-to-register", href='/about/')
+                    | Register your restaurant...     
   .content-wrapper
     ul.unstyled.resto-tiles
     ul.pager
