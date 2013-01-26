@@ -10,6 +10,7 @@ exports = module.exports = new Schema({
   tourismBoard: { type: Schema.Types.Mixed, default: {} },
   name: {type: String, index: '1'},
   slug: {type: String, index: '1'},
+  vendorWaitTime: {type: WaitSchema},
   location: {type: [Number], index: '2d'},
   waitTimes: {type: [WaitSchema], default: []},
   twilio: { type: Schema.Types.Mixed, default: {} }
