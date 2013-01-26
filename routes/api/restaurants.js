@@ -11,7 +11,8 @@ exports.index = function(req, res, next) {
     // IMPORTANT - MongoDB geo coords ordering is LONGITUDE FIRST
     // That's why we're calling reverse() at the end of this next line
     var location = req.query.location.split(',').map(function(x) { return parseFloat(x, 10); }).reverse();
-    Restaurant.findNear(location).limit(40).lean().exec(callback); 
+    // Restaurant.findNear(location).limit(40).lean().exec(callback);
+    Restaurant.find().sort('_id').limit(40).lean().exec(callback);
   } else {
     Restaurant.find().sort('_id').limit(40).lean().exec(callback);
   }
