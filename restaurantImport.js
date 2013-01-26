@@ -1,4 +1,8 @@
-var mysqlImport = require('./config/import/mysql');
+var mysqlImport = require('./config/import/mysql')
+  , config = require('./config')
+  , mongoose = require('mongoose')
+
+mongoose.connect(config.mongodb);
 
 mysqlImport();
 

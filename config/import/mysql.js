@@ -55,7 +55,6 @@ module.exports = function() {
             details[key] = value;
           }
         });
-
         createRestaurant(details, cuisines);
       });
 
