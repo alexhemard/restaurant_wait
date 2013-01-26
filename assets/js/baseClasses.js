@@ -74,7 +74,9 @@
       this.setElement($(jade.templates[this.template + '.jade'](viewParams)));
       this.delegateEvents();
       return this;
-    }
+    },
+
+    updateLocation: function(coords, options) {}
   });
   
   App.Routers.Base = Backbone.Router.extend({});

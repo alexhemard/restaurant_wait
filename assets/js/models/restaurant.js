@@ -11,6 +11,10 @@
 
   App.Models.Restaurant = App.Models.Base.extend({
 
+    url: function() {
+      return '/api/restaurants/' + this.id;
+    },
+
     declareWaitTime: function(optionId) {
       this.collection.socket.emit('waitTime', { restaurant: this.id, option: optionId });
     },
@@ -103,14 +107,12 @@
     model: App.Models.Restaurant,
 
     url: function() {
-      var url = '/api/restaurants';
-      if(this.coords) url += '?location=' + this.coords.join(',');
-      return url;
+      return '/api/restaurants';
     },
 
     updateLocation: function(coords, fetchOptions) {
-      this.coords = coords;
-      this.fetch(fetchOptions);
+      fetchOptions = fetchOptions || {};
+      this.fetch({ data: $.param({location: coords.join(',')})});
     },
 
     listen: function() {

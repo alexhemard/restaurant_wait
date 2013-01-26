@@ -42,18 +42,22 @@
         this.tileViews[restaurant.id].$el.detach().appendTo(this.$el);
       }, this));
     },
-    
+
     toggleLocationChange : function (e) {
-    
+
       e.preventDefault();
 
       var $div = $('.location-change-container'),
-          newBottom = $div.hasClass('open') ? -50 : 0 ;      
-      
+      newBottom = $div.hasClass('open') ? -50 : 0 ;
+
       $('.location-change-container')
         .toggleClass('open')
         .animate({'bottom': newBottom+'px'}, 500);
-         
+
+    },
+
+    updateLocation: function(coords,options) {
+      this.model.updateLocation(coords,options);
     }
 
   });
