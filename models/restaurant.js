@@ -35,4 +35,13 @@ exports.method('declareWaitTime', function(option, sessionId) {
   this.save(function(err, restaurant) {
   // BREAK STUFF
   });
+
+
+exports.method('declareVendorWaitTime', function(option, sessionId) {
+
+  this.vendorWaitTime = {sessionId: sessionId, option: option};
+
+  this.save(function(err, restaurant) {
+  // BREAK STUFF
+  });
 });
