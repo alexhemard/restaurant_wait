@@ -5,7 +5,7 @@
     initialize: function() {
       this.tileViews = {};
       this.model.on('reset', _.bind(this.render, this));
-      $('.about-btn').on('click', _.bind(this.onClickAboutBtn, this));
+      $('[data-toggle=changeLocation]').on('click', _.bind(this.toggleLocationChange, this));
 
       $("body").spin();
     },
@@ -43,9 +43,17 @@
       }, this));
     },
 
-    onClickAboutBtn : function (e) {
+    toggleLocationChange : function (e) {
+
       e.preventDefault();
-      console.log('About Page Popup');
+
+      var $div = $('.location-change-container'),
+      newBottom = $div.hasClass('open') ? -50 : 0 ;
+
+      $('.location-change-container')
+        .toggleClass('open')
+        .animate({'bottom': newBottom+'px'}, 500);
+
     },
 
     updateLocation: function(coords,options) {

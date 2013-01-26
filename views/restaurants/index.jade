@@ -4,20 +4,33 @@ block content
   header.top-bar
     img.logo(src='/img/eat-now-logo.png')
     img.logo-small.hidden(src='/img/eat-now-logo-sm.png')
-    a.btn.btn-small.update-position-btn
-      i.icon-repeat
-      | Refresh Location
-    a.btn.btn-link.about-btn
+    form.navbar-search.pull-left
+      input.search-query(type="text",placeholder="Search")
+    a.btn.btn-link(data-toggle="changeLocation", href="#")
+      span.btn-text Test Location Change     
+    a.btn.btn-link.about-btn.dropdown-toggle(data-toggle="dropdown", href="#")
       span.btn-text About
       i.icon-caret-down
-    ul.about-menu
+    ul.about-menu.dropdown-menu(role="menu")
       li.how-to-use-btn
-        a.btn.btn-link(data-behavior="how-to-use") How do I use Eat Now?
+        a.btn.btn-link(data-behavior="how-to-use", href='/about/') How do I use Eat Now?
       li.register-btn
-        a.btn.btn-link(data-behavior="how-to-register") Register your restaurant...
+        a.btn.btn-link(data-behavior="how-to-register", href='/about/') Register your restaurant...
              
   .content-wrapper
     ul.unstyled.resto-tiles
+    ul.pager
+      li.previous.disabled
+        a(href="#") Previous
+      li.next
+        a(href="#") Next
+
+  ul.location-change-container.clearfix
+    li
+      a.btn.update-position-btn
+        i.icon-repeat
+        | Refresh From Your New Location
+
 
 //  .content-wrapper.about-wrapper
 //    .about-page.span10
