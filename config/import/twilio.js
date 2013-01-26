@@ -12,7 +12,7 @@ module.exports = function() {
 
   // mongoose.connect(config.mongodb);
 
-  Restaurant.find({ 'tourismBoard.twilio': 0, 'twilio.phone': undefined }).exec(function(err, restaurants) {
+  Restaurant.find({ 'tourismBoard.twilio': 1, 'twilio.phone': undefined }).exec(function(err, restaurants) {
     console.log('PROVISION NUMBERS FOR ' + restaurants.length + ' RESTAURANTS');
 
     var provisionNumber = function(restaurant, callback) {
