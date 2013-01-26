@@ -20,7 +20,7 @@ li.resto-tile(id=_id)
                 i.icon-link
                   |  Website
           li.link
-            a(data-behavior="call", href="tel:+1#{tourismBoard.phone.replace(/[^0-9]/gi, '')}").btn.btn-small.call
+            a(data-behavior="call", href="tel:+1#{tourismBoard.phone ? tourismBoard.phone.replace(/[^0-9]/gi, '') : tourismBoard.phone}").btn.btn-small.call
               i.icon-phone
               |  #{tourismBoard.phone}
   .wait-color(data-behavior="wait-color")
