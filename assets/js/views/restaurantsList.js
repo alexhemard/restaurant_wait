@@ -46,6 +46,10 @@
     onClickAboutBtn : function (e) {
       e.preventDefault();
       console.log('About Page Popup');
+    },
+
+    updateLocation: function(coords,options) {
+      this.model.updateLocation(coords,options);
     }
 
   });

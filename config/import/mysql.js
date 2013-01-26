@@ -4,6 +4,7 @@ module.exports = function() {
   var mysql        = require('mysql')
     , mongoose     = require('mongoose')
     , _            = require('underscore')
+    , slug         = require('slug')
     , models       = require(__dirname + '/../../models')
     , config       = require(__dirname + '/../')
     , twilioImport = require(__dirname + '/twilio')
@@ -71,7 +72,8 @@ module.exports = function() {
       else {
         console.log("Found record for " + details.name1);
       }
-
+      restaurant.name = details.name1;
+      restaurant.slug = slug(details.name1.toLowerCase());
       restaurant.tourismBoard = details;
       restaurant.tourismBoard.cuisines = cuisines;
       restaurant.location = [details.longitude, details.latitude];

@@ -12,7 +12,7 @@ exports.create = function(req, res) {
 
 exports.show = function(req, res) {
   restaurants.show(req, res, function() {
-    res.render('restaurants/show', {title:'Restaurants', restaurant:res.jsonData});
+    res.render('restaurants/index', {title:'Restaurant', restaurant:res.jsonData});
   });
 };
 
