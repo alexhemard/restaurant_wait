@@ -20,7 +20,7 @@ li.resto-tile(id=_id)
                 i.icon-link
                   |  Website
           li.link
-            a(data-behavior="call", href=tourismBoard.phone).btn.btn-small.call
+            a(data-behavior="call", href="tel:#{tourismBoard.phone}").btn.btn-small.call
               i.icon-phone
               |  #{tourismBoard.phone}
   .wait-color(data-behavior="wait-color")
@@ -44,7 +44,7 @@ li.resto-tile(id=_id)
         //-   | over the world! It's quality you can taste in the fresh... more »
     a.toggle-graph-btn.mini-title.closed.btn
       span.btn-text View Votes
-      i.icon-chevron-up 
+      i.icon-chevron-up
     .graph-wrapper
       ul.graph
         li.bar-wrapper
