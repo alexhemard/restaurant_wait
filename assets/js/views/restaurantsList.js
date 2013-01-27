@@ -16,7 +16,6 @@
       App.trigger('show:dropdown');
       this.$el.html('');
       this.model.each(_.bind(function(restaurant) {
-        console.log("hit1");
         // build tile view if it doesn't exist
         var itemView = this.tileViews[restaurant.id]
 
@@ -32,8 +31,10 @@
 
       $(".details").dotdotdot({
         after: "a.read-more",
-        height: 70
+        height: 138
       });
+
+      $(".cuisine-tags").flextext(14);
 
       $("body").spin(false);
     },

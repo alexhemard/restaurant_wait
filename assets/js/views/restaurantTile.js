@@ -5,8 +5,7 @@
     template: 'restaurants/listItem',
 
     events: {
-      'click .choices a[data-option]': 'onClickWaitTimeButton',
-      'click .toggle-graph-btn' : 'onClickToggleGraphBtn'
+      'click .choices a[data-option]': 'onClickWaitTimeButton'
     },
 
     initialize: function() {
@@ -55,62 +54,6 @@
 
       this.model.collection.declareWaitTime(this.model.id, optionId);
     },
-
-    onClickToggleGraphBtn : function(e) {
-
-      e.preventDefault();
-      var $tile = this.$el,
-          $button = $(e.currentTarget);
-
-        var showGraph = _.bind(this.showGraph, this),
-            hideGraph = _.bind(this.hideGraph, this);
-
-
-      if ($button.hasClass('closed') ) {  // if graph is hidden
-
-        showGraph();
-
-      } else { // if graph is visible
-
-        hideGraph();
-
-      } //end if/else
-
-      this.$('.toggle-graph-btn').toggleClass('open closed');
-    }, // end onClickToggleGraphBtn
-
-    showGraph : function() {
-
-      this.$('.btn-text').html('Hide Votes'); // change btn text
-
-      // Toggle font awesome icon
-      this.$('.toggle-graph-btn i').toggleClass('icon-chevron-down icon-chevron-up');
-
-      this.$('.details').slideToggle('fast',
-         _.bind(
-           function () {
-              this.$('.graph-wrapper').slideToggle('fast');
-            },
-          this)
-        );
-    }, // end showGraph()
-
-    hideGraph : function() {
-
-      this.$('.graph-wrapper').slideToggle('fast', _.bind(function () {
-
-        this.$('.details').slideToggle('fast', _.bind( function () {
-
-          this.$('.btn-text').html('View Votes'); // change btn text back
-
-          // Toggle font awesome icon
-          this.$('.toggle-graph-btn i').toggleClass('icon-chevron-down icon-chevron-up');
-
-        },this) );
-
-      },this) );
-
-    } // end hideGraph()
 
   });
 

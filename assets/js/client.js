@@ -8,6 +8,7 @@
 //= require_tree ./models
 //= require_tree ./views
 //= require dotdotdot
+//= require flextext
 //= require spinner
 
 // bootstrap hack to stop dropdowns from disappearing on mobile
