@@ -1,6 +1,8 @@
 .navbar-inner
   .container
     ul.nav(role="navigation")
+      li.desktop-hidden.phone-display
+        a.dropdown-toggle.home-btn(role="button",href="/") Home
       li.dropdown
         a.dropdown-toggle(role="button", data-toggle="dropdown")
           | Filter & Search
@@ -27,8 +29,11 @@
             b.caret
           ul.dropdown-menu(role="menu")
             li
-              a(data-behavior="how-to-use", href='/about/')
-                |How do I use Eat Now?
+              a(data-behavior="how-to-use", href='/about')
+                | How do I use Eat Now?
             li
-              a(data-behavior="how-to-register", href='/about/')
+              a(data-behavior="our-data", href='/about#our-data')
+                | Where do we get our data?
+            li
+              a(data-behavior="how-to-register", href='/about#register')
                 | Register your restaurant...     
