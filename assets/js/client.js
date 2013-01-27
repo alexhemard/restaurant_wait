@@ -28,7 +28,8 @@ $('body').on('touchstart.dropdown', '.dropdown-menu', function (e) { e.stopPropa
       Backbone.history.start({pushState: true});
 
       $(function() {
-        // holla
+        _this.dropDownMenu = new App.Views.DropDownMenu({el: '#screw-bootstrap'});
+        _this.dropDownMenu.render();
       });
     },
 
