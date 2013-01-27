@@ -15,6 +15,7 @@
 
 * {
   box-sizing: border-box;
+  -moz-box-sizing: border-box;
 }
 
 html {
@@ -47,7 +48,10 @@ hr {
   min-width: 375px;
   text-align: center;
   color: white;
-  font-size: 28px;
+  font-size: 16px;
+  background-image: url(/img/eat-now-logo.png);
+  background-repeat: no-repeat;
+  background-position: center center;
 
   width: 100%;
   height: 65px;
@@ -67,18 +71,53 @@ hr {
     }
 
   }
+  .navbar-inner {
+    .box-shadow(none);
+    background:none;
+    border:none;
+    .border-radius(0px);
+  }
 }
 
-.about-btn {
-  position:absolute;
-  top:50%;
-  margin-top:-15px;
-  right:12px;
-  .btn-text {border-bottom:1px dotted white;}
+#screw-bootstrap{
 
-  i {
-    margin: 0px 0px 0px 7px;
+  margin:0;  
+  .dropdown-toggle {
+    background: none;
+    cursor: pointer;
+    color:white;
+    text-shadow:none;
+
+    &:hover {
+      text-decoration: none;
+      color:white;
+    }
+
+  }  
+  
+  .open > .dropdown-toggle {
+    background: darken(@red, 12%);    
+    
+    .border-radius(3px);
   }
+  
+  .dropdown-menu {
+    padding:12px;
+    
+    li {text-align: left;}
+    a:hover {
+      color:black;
+      text-decoration: underline;
+    }
+    .divider {border-bottom:#444;}
+  }
+    
+  .caret {
+    border-top-color: white;
+    border-bottom-color: white;
+    
+    margin-left:5px;
+  } 
 }
 
 .open > .about-menu {
@@ -128,7 +167,7 @@ hr {
   margin:20px 0 0 20px;
 }
 
-.hidden {display: none;}
+.hidden, .desktop-hidden {display: none;}
 
 .resto-tiles {
   text-align: center;
@@ -489,11 +528,6 @@ hr {
   bottom:-50px;;
   left:0;
 }
-
-.update-position-btn {
-
-}
-
 
 .about-wrapper {
   margin:30px;
