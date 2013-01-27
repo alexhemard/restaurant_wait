@@ -24,56 +24,61 @@ li.resto-tile(id=_id)
               i.icon-phone
               |  #{tourismBoard.phone}
   .wait-color(data-behavior="wait-color")
-    span.resto-verified
-      | Restaurant Verified Info.
-      i.icon-ok
 
   .contents
     h4.wait-time
       i.icon-time
       span.time-text 15-30min
     hr
-    .info
-      //- .cuisine-tags Tag 1, Tag 2, Tag 3
-      .details
-        p.description= tourismBoard.description
-          a.read-more
-            |  read more &raquo;
-        //- p.description
-        //-   | For over 100 years, Acme has been satisfying the hungriest of people all
-        //-   | over the world! It's quality you can taste in the fresh... more »
-    a.toggle-graph-btn.mini-title.closed.btn
-      span.btn-text View Votes
-      i.icon-chevron-up
-    .graph-wrapper
-      ul.graph
-        li.bar-wrapper
-          .bar.none(data-option=1)
-        li.bar-wrapper
-          .bar.short(data-option=2)
-        li.bar-wrapper
-          .bar.long(data-option=3)
-        li.bar-wrapper
-          .bar.full(data-option=4)
-      hr
-      ul.graph-labels
-        li.label None
-        li.label Short
-        li.label Long
-        li.label Full
+    .cuisine-tags
+      span= tourismBoard.cuisines.slice(0,3).join(", ")
+    hr
+    .stats-wrapper
+      .info
+        .details
+          p.description= tourismBoard.description
+            a.read-more
+              |  read more &raquo;
+      //- a.toggle-graph-btn.mini-title.closed.btn
+      //-   span.btn-text View Votes
+      //-   i.icon-chevron-up
+      .graph-wrapper
+        p.need-info
+          | We do not have enough information to verify the wait time yet.
+          | Send us your votes if you have visited this restaurant recently.
+
+        ul.graph
+          li.bar-wrapper
+            .bar.none(data-option=1)
+          li.bar-wrapper
+            .bar.short(data-option=2)
+          li.bar-wrapper
+            .bar.long(data-option=3)
+          li.bar-wrapper
+            .bar.full(data-option=4)
+        hr
+        ul.graph-labels
+          li.label None
+          li.label Short
+          li.label Long
+          li.label Full
 
   footer.tile-footer
-    .choices-title.mini-title How Long's The Wait?
-    .choices
-      a(href="#", data-option=1).btn.none
-        i.icon-none-circle
-        | None
-      a(href="#", data-option=2).btn.short
-        i.icon-short-circle
-        | Short
-      a(href="#", data-option=3).btn.long
-        i.icon-long-circle
-        | Long
-      a(href="#", data-option=4).btn.full
-        i.icon-full-circle
-        | Full
+    span.resto-verified
+      i.icon-ok-circle
+      | Verified By Restaurant
+
+    .vote-wrapper
+      .choices
+        a(href="#", data-option=1).btn.none
+          i.icon-none-circle
+          | None
+        a(href="#", data-option=2).btn.short
+          i.icon-short-circle
+          | Short
+        a(href="#", data-option=3).btn.long
+          i.icon-long-circle
+          | Long
+        a(href="#", data-option=4).btn.full
+          i.icon-full-circle
+          | Full

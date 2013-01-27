@@ -35,13 +35,15 @@ module.exports = function() {
       placesFields = _.map(fields.places, function(field) { return field.name; });
 
       cuisineFields = _.compact(_.map(fields.restaurantDetails, function(field) {
-        if (!_.contains(["attireID", "placeID"], field.name)) {
+        // Remove fields we don't care about displaying
+        if (!_.contains(["attireID", "placeID", "breakfast", "lunch", "dinner", "sundayBrunch", "lateNight", "brunch"], field.name)) {
           return field.name;
         }
       }));
 
       neighborhoodFields = _.compact(_.map(fields.lookupNeighborhood, function(field) {
         console.log(field);
+        // Remove fields we don't care about displaying
         if (!_.contains(["neighborhoodID", "filter", "detailPage", "neighborhoodURL"], field.name)) {
           return field.name;
         }

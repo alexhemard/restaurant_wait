@@ -55,7 +55,7 @@ exports.voice = function(req, res) {
   var twilres = new twilio.TwimlResponse();
 
   Restaurant.findOne({ 'twilio.phone': serverNumber }).exec(function(err, restaurant) {
-    
+
     if(err) {
       twilres.say('This is a valid Eat Now Nola number, but it has no associated restaurant.').hangup();
       return;

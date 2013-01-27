@@ -16,13 +16,6 @@
       }
         this.tileView.$el.detach();
         this.tileView.render().$el.appendTo(this.$el);
-
-      $(".details").dotdotdot({
-        after: "a.read-more",
-        height: 70
-      });
-
-      $("body").spin(false);
     },
 
     onClickAboutBtn : function (e) {
