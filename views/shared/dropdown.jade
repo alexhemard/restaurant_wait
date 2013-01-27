@@ -1,0 +1,34 @@
+.navbar-inner
+  .container
+    ul.nav(role="navigation")
+      li.dropdown
+        a.dropdown-toggle(role="button", data-toggle="dropdown")
+          | Filter & Search
+          b.caret
+        ul.dropdown-menu.search-and-filter-menu(role="menu")
+          li
+            select
+              option Filter by Neighborhood
+              option Neighb 1
+              option Neighb 2
+              option Neighb 3
+          li
+            select
+              option Filter by Cuisine
+              option Cuisine 1
+              option Cuisine 2
+              option Cuisine 3
+          li.divider
+          li
+            input.search-query(placeholder="Search...")
+        li.dropdown
+          a.dropdown-toggle(role="button", data-toggle="dropdown")
+            | About
+            b.caret
+          ul.dropdown-menu(role="menu")
+            li
+              a(data-behavior="how-to-use", href='/about/')
+                |How do I use Eat Now?
+            li
+              a(data-behavior="how-to-register", href='/about/')
+                | Register your restaurant...     
