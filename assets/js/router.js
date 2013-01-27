@@ -8,8 +8,15 @@
       "*assets": "default"
     },
 
+    // this is a steaming pile of dog poo now
+
     restaurantIndex: function (page) {
-      console.log(page);
+      if(typeof App.dropDownMenu === "undefined"){
+        App.dropDownMenu = new App.Views.DropDownMenu({el: '#screw-bootstrap'});
+      }
+
+      App.dropDownMenu.render();
+
       var restaurants = new App.Collections.Restaurant();
       restaurants.listen();
       App.currentView = new App.Views.RestaurantsList({ el: '.resto-tiles', model: restaurants });

@@ -15,6 +15,7 @@ module.exports = function(app){
      };
      */
   var sendJson = function(req, res) { res.json(res.jsonData); }
+  app.get('/api/search', routes.api.restaurants.search);
   app.get('/api/restaurants', routes.api.restaurants.index);
   app.post('/api/restaurants', routes.api.restaurants.create);
   app.get('/api/restaurants/:id', routes.api.restaurants.show);

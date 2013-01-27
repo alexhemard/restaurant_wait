@@ -16,6 +16,8 @@ $('body').on('touchstart.dropdown', '.dropdown-menu', function (e) { e.stopPropa
 
 (function(App) {
 
+  _.extend(App, Backbone.Events);
+
   _.extend(App, {
 
     coords: null,
@@ -27,10 +29,9 @@ $('body').on('touchstart.dropdown', '.dropdown-menu', function (e) { e.stopPropa
       var _this = this;
 
       Backbone.history.start({pushState: true});
-
+      
       $(function() {
-        _this.dropDownMenu = new App.Views.DropDownMenu({el: '#screw-bootstrap'});
-        _this.dropDownMenu.render();
+
       });
     },
 

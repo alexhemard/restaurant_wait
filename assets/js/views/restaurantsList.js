@@ -6,13 +6,15 @@
       this.tileViews = {};
       this.model.on('reset', _.bind(this.render, this));
       $('[data-toggle=changeLocation]').on('click', _.bind(this.toggleLocationChange, this));
+      this.listenTo(App, 'search:restaurants', this.search);
 
       $("body").spin();
     },
 
     render: function() {
 
-
+      App.trigger('show:dropdown');
+      this.$el.html('');
       this.model.each(_.bind(function(restaurant) {
         // build tile view if it doesn't exist
         var itemView = this.tileViews[restaurant.id]
@@ -59,8 +61,11 @@
 
     updateLocation: function(coords,options) {
       this.model.updateLocation(coords,options);
-    }
+    },
 
+    search: function(e) {
+      this.model.search(e);
+    }
   });
 
 })(window.App);
