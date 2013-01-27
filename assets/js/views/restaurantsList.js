@@ -27,12 +27,12 @@
 
       }, this));
 
-      $(".details").dotdotdot({
-        after: "a.read-more",
-        height: 138
+      this.$(".details").dotdotdot({
+        after: null,
+        height: 108
       });
 
-      $(".cuisine-tags").flextext(14);
+      this.$(".cuisine-tags").flextext(14);
 
       $("body").spin(false);
     },
