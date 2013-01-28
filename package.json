@@ -27,7 +27,8 @@
     "mysql": "2.0.0-alpha5",
     "cron": "*",
     "time": "*",
-    "slug": "*"
+    "slug": "*",
+    "passport.socketio": "*"
   },
   "devDependencies": {
     "supervisor": "*"
