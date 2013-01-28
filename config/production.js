@@ -1,7 +1,7 @@
 exports.loggerFormat = 'dev';
 exports.useErrorHandler = true;
-// exports.mongodb = 'mongodb://nodejitsu_jwietelmann:1j1gaj9jah995h8f1ibuf29r9n@ds043937.mongolab.com:43937/nodejitsu_jwietelmann_nodejitsudb3169538436';
-exports.mongodb = 'mongodb://notmc:@ds035147.mongolab.com:35147/eatnownola';
+exports.mongodb = 'mongodb://nodejitsu_notmc:oemv67ed0kqmelpgan117339g2@ds049537.mongolab.com/eatnownola';
+// exports.mongodb = 'mongodb://notmc:@ds035147.mongolab.com:35147/eatnownola';
 // mongo --host ds043937.mongolab.com --port 43937 -u nodejitsu_jwietelmann -p 1j1gaj9jah995h8f1ibuf29r9n nodejitsu_jwietelmann_nodejitsudb3169538436
 //exports.mongodb = 'mongodb://swagbasket:swagbasket@ds047307.mongolab.com:47307/restaurantwait';
 exports.sessionSecret = 'sw4gb4$k3t!!!';

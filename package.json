@@ -1,6 +1,6 @@
 {
   "name": "eatnownola",
-  "version": "0.0.1-46",
+  "version": "0.0.1-47",
   "private": true,
   "scripts": {
     "start": "node app.js"
