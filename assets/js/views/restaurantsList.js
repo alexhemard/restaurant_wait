@@ -65,12 +65,10 @@
       }, this));
     },
 
-    toggleLocationChange : function (e) {
-
-      e.preventDefault();
+    toggleLocationChange : function (options) {
 
       //var firstTime = e.firstTime;
-      if(!e.firstTime) {
+      if(!options.firstTime) {
       
       var $div = $('.location-change-container'),
       newBottom = $div.hasClass('open') ? -50 : 0 ;
@@ -87,7 +85,7 @@
         });
           
       } else {
-        this.updateLocation(e.coords);
+        this.updateLocation(options.coords);
       }
     },
 
