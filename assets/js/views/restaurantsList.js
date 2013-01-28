@@ -4,12 +4,14 @@
 
     events: {
       "click .pager .next": "nextPage",
-      "click .pager .previous": "previousPage"
+      "click .pager .previous": "previousPage",
+      "click .update-position-btn": "onRefreshLocation"
     },
 
     template: 'restaurants/list',
 
     initialize: function() {
+      var _this = this;
       this.tileViews = {};
       this.model.on('reset', _.bind(this.render, this));
       $('[data-toggle=changeLocation]').on('click', _.bind(this.toggleLocationChange, this));
@@ -17,6 +19,8 @@
       this.listenTo(App, 'search:restaurants', this.search);
 
       App.socket.on('update', _.bind(this.onWaitTimeUpdate, this));
+
+      this.listenTo(App, "change:gpsCoords", function(e) { _this.toggleLocationChange(e) });
 
       $("body").spin();
     },
@@ -65,6 +69,9 @@
 
       e.preventDefault();
 
+      //var firstTime = e.firstTime;
+      if(!e.firstTime) {
+      
       var $div = $('.location-change-container'),
       newBottom = $div.hasClass('open') ? -50 : 0 ;
 
@@ -78,10 +85,19 @@
             $div.hide();
           }
         });
+          
+      } else {
+        this.updateLocation(e.coords);
+      }
+    },
 
+    onRefreshLocation: function(e) {
+      e.preventDefault();      
+      this.updateLocation();
     },
 
     updateLocation: function(coords,options) {
+      if(!coords) coords = App.coords;
       this.model.updateLocation(coords,options);
     },
 
@@ -95,14 +111,12 @@
     },
 
     previousPage: function(e) {
-      console.log("sup");
       if (this.currentPage < 1) return;
       this.currentPage -= 1;
       this.goToPage(this.currentPage);
     },
 
     nextPage: function(e) {
-      console.log("sup");
       this.currentPage += 1
       this.goToPage(this.currentPage);
       
@@ -110,8 +124,6 @@
 
     onWaitTimeUpdate: function(data) {
       var restaurant = this.model.get(data.restaurantId);
-      console.log(restaurant);
-      console.log(data.waitTimes);
       if(restaurant) {
         restaurant.set({ waitTimes: data.waitTimes });        
       }

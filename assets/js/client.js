@@ -80,14 +80,9 @@ $('body').on('touchstart.dropdown', '.dropdown-menu', function (e) { e.stopPropa
       this.coordsUpdated = timestamp;
       this.coords = coords;
 
-      if(firstTime) {
-        // The first time, we automatically update (because there are no restaurants on-screen yet)
-        this.currentView.updateLocation(this.coords,{});
-      }
-      else {
-        // TODO: After the first time, ask the user if they'd like to update restaurants list
-      }
-    },
+      App.trigger('change:gpsCoords', { firstTime: firstTime, coords: this.coords });
+
+    }
 
   });
 
