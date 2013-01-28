@@ -5,21 +5,29 @@ exports.index = function(req, res, next) {
   var callback = function(err,restaurants) {
     res.jsonData = restaurants;
     next();
-  }
+  }, result;
 
   if(req.query && req.query.location) {
     // IMPORTANT - MongoDB geo coords ordering is LONGITUDE FIRST
     // That's why we're calling reverse() at the end of this next line
     var location = req.query.location.split(',').map(function(x) { return parseFloat(x, 10); }).reverse();
-    Restaurant.findNear(location).limit(20).lean().exec(callback);
+    result = Restaurant.findNear(location).limit(20).lean()
   } else {
-    Restaurant.find().sort('_id').limit(20).lean().exec(callback);
+    result = Restaurant.find().sort('_id').limit(20).lean()
   }
+
+  if(req.query && req.query.page) {
+    var skip = (parseInt(req.query.page)-1) * 20;
+    console.log(skip);
+    result.skip(skip);
+  }
+
+  result.exec(callback);
 }
 
 
 exports.search = function(req, res, next) {
-  console.log(req.query.name);
+
   Restaurant.findByName(req.query.name).limit(10).lean().exec(function (err, restaurants) {
     if (err) return res.send(500);
     res.jsonData = restaurants;

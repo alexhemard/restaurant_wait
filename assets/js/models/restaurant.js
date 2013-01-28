@@ -16,7 +16,7 @@
     },
 
     declareWaitTime: function(optionId) {
-      this.collection.socket.emit('waitTime', { restaurant: this.id, option: optionId });
+      App.socket.emit('waitTime', { restaurant: this.id, option: optionId });
     },
 
     getWaitTimeText: function() {
@@ -106,25 +106,51 @@
 
     model: App.Models.Restaurant,
 
+    initialize: function() {
+
+    },
+
     url: function() {
       return '/api/restaurants';
     },
 
-    updateLocation: function(coords, fetchOptions) {
-      fetchOptions = fetchOptions || {};
-      this.fetch({ data: $.param({location: coords.join(',')})});
+    updateLocation: function(coords) {
+      if(!coords) coords = this.lastCoords;
+
+      var fetchOptions = { data: $.param({location: coords.join(',')})};
+      this.lastFetchOptions = fetchOptions;
+
+      this.fetch(fetchOptions);
+
+      this.lastCoords = coords;
     },
 
-    search: function(options, page) {
-      this.fetch({
+    search: function(options) {
+      if(!options.name) return this.updateLocation();
+      var fetchOptions = {
         url: '/api/search',
         data: $.param(options)
-      });
+      };
+      
+      this.lastFetchOptions = fetchOptions;
+
+      this.fetch(fetchOptions);
     },
 
-    listen: function() {
-      this.socket = io.connect();
-      this.socket.on('update', _.bind(this.onRestaurantUpdate, this));
+    goToPage: function(page) {
+      var fetchOptions = _.clone(this.lastFetchOptions)
+      , data;
+
+      if(!(this.lastFetchOptions && parseInt(page))) return;
+
+      if(fetchOptions.data){
+        data = $.deparam(fetchOptions.data);
+        _.extend(data, {page: parseInt(page)});
+        _.extend(fetchOptions, {data: $.param(data)});
+      }
+
+      this.lastFetchOptions = fetchOptions;
+      this.fetch(fetchOptions);
     },
 
     comparator: function(a, b) {
@@ -142,24 +168,7 @@
       return aDistance - bDistance;
     },
 
-    onRestaurantUpdate: function(data) {
-      // console.log(data);
-      var restaurant = this.get(data.restaurantId);
-      if(restaurant) {
-        restaurant.set({ waitTimes: data.waitTimes });
-        //console.log('Updated restaurant ' + restaurant.id);
-      }
-      //else console.log('Tried to update non-existent restaurant ' + data.restaurant._id);
-    },
 
-    declareWaitTime: function(restaurantId, optionId) {
-      var restaurant = this.get(restaurantId);
-      if(restaurant) {
-        restaurant.declareWaitTime(optionId);
-        //console.log('Declared wait time ' + optionId + ' for restaurant ' + restaurantId);
-      }
-      //else console.log('Tried to declare wait time ' + optionId + ' for non-existent restaurant ' + restaurantId);
-    }
   });
 
 })(window.App);

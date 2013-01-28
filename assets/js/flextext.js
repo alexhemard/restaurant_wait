@@ -11,9 +11,9 @@
                 newSize = (fontSize*(multiplier-0.2));
 
 
-            console.log(maxWidth);
-            console.log(ourText.width());
-            console.log(newSize);
+            // console.log(maxWidth);
+            // console.log(ourText.width());
+            // console.log(newSize);
             ourText.css(
                 "fontSize",
                 (maxFontSize > 0 && newSize > maxFontSize) ?

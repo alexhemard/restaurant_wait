@@ -1,5 +1,6 @@
 //= require socket.io
 //= require jquery
+//= require jquery-deparam.min
 //= require bootstrapManifest
 //= require underscore
 //= require backbone
@@ -28,10 +29,11 @@ $('body').on('touchstart.dropdown', '.dropdown-menu', function (e) { e.stopPropa
     init: function() {
       var _this = this;
 
-      Backbone.history.start({pushState: true});
-      
-      $(function() {
+      if(!App.socket) App.socket = io.connect();
 
+      Backbone.history.start({pushState: true});
+
+      $(function() {
       });
     },
 
