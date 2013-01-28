@@ -3,8 +3,8 @@
   App.Views.RestaurantsList = App.Views.Base.extend({
 
     events: {
-      "click .pager .next": "nextPage",
-      "click .pager .previous": "previousPage",
+      "click .pager .swag-next a": "nextPage",
+      "click .pager .swag-previous a": "previousPage",
       "click .update-position-btn": "onRefreshLocation"
     },
 
