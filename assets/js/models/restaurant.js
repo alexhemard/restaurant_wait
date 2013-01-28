@@ -111,18 +111,24 @@
     },
 
     updateLocation: function(coords) {
+      if(!coords) coords = this.lastCoords;
+
       var fetchOptions = { data: $.param({location: coords.join(',')})};
       this.lastFetchOptions = fetchOptions;
 
       this.fetch(fetchOptions);
+
+      this.lastCoords = coords;
     },
 
-    search: function(options, page) {
+    search: function(options) {
+      if(!options.name) return this.updateLocation();
       var fetchOptions = {
         url: '/api/search',
         data: $.param(options)
       };
-      this.lastFetchOptions = fetchOption;
+      
+      this.lastFetchOptions = fetchOptions;
 
       this.fetch(fetchOptions);
     },
