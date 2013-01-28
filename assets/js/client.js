@@ -8,7 +8,6 @@
 //= require router
 //= require_tree ./models
 //= require_tree ./views
-//= require dotdotdot
 //= require flextext
 //= require spinner
 
