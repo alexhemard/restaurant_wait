@@ -1,20 +1,31 @@
 exports.loggerFormat = 'dev';
 exports.useErrorHandler = true;
-exports.mongodb = 'mongodb://nodejitsu_notmc:oemv67ed0kqmelpgan117339g2@ds049537.mongolab.com:49537/nodejitsu_notmc_nodejitsudb7389808613';
-// exports.mongodb = 'mongodb://notmc:@ds035147.mongolab.com:35147/eatnownola';
-// mongo --host ds043937.mongolab.com --port 43937 -u nodejitsu_jwietelmann -p 1j1gaj9jah995h8f1ibuf29r9n nodejitsu_jwietelmann_nodejitsudb3169538436
-//exports.mongodb = 'mongodb://swagbasket:swagbasket@ds047307.mongolab.com:47307/restaurantwait';
-exports.sessionSecret = 'sw4gb4$k3t!!!';
+exports.mongodb = 'mongodb://localhost/boilerplate';
+exports.sessionSecret = 'your secret here';
 
-exports.socketsRedis = {
-  port: 9242,
-  url: 'dory.redistogo.com',
-  password: '181c9f6aaa8aef23b0b51ba9df2bdfc0'
+exports.enableGuestLogin = true;
+exports.enableEmailLogin = true;
+exports.twitter = {
+  consumerKey: 'my consumer key',
+  consumerSecret: 'my consumer secret'
+};
+exports.facebook = {
+  clientID: 'my client id',
+  clientSecret: 'my client secret',
+  callbackURL: 'http://127.0.0.1:3000/auth/facebook/callback'
 };
 
-// This is NOTMC's real account
+// exports.socketsRedis = {
+//   port: 9799,
+//   url: 'slimehead.redistogo.com',
+//   password: '283803f32cc90c73b1270f74e55b3666'
+// };
+
+// NOTMC Test Credentials - THESE CANNOT BUY PHONE NUMBERS FOR REAL
 exports.twilio = {
-  account: 'AC20b5cb6e81f6a56c0887dac33d5c10e1',
-  token: '2821686ca49e315068dcc0bfbfe3aca0',
-  application: 'AP267190721b56867bd1c6cc79c606cc2f'
+  account: 'AC4159d49dcf636c0ee4454747153f470f',
+  token: '25674d4e42f21209ba26b64cf4541e18',
+  application: 'AP5bf78e6aa4ba48da90b4c01a6ebcdd9d'
 };
+
+
