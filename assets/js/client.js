@@ -29,6 +29,8 @@ $('body').on('touchstart.dropdown', '.dropdown-menu', function (e) { e.stopPropa
     init: function() {
       var _this = this;
 
+      if(!App.socket) App.socket = io.connect();
+
       Backbone.history.start({pushState: true});
 
       $(function() {

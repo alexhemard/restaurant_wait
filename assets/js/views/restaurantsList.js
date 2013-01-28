@@ -16,12 +16,15 @@
       $('#screw-bootstrap li.search-bar').on('click', function (e) {e.stopPropagation();});
       this.listenTo(App, 'search:restaurants', this.search);
 
+      App.socket.on('update', _.bind(this.onWaitTimeUpdate, this));
+
       $("body").spin();
     },
 
     render: function() {
 
       App.trigger('show:dropdown');
+
       this.$el.html(jade.templates[this.template + '.jade']);
       var $restoTiles = this.$el.find('.resto-tiles');
       
@@ -96,7 +99,17 @@
       this.currentPage += 1
       this.goToPage(this.currentPage);
       
-    }
+    },
+
+    onWaitTimeUpdate: function(data) {
+      var restaurant = this.model.get(data.restaurantId);
+      console.log(restaurant);
+      console.log(data.waitTimes);
+      if(restaurant) {
+        restaurant.set({ waitTimes: data.waitTimes });        
+      }
+    },
+
   });
 
 })(window.App);

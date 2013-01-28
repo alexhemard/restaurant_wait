@@ -106,6 +106,10 @@
 
     model: App.Models.Restaurant,
 
+    initialize: function() {
+
+    },
+
     url: function() {
       return '/api/restaurants';
     },
@@ -149,11 +153,6 @@
       this.fetch(fetchOptions);
     },
 
-    listen: function() {
-      if(!App.socket) App.socket = io.connect();
-      App.socket.on('update', _.bind(this.onRestaurantUpdate, this));
-    },
-
     comparator: function(a, b) {
       if(App.coords == null) return 0;
 
@@ -169,13 +168,6 @@
       return aDistance - bDistance;
     },
 
-    onRestaurantUpdate: function(data) {
-      var restaurant = this.get(data.restaurantId);
-
-      if(restaurant) {
-        restaurant.set({ waitTimes: data.waitTimes });
-      }
-    },
 
   });
 
