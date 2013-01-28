@@ -1,9 +1,14 @@
 var models = require('../../models')
+, _ = require('underscore')
 , Restaurant = models.Restaurant;
 
 exports.index = function(req, res, next) {
   var callback = function(err,restaurants) {
-    res.jsonData = restaurants;
+    res.jsonData = _.map(restaurants, function(restaurant) { 
+      restaurant.jazzUpWaitTimes(); 
+      return restaurant.toObject()
+    });
+
     next();
   }, result;
 
@@ -11,9 +16,9 @@ exports.index = function(req, res, next) {
     // IMPORTANT - MongoDB geo coords ordering is LONGITUDE FIRST
     // That's why we're calling reverse() at the end of this next line
     var location = req.query.location.split(',').map(function(x) { return parseFloat(x, 10); }).reverse();
-    result = Restaurant.findNear(location).limit(20).lean()
+    result = Restaurant.findNear(location)
   } else {
-    result = Restaurant.find().sort('_id').limit(20).lean()
+    result = Restaurant.find().sort('_id')
   }
 
   if(req.query && req.query.page) {
@@ -22,15 +27,20 @@ exports.index = function(req, res, next) {
     result.skip(skip);
   }
 
-  result.exec(callback);
+  result.limit(20).exec(callback);
 }
 
 
 exports.search = function(req, res, next) {
 
-  Restaurant.findByName(req.query.name).limit(10).lean().exec(function (err, restaurants) {
+  Restaurant.findByName(req.query.name).limit(10).exec(function (err, restaurants) {
     if (err) return res.send(500);
-    res.jsonData = restaurants;
+
+    res.jsonData = _.map(restaurants, function(restaurant) { 
+      restaurant.jazzUpWaitTimes(); 
+      return restaurant.toObject()
+    });
+
     next();
   });
 }
@@ -42,6 +52,7 @@ exports.show = function(req, res, next) {
   }
   Restaurant.findOne(query, function (err, restaurant) {
     if (err) return res.send(500);
+    restaurant.jazzUpWaitTimes();
     res.jsonData = restaurant;
     next();
   });

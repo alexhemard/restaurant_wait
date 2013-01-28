@@ -11,7 +11,7 @@
     // this is a steaming pile of dog poo now
 
     restaurantIndex: function (page) {
-      if(typeof App.dropDownMenu === "undefined"){
+      if(!App.dropDownMenu){
         App.dropDownMenu = new App.Views.DropDownMenu({el: '#screw-bootstrap'});
       }
 
@@ -23,6 +23,12 @@
     },
 
     restaurantShow: function (id) {
+      if(!App.dropDownMenu){
+        App.dropDownMenu = new App.Views.DropDownMenu({el: '#screw-bootstrap'});
+      }
+
+      App.dropDownMenu.render();
+
       restaurant = new App.Models.Restaurant({_id: id})
       restaurant.fetch();
       App.currentView = new App.Views.Restaurant({ el: '.content-wrapper', model: restaurant });

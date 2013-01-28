@@ -10,8 +10,10 @@ module.exports = function(io) {
       Restaurant.findById(data.restaurant, function(err, restaurant) {
 
         restaurant.declareWaitTime(data.option, socket.handshake.sessionID);
+        restaurant.jazzUpWaitTimes();
         restaurant.save(); // We don't need to wait for the save to succeed
-        io.sockets.emit('update', { restaurantId: restaurant.id, waitTimes: restaurant.waitTimes }); // Send the updated waitTimes
+        io.sockets.emit('update', { restaurantId: restaurant.id, waitTimes: restaurant.waitTimes, vendorWaitTime: restaurant.vendorWaitTime }); // Send the updated waitTimes
+        
       });
     });
   });

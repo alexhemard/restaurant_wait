@@ -42,6 +42,21 @@ exports.method('declareWaitTime', function(option, sessionId) {
   });
 });
 
+exports.method('jazzUpWaitTimes', function() {
+  var oneHour = 60 * 60 * 1000
+  , currentDate = new Date;
+
+  this.waitTimes = _.filter(this.waitTimes, function(waitTime) { 
+    return ((currentDate - waitTime._id.getTimestamp()) < oneHour)
+  });
+
+  if(this.vendorWaitTime){
+    if(((currentDate - waitTime._id.getTimestamp()) < oneHour)) {
+      this.vendorWaitTime = null;
+    }
+  }
+});
+
 exports.method('declareVendorWaitTime', function(option, sessionId) {
   var waitTime = new WaitTime({sessionId: sessionId, option: option});
   waitTime.save(function(err, restaurant) {
