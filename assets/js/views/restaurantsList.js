@@ -70,28 +70,29 @@
       //var firstTime = e.firstTime;
       if(!options.firstTime) {
       
-      var $div = $('.location-change-container'),
-      newBottom = $div.hasClass('open') ? -50 : 0 ;
-
-      if (newBottom == 0)
-        $div.show();
-
-      $div
-        .toggleClass('open')
-        .animate({'bottom': newBottom+'px'}, 500, function () {
-          if (newBottom !== 0) {
-            $div.hide();
-          }
-        });
+        var $div = $('.location-change-container'),
+        newBottom = $div.hasClass('open') ? -50 : 0 ;
+  
+        if (newBottom == 0)
+          $div.show();
+  
+        $div
+          .toggleClass('open')
+          .animate({'bottom': newBottom+'px'}, 500, function () {
+            if (newBottom !== 0) {
+              $div.hide();
+            }
+          });
           
       } else {
-        this.updateLocation(options.coords);
+        this.updateLocation();
       }
     },
 
     onRefreshLocation: function(e) {
       e.preventDefault();      
       this.updateLocation();
+      this.toggleLocationChange();
     },
 
     updateLocation: function(coords,options) {
