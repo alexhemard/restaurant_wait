@@ -11,6 +11,8 @@ exports.index = function(req, res, next) {
 
     next();
   }, result;
+  
+  var RESULT_LIMIT = 9;
 
   if(req.query && req.query.location) {
     // IMPORTANT - MongoDB geo coords ordering is LONGITUDE FIRST
@@ -22,12 +24,12 @@ exports.index = function(req, res, next) {
   }
 
   if(req.query && req.query.page) {
-    var skip = (parseInt(req.query.page)-1) * 20;
+    var skip = (parseInt(req.query.page)-1) * RESULT_LIMIT;
     console.log(skip);
     result.skip(skip);
   }
 
-  result.limit(20).exec(callback);
+  result.limit(RESULT_LIMIT).exec(callback);
 }
 
 
