@@ -25,9 +25,13 @@
     },
 
     updateWaitTimeDisplay: function() {
-      var percents = this.model.getWaitTimePercents()
+      var percents = this.model.getWaitTimePercents(),
+          vendorWaitTime = this.model.get('vendorWaitTime'),
         , $waitTimeBar
       ;
+      
+      if (vendorWaitTime)
+        this.$el.addClass('verified');
 
       _.each(percents, _.bind(function(percent, option) {
         //console.log('Setting resto ' + model.id + ' option ' + option + ' bar to ' + percent + '%');
