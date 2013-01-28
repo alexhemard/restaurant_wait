@@ -1,5 +1,5 @@
 {
-  "name": "swagbasket",
+  "name": "eatnownola",
   "version": "0.0.1-46",
   "private": true,
   "scripts": {
@@ -32,7 +32,7 @@
   "devDependencies": {
     "supervisor": "*"
   },
-  "subdomain": "swagbasket",
+  "subdomain": "eatnownola",
   "domains": [
     "eatnownola.com",
     "www.eatnownola.com"
