@@ -25,7 +25,8 @@
       }
       
       this.tileView.updateWaitTimeDisplay();
-     
+
+      $("body").spin(false);
     },
 
     onWaitTimeUpdate: function(data) {
