@@ -2,6 +2,7 @@ extends ../layout
 
 block content
   header.top-bar.clearfix
+    //- a.btn(data-toggle="changeLocation") Change Location
     a.logo-link.desktop-display.phone-hidden(href="/", title="Eat Now NOLA Homepage")
       img.logo(src='/img/eat-now-logo.png', alt="Eat Now! New Orleans")
     a.brand.desktop-hidden.phone-display.logo-small
@@ -13,6 +14,6 @@ block content
     ul.unstyled.resto-tiles
   ul.location-change-container.clearfix
     li
-      a.btn.update-position-btn(href="/")
+      a.btn.update-position-btn
         i.icon-repeat
         | Refresh From Your New Location
