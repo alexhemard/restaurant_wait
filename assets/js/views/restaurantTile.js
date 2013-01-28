@@ -25,8 +25,8 @@
     },
 
     updateWaitTimeDisplay: function() {
-      var percents = this.model.getWaitTimePercents(),
-          vendorWaitTime = this.model.get('vendorWaitTime'),
+      var percents = this.model.getWaitTimePercents()
+        , vendorWaitTime = this.model.get('vendorWaitTime')
         , $waitTimeBar
       ;
       
