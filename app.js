@@ -46,8 +46,6 @@ if(config.socketsRedis) (function() {
     , client = redis.createClient(port, url)
   ;
 
-  console.log(password);
-
   if(password) {
     pub.auth(password, function (err) { if (err) throw err; });
     sub.auth(password, function (err) { if (err) throw err; });

@@ -1,6 +1,6 @@
 exports.loggerFormat = 'dev';
 exports.useErrorHandler = true;
-exports.mongodb = 'mongodb://nodejitsu_notmc:oemv67ed0kqmelpgan117339g2@ds049537.mongolab.com/eatnownola';
+exports.mongodb = 'mongodb://nodejitsu_notmc:oemv67ed0kqmelpgan117339g2@ds049537.mongolab.com:49537/nodejitsu_notmc_nodejitsudb7389808613';
 // exports.mongodb = 'mongodb://notmc:@ds035147.mongolab.com:35147/eatnownola';
 // mongo --host ds043937.mongolab.com --port 43937 -u nodejitsu_jwietelmann -p 1j1gaj9jah995h8f1ibuf29r9n nodejitsu_jwietelmann_nodejitsudb3169538436
 //exports.mongodb = 'mongodb://swagbasket:swagbasket@ds047307.mongolab.com:47307/restaurantwait';
