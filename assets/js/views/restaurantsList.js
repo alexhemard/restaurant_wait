@@ -6,6 +6,7 @@
       this.tileViews = {};
       this.model.on('reset', _.bind(this.render, this));
       $('[data-toggle=changeLocation]').on('click', _.bind(this.toggleLocationChange, this));
+      $('#screw-bootstrap li.search-bar').on('click', function (e) {e.stopPropagation();});
       this.listenTo(App, 'search:restaurants', this.search);
 
       $("body").spin();
