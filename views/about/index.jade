@@ -1,34 +1,47 @@
-.about-page.span10
-  h1 About
-  img.logo-inline(src='/img/eat-now-logo-inline-sm.png', alt='Eat Now NOLA')
-  .about-sections
-    .about-section
-      h3 How to use the Web App
-      .content
-      dl
-        dt Searching by name
-        dd
-          | Click the Search button at the top of the page and type in the name of the restaurant you'd like to search for.
-        dt Searching by location
-        dd
-          | If you choose to share your location with us, we will show you the closest 40 restaurants to you, ordered by distance. You can then choose to resort them by wait time.
-        dt Searching by Neighborhood
-        dd
-          | Want to find a restaurant in a specific neighborhood? Use the Neighborhood dropdown menu and take your pic.
-    .about-section
-      h3 Our data
-      .content
+.about-page-wrapper
+  .about-page.span10
+    h1 About
+      img.logo-inline(src='/img/eat-now-logo-inline-sm.png', alt='Eat Now NOLA')
+    .about-sections
+      #how-to-use.about-section
+        h3 How to use the Web App
+        .content
         dl
-          dt Where does it come from?
-          dd.
-            When we have data coming directly from a restaurant, we'll show that. If not, we take all your votes and show you the average.
-          dt How to vote
-          dd.
-            If you are at the restaurant in question, click on the button that best describes the wait time there. You can choose between No Wait, Short Wait (15-30min), Long Wait (30-60min), or Not Seating.
-    .about-section
-      h3 Register Your Restaurant
-      .content Email us at
-        a(href='mailto:registrar@eatnownola.com', title='Register') Registrar@EatNowNola.com
-        |  if you would like to be included in our database.
->>>>>>> Stashed changes
-
+          dt Searching by location (default)
+          dd
+            p After you share your location with us, we will show you the closest 40 restaurants to you, ordered by distance. You can then choose to resort them by wait time.
+            p Note: 
+              em If you choose to not share your location, we will show you the closest 40 restaurants to the intersection of St. Charles Ave. and Poydras St. in downtown New Orleans.
+          dt Searching by name
+          dd
+            dl
+              dt Mobile Devices
+              dd Under the "Search" menu, you'll find a search field. Click that field and using the controls on your device, enter the name of the restaurant you'd like to search for.
+            dl
+              dt Computers
+              dd Find the search bar in the top right corner of the page and type in the name of the restaurant you'd like to search for.  Start typing away in that field and wait to see the results.
+          //- dt Searching by Neighborhood
+          //- dd
+          //-   | Want to find a restaurant in a specific neighborhood? Use the Neighborhood dropdown menu and take your pic.
+      #our-data.about-section
+        h3 Our data
+        .content
+          dl
+            dt Where does it come from?
+            dd.
+              The wait time data comes directly from both restaurants and diners. When we receive data directly from a restaurant, we'll show that and let you know that it's "verified" by the restaurant. If we don't have that information, we take all your votes and show you the average.
+            dt How to vote
+            dd.
+              If you'd like to cast your vote, pull up the homepage, find the restaurant you'd like to vote on and click on the button that best describes the wait time. You can choose between four wait times: None (No Wait), Short (15-30min), Long (30-60min), or Full (Not Seating).
+      #register.about-section
+        h3 Register Your Restaurant
+        .content
+          p
+            | If your restaurant isn't listed and you'd like it to be, the fastest way to get in our system is to complete this form:
+            a(href='http://www.neworleansonline.com/downloads/addChangeListing.pdf', title='Registration Form')
+              | Registration Form
+            |  and fax it to the number listed on the document.
+          p
+            | If you have other questions not answered here, send an email to 
+            a(href="mailto:info@eatnownola.com") info@eatnownola.com 
+            | and we'll do our best to respond to you as quickly as possible.

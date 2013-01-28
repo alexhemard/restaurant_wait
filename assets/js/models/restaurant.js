@@ -115,6 +115,13 @@
       this.fetch({ data: $.param({location: coords.join(',')})});
     },
 
+    search: function(options, page) {
+      this.fetch({
+        url: '/api/search',
+        data: $.param(options)
+      });
+    },
+
     listen: function() {
       this.socket = io.connect();
       this.socket.on('update', _.bind(this.onRestaurantUpdate, this));

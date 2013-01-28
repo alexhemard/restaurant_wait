@@ -4,8 +4,6 @@
 
     initialize: function() {
       this.model.on('change', _.bind(this.render, this));
-      $('.about-btn').on('click', _.bind(this.onClickAboutBtn, this));
-
       $("body").spin();
     },
 
@@ -17,12 +15,7 @@
         this.tileView.$el.detach();
         this.tileView.render().$el.appendTo(this.$el);
     },
-
-    onClickAboutBtn : function (e) {
-      e.preventDefault();
-      console.log('About Page Popup');
-    }
-
+    
   });
 
 })(window.App);

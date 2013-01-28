@@ -23,12 +23,12 @@ li.resto-tile(id=_id)
             a(data-behavior="call", href="tel:+1#{tourismBoard.phone ? tourismBoard.phone.replace(/[^0-9]/gi, '') : tourismBoard.phone}").btn.btn-small.call
               i.icon-phone
               |  #{tourismBoard.phone}
-  .wait-color(data-behavior="wait-color")
+  .wait-color.no-data(data-behavior="wait-color")
 
   .contents
     h4.wait-time
       i.icon-time
-      span.time-text 15-30min
+      span.time-text 
     hr
     .cuisine-tags
       span= tourismBoard.cuisines.slice(0,3).join(", ")
@@ -49,8 +49,8 @@ li.resto-tile(id=_id)
       //-   i.icon-chevron-up
       .graph-wrapper
         p.need-info
-          | We do not have enough information to verify the wait time yet.
-          | Send us your votes if you have visited this restaurant recently.
+          | We have no recent data from this restaurant, but if you have visited it
+          | recently you can cast your vote by using the buttons below.
 
         ul.graph
           li.bar-wrapper
@@ -71,7 +71,7 @@ li.resto-tile(id=_id)
   footer.tile-footer
     span.resto-verified
       i.icon-ok-circle
-      | Verified By Restaurant
+      | Restaurant-Verified Wait Time
 
     .vote-wrapper
       .choices
