@@ -4,12 +4,14 @@
 
     events: {
       "click .pager .next": "nextPage",
-      "click .pager .previous": "previousPage"
+      "click .pager .previous": "previousPage",
+      "click .update-position-btn": "onRefreshLocation"
     },
 
     template: 'restaurants/list',
 
     initialize: function() {
+      var _this = this;
       this.tileViews = {};
       this.model.on('reset', _.bind(this.render, this));
       $('[data-toggle=changeLocation]').on('click', _.bind(this.toggleLocationChange, this));
@@ -17,6 +19,8 @@
       this.listenTo(App, 'search:restaurants', this.search);
 
       App.socket.on('update', _.bind(this.onWaitTimeUpdate, this));
+
+      this.listenTo(App, "change:gpsCoords", function(e) { _this.toggleLocationChange(e) });
 
       $("body").spin();
     },
@@ -62,19 +66,26 @@
     },
 
     toggleLocationChange : function (e) {
+      //var firstTime = e.firstTime;
+      if(!e.firstTime) {
+        var $div = $('.location-change-container'),
+        newBottom = $div.hasClass('open') ? -50 : 0 ;
+        
+        $('.location-change-container')
+          .toggleClass('open')
+          .animate({'bottom': newBottom+'px'}, 500);
+      } else {
+        this.updateLocation(e.coords);
+      }
+    },
 
-      e.preventDefault();
-
-      var $div = $('.location-change-container'),
-      newBottom = $div.hasClass('open') ? -50 : 0 ;
-
-      $('.location-change-container')
-        .toggleClass('open')
-        .animate({'bottom': newBottom+'px'}, 500);
-
+    onRefreshLocation: function(e) {
+      e.preventDefault();      
+      this.updateLocation();
     },
 
     updateLocation: function(coords,options) {
+      if(!coords) coords = App.coords;
       this.model.updateLocation(coords,options);
     },
 
