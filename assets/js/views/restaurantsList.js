@@ -2,6 +2,13 @@
 
   App.Views.RestaurantsList = App.Views.Base.extend({
 
+    events: {
+      "click .pager .next": "nextPage",
+      "click .pager .previous": "previousPage"
+    },
+
+    template: 'restaurants/list',
+
     initialize: function() {
       this.tileViews = {};
       this.model.on('reset', _.bind(this.render, this));
@@ -15,7 +22,9 @@
     render: function() {
 
       App.trigger('show:dropdown');
-      this.$el.html('');
+      this.$el.html(jade.templates[this.template + '.jade']);
+      var $restoTiles = this.$el.find('.resto-tiles');
+      
       this.model.each(_.bind(function(restaurant) {
         // build tile view if it doesn't exist
         var itemView = this.tileViews[restaurant.id]
@@ -25,7 +34,7 @@
         }
 
         itemView.$el.detach();
-        itemView.render().$el.appendTo(this.$el);
+        itemView.render().$el.appendTo($restoTiles);
         setTimeout(function() { itemView.updateWaitTimeDisplay() }, 1000);
 
       }, this));
@@ -39,6 +48,8 @@
 
       $("body").spin(false);
     },
+
+    currentPage: 1,
 
     // re-sorts the tiles according to the sort order of the model collection
     sort: function() {
@@ -65,7 +76,26 @@
     },
 
     search: function(e) {
+      this.currentPage = 1;
       this.model.search(e);
+    },
+
+    goToPage: function(page) {
+      this.model.goToPage(page);
+    },
+
+    previousPage: function(e) {
+      console.log("sup");
+      if (this.currentPage < 1) return;
+      this.currentPage -= 1;
+      this.goToPage(this.currentPage);
+    },
+
+    nextPage: function(e) {
+      console.log("sup");
+      this.currentPage += 1
+      this.goToPage(this.currentPage);
+      
     }
   });
 

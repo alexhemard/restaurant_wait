@@ -1,5 +1,6 @@
 //= require socket.io
 //= require jquery
+//= require jquery-deparam.min
 //= require bootstrapManifest
 //= require underscore
 //= require backbone
