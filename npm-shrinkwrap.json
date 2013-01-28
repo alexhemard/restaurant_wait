@@ -250,13 +250,13 @@
       }
     },
     "connect-mongo": {
-      "version": "0.2.0",
+      "version": "0.3.2",
       "dependencies": {
         "mongodb": {
-          "version": "1.0.2",
+          "version": "1.2.10",
           "dependencies": {
             "bson": {
-              "version": "0.0.6"
+              "version": "0.1.5"
             }
           }
         }
@@ -292,7 +292,7 @@
           "version": "2.12.0",
           "dependencies": {
             "form-data": {
-              "version": "0.0.3",
+              "version": "0.0.6",
               "dependencies": {
                 "combined-stream": {
                   "version": "0.0.3",
@@ -303,12 +303,12 @@
                   }
                 },
                 "async": {
-                  "version": "0.1.9"
+                  "version": "0.1.22"
                 }
               }
             },
             "mime": {
-              "version": "1.2.7"
+              "version": "1.2.9"
             }
           }
         },
@@ -354,6 +354,86 @@
               }
             }
           }
+        }
+      }
+    },
+    "passport.socketio": {
+      "version": "0.0.5",
+      "dependencies": {
+        "passport": {
+          "version": "0.1.15",
+          "dependencies": {
+            "pkginfo": {
+              "version": "0.2.3"
+            }
+          }
+        },
+        "connect": {
+          "version": "2.4.6",
+          "dependencies": {
+            "qs": {
+              "version": "0.5.1"
+            },
+            "formidable": {
+              "version": "1.0.11"
+            },
+            "crc": {
+              "version": "0.2.0"
+            },
+            "bytes": {
+              "version": "0.1.0"
+            },
+            "send": {
+              "version": "0.0.4",
+              "dependencies": {
+                "mime": {
+                  "version": "1.2.6"
+                },
+                "range-parser": {
+                  "version": "0.0.4"
+                }
+              }
+            },
+            "fresh": {
+              "version": "0.1.0"
+            },
+            "pause": {
+              "version": "0.0.1"
+            },
+            "debug": {
+              "version": "0.7.0"
+            }
+          }
+        },
+        "cookie": {
+          "version": "0.0.4"
+        },
+        "request": {
+          "version": "2.12.0",
+          "dependencies": {
+            "form-data": {
+              "version": "0.0.3",
+              "dependencies": {
+                "combined-stream": {
+                  "version": "0.0.3",
+                  "dependencies": {
+                    "delayed-stream": {
+                      "version": "0.0.5"
+                    }
+                  }
+                },
+                "async": {
+                  "version": "0.1.9"
+                }
+              }
+            },
+            "mime": {
+              "version": "1.2.7"
+            }
+          }
+        },
+        "xtend": {
+          "version": "1.0.3"
         }
       }
     },
