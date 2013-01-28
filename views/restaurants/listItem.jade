@@ -23,12 +23,12 @@ li.resto-tile(id=_id)
             a(data-behavior="call", href="tel:+1#{tourismBoard.phone ? tourismBoard.phone.replace(/[^0-9]/gi, '') : tourismBoard.phone}").btn.btn-small.call
               i.icon-phone
               |  #{tourismBoard.phone}
-  .wait-color(data-behavior="wait-color")
+  .wait-color.no-data(data-behavior="wait-color")
 
   .contents
     h4.wait-time
       i.icon-time
-      span.time-text 15-30min
+      span.time-text 
     hr
     .cuisine-tags
       span= tourismBoard.cuisines.slice(0,3).join(", ")
