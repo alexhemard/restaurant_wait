@@ -21,6 +21,10 @@ exports.static('findNear',function(location) {
   return this.find({location: { $near: location}});
 });
 
+exports.static('findByName',function(name) {
+  return this.find({name: { $regex: name, $options: 'i'}});
+});
+
 exports.method('declareWaitTime', function(option, sessionId) {
   if(option < 1 || option > 4) return;
 
