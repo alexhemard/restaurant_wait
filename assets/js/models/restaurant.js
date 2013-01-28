@@ -110,16 +110,37 @@
       return '/api/restaurants';
     },
 
-    updateLocation: function(coords, fetchOptions) {
-      fetchOptions = fetchOptions || {};
-      this.fetch({ data: $.param({location: coords.join(',')})});
+    updateLocation: function(coords) {
+      var fetchOptions = { data: $.param({location: coords.join(',')})};
+      this.lastFetchOptions = fetchOptions;
+
+      this.fetch(fetchOptions);
     },
 
     search: function(options, page) {
-      this.fetch({
+      var fetchOptions = {
         url: '/api/search',
         data: $.param(options)
-      });
+      };
+      this.lastFetchOptions = fetchOption;
+
+      this.fetch(fetchOptions);
+    },
+
+    goToPage: function(page) {
+      var fetchOptions = _.clone(this.lastFetchOptions)
+      , data;
+
+      if(!(this.lastFetchOptions && parseInt(page))) return;
+
+      if(fetchOptions.data){
+        data = $.deparam(fetchOptions.data);
+        _.extend(data, {page: parseInt(page)});
+        _.extend(fetchOptions, {data: $.param(data)});
+      }
+
+      this.lastFetchOptions = fetchOptions;
+      this.fetch(fetchOptions);
     },
 
     listen: function() {
