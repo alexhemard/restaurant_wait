@@ -1,5 +1,5 @@
 {
-  "name": "swagbasket",
+  "name": "eatnownola",
   "version": "0.0.1-46",
   "dependencies": {
     "express": {
@@ -336,6 +336,24 @@
         },
         "debug": {
           "version": "0.7.0"
+        }
+      }
+    },
+    "slug": {
+      "version": "0.2.2",
+      "dependencies": {
+        "unicode": {
+          "version": "0.4.3",
+          "dependencies": {
+            "bufferstream": {
+              "version": "0.5.1",
+              "dependencies": {
+                "buffertools": {
+                  "version": "1.1.0"
+                }
+              }
+            }
+          }
         }
       }
     },

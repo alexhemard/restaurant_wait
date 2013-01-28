@@ -37,9 +37,14 @@ li.resto-tile(id=_id, style="background: #FFFFFF url(../img/large-placeholder-#{
     .stats-wrapper
       .info
         .details
-          p.description= tourismBoard.description
-            a.read-more
-              |  read more &raquo;
+          if (tourismBoard.description)
+            p.description= tourismBoard.description
+          else
+            p.description
+             | To find out more information about this restaurant, please click the
+             | "read more" button below to go straight to the restaurant's website.
+        .read-more
+            a.btn Read more...
       //- a.toggle-graph-btn.mini-title.closed.btn
       //-   span.btn-text View Votes
       //-   i.icon-chevron-up

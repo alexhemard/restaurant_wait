@@ -1,5 +1,5 @@
 {
-  "name": "swagbasket",
+  "name": "eatnownola",
   "version": "0.0.1-46",
   "private": true,
   "scripts": {
@@ -27,12 +27,13 @@
     "mysql": "2.0.0-alpha5",
     "cron": "*",
     "time": "*",
-    "slug": "*"
+    "slug": "*",
+    "passport.socketio": "*"
   },
   "devDependencies": {
     "supervisor": "*"
   },
-  "subdomain": "swagbasket",
+  "subdomain": "eatnownola",
   "domains": [
     "eatnownola.com",
     "www.eatnownola.com"
