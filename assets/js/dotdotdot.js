@@ -1,5 +1,5 @@
 /*
- *  jQuery dotdotdot 1.5.4
+ *  jQuery dotdotdot 1.5.6
  *
  *  Copyright (c) 2013 Fred Heusschen
  *  www.frebsite.nl
@@ -13,4 +13,579 @@
  */
 
 
-eval(function(p,a,c,k,e,r){e=function(c){return(c<a?'':e(parseInt(c/a)))+((c=c%a)>35?String.fromCharCode(c+29):c.toString(36))};if(!''.replace(/^/,String)){while(c--)r[e(c)]=k[c]||e(c);k=[function(e){return r[e]}];e=function(){return'\\w+'};c=1};while(c--)if(k[c])p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c]);return p}('(6($){4($.C.t){5}$.C.t=6(o){4(q.D==0){1d(A,\'1T 1U 1V Y "\'+q.1W+\'".\');5 q}4(q.D>1){5 q.1X(6(){$(q).t(o)})}7 d=q;4(d.R(\'t\')){d.L(\'1y.w\')}d.1z=6(){d.S(\'M.w\',6(e,c){e.Z();e.11();9.1e=(r 9.x==\'1Y\')?9.x:1A(d);9.1e+=9.1B;4(r c!=\'E\'){4(r c==\'1f\'||c 1C 1Z){c=$(\'<1g />\').F(c).G()}4(c 1C $){f=c}}$y=d.20(\'<1g 21="t" />\').T();$y.12().F(f.1D(A)).1E({\'x\':\'1F\',\'H\':\'1F\',\'22\':\'23\',\'24\':0,\'25\':0});7 a=8,N=8;4(v.13){a=v.13.1D(A);v.13.B()}4(U($y,9)){4(9.1h==\'T\'){N=T($y,9,a)}u{N=O($y,d,$y,9,a)}}$y.26($y.G());$y=P;4($.27(9.1i)){9.1i.I(d[0],N,f)}v.s=N;5 N}).S(\'s.w\',6(e,a){e.Z();e.11();4(r a==\'6\'){a.I(d[0],v.s)}5 v.s}).S(\'28.w\',6(e,a){e.Z();e.11();4(r a==\'6\'){a.I(d[0],f)}5 f}).S(\'1y.w\',6(e){e.Z();e.11();d.1j().1G().12().F(f).R(\'t\',8)});5 d};d.1G=6(){d.1H(\'.w\');5 d};d.V=6(){d.1j();4(9.V==\'Q\'){7 b=$(Q),1k=b.H(),1l=b.x();b.S(\'1I.w\'+v.1m,6(){4(1k!=b.H()||1l!=b.x()||!9.1J){1k=b.H();1l=b.x();4(J){1K(J)}J=29(6(){d.L(\'M.w\')},10)}})}u{W=14(d);J=2a(6(){7 a=14(d);4(W.H!=a.H||W.x!=a.x){d.L(\'M.w\');W=14(d)}},2b)}5 d};d.1j=6(){$(Q).1H(\'1I.w\'+v.1m);4(J){1K(J)}5 d};7 f=d.G(),9=$.2c(A,{},$.C.t.1L,o),v={},W={},J=P,$y=P;v.13=1M(9.1n,d);v.s=8;v.1m=k++;d.R(\'t\',A).1z().L(\'M.w\');4(9.V){d.V()}5 d};$.C.t.1L={\'O\':\'... \',\'1h\':\'2d\',\'1o\':{\'B\':[\' \',\',\',\';\',\'.\',\'!\',\'?\'],\'1N\':[]},\'1B\':0,\'1i\':P,\'1n\':P,\'x\':P,\'V\':8,\'1J\':A,\'1d\':8};7 k=1;6 T(b,o,c){7 d=b.T(),s=8;b.12();Y(7 a=0,l=d.D;a<l;a++){7 e=d.1p(a);b.F(e);4(c){b.F(c)}4(U(b,o)){e.B();s=A;1q}u{4(c){c.B()}}}5 s}6 O(b,c,d,o,f){7 g=b.G(),s=8;b.12();7 h=\'2e, 2f, 2g, 2h, 2i, 2j, 2k, 1O, 2l, 2m, 2n, 2o, 2p, 2q, 2r, 2s, 2t, 2u, 2v\';Y(7 a=0,l=g.D;a<l;a++){4(s){1q}7 e=g[a],$e=$(e);4(r e==\'E\'){2w}b.F($e);4(f){b[(b.2x(h))?\'1n\':\'F\'](f)}4(e.2y==3){4(U(d,o)){s=1r($e,c,d,o,f)}}u{s=O($e,c,d,o,f)}4(!s){4(f){f.B()}}}5 s}6 1r(a,b,c,o,d){7 f=8,e=a[0];4(r e==\'E\'){5 8}7 g=(o.1h==\'2z\')?\'\':\' \',15=1s(e).2A(g),16=-1,K=-1,17=0,18=15.D-1;1P(17<=18){7 m=2B.2C((17+18)/2);4(m==K){1q}K=m;19(e,15.X(0,K+1).1Q(g)+o.O);4(!U(c,o)){16=K;17=K}u{18=K}}4(16!=-1){7 h=1t(15.X(0,16+1).1Q(g),o);f=A;19(e,h)}u{7 i=a.2D();a.B();4(i.G().2E()>0){7 j=i.G().1p(-1-((d)?d.D:0));f=1r(j,b,c,o,d)}u{7 e=i.2F().G().1p(-1)[0],h=1t(1s(e),o);19(e,h);f=A;i.B()}}5 f}6 U(a,o){5 a.1u()>o.1e}6 1t(a,o){1P($.1R(a.X(-1),o.1o.B)>-1){a=a.X(0,-1)}4($.1R(a.X(-1),o.1o.1N)<0){a+=o.O}5 a}6 14(a){5{\'H\':a.2G(),\'x\':a.1u()}}6 19(e,a){4(e.1a){e.1a=a}u 4(e.1b){e.1b=a}u 4(e.1c){e.1c=a}}6 1s(e){4(e.1a){5 e.1a}u 4(e.1b){5 e.1b}u 4(e.1c){5 e.1c}u{5""}}6 1M(e,a){4(r e==\'E\'){5 8}4(!e){5 8}4(r e==\'1f\'){e=$(e,a);5(e.D)?e:8}4(r e==\'1O\'){5(r e.2H==\'E\')?8:e}5 8}6 1A(b){7 h=b.1u(),a=[\'2I\',\'2J\'];Y(z=0,l=a.D;z<l;z++){7 m=2K(b.1E(a[z]),10);4(2L(m)){m=0}h-=m}5 h}6 1d(d,m){4(!d){5 8}4(r m==\'1f\'){m=\'t: \'+m}u{m=[\'t:\',m]}4(Q.1v&&Q.1v.1S){Q.1v.1S(m)}5 8}7 n=$.C.1w;$.C.1w=6(a){4(r a!=\'E\'){4(q.R(\'t\')){4(r a!=\'6\'){5 q.L(\'M\',[a])}}5 n.I(q,a)}5 n.I(q)};7 p=$.C.1x;$.C.1x=6(a){4(r a!=\'E\'){4(q.R(\'t\')){7 b=$(\'<1g />\');b.1x(a);a=b.1w();b.B();5 q.L(\'M\',[a])}5 p.I(q,a)}5 p.I(q)}})(2M);',62,173,'||||if|return|function|var|false|opts|||||||||||||||||this|typeof|isTruncated|dotdotdot|else|conf|dot|height|inr||true|remove|fn|length|undefined|append|contents|width|call|watchInt|midPos|trigger|update|trunc|ellipsis|null|window|data|bind|children|test|watch|watchOrg|slice|for|preventDefault||stopPropagation|empty|afterElement|getSizes|textArr|position|startPos|endPos|setTextContent|innerText|nodeValue|textContent|debug|maxHeight|string|div|wrap|callback|unwatch|_wWidth|_wHeight|dotId|after|lastCharacter|eq|break|ellipsisElement|getTextContent|addEllipsis|innerHeight|console|html|text|destroy|bind_events|getTrueInnerHeight|tolerance|instanceof|clone|css|auto|unbind_events|unbind|resize|windowResizeFix|clearInterval|defaults|getElement|noEllipsis|object|while|join|inArray|log|No|element|found|selector|each|number|HTMLElement|wrapInner|class|border|none|padding|margin|replaceWith|isFunction|originalContent|setTimeout|setInterval|100|extend|word|table|thead|tbody|tfoot|tr|col|colgroup|embed|param|ol|ul|dl|select|optgroup|option|textarea|script|style|continue|is|nodeType|letter|split|Math|floor|parent|size|prev|innerWidth|jquery|paddingTop|paddingBottom|parseInt|isNaN|jQuery'.split('|'),0,{}))
+(function( $ )
+{
+  if ( $.fn.dotdotdot )
+  {
+    return;
+  }
+
+  $.fn.dotdotdot = function( o )
+  {
+    if ( this.length == 0 )
+    {
+      debug( true, 'No element found for "' + this.selector + '".' );
+      return this;
+    }
+    if ( this.length > 1 )
+    {
+      return this.each(
+        function()
+        {
+          $(this).dotdotdot( o );
+        }
+      );
+    }
+
+
+    var $dot = this;
+
+    if ( $dot.data( 'dotdotdot' ) )
+    {
+      $dot.trigger( 'destroy.dot' );
+    }
+
+    $dot.bind_events = function()
+    {
+      $dot.bind(
+        'update.dot',
+        function( e, c )
+        {
+          e.preventDefault();
+          e.stopPropagation();
+
+          opts.maxHeight = ( typeof opts.height == 'number' )
+            ? opts.height
+            : getTrueInnerHeight( $dot );
+
+          opts.maxHeight += opts.tolerance;
+
+          if ( typeof c != 'undefined' )
+          {
+            if ( typeof c == 'string' || c instanceof HTMLElement )
+            {
+              c = $('<div />').append( c ).contents();
+            }
+            if ( c instanceof $ )
+            {
+              orgContent = c;
+            }
+          }
+
+          $inr = $dot.wrapInner( '<div class="dotdotdot" />' ).children();
+          $inr.empty()
+            .append( orgContent.clone( true ) )
+            .css({
+              'height'  : 'auto',
+              'width'   : 'auto',
+              'border'  : 'none',
+              'padding' : 0,
+              'margin'  : 0
+            });
+
+          var after = false,
+            trunc = false;
+
+          if ( conf.afterElement )
+          {
+            after = conf.afterElement.clone( true );
+            conf.afterElement.remove();
+          }
+          if ( test( $inr, opts ) )
+          {
+            if ( opts.wrap == 'children' )
+            {
+              trunc = children( $inr, opts, after );
+            }
+            else
+            {
+              trunc = ellipsis( $inr, $dot, $inr, opts, after );
+            }
+          }
+          $inr.replaceWith( $inr.contents() );
+          $inr = null;
+
+          if ( $.isFunction( opts.callback ) )
+          {
+            opts.callback.call( $dot[ 0 ], trunc, orgContent );
+          }
+
+          conf.isTruncated = trunc;
+          return trunc;
+        }
+
+      ).bind(
+        'isTruncated.dot',
+        function( e, fn )
+        {
+          e.preventDefault();
+          e.stopPropagation();
+
+          if ( typeof fn == 'function' )
+          {
+            fn.call( $dot[ 0 ], conf.isTruncated );
+          }
+          return conf.isTruncated;
+        }
+
+      ).bind(
+        'originalContent.dot',
+        function( e, fn )
+        {
+          e.preventDefault();
+          e.stopPropagation();
+
+          if ( typeof fn == 'function' )
+          {
+            fn.call( $dot[ 0 ], orgContent );
+          }
+          return orgContent;
+        }
+
+      ).bind(
+        'destroy.dot',
+        function( e )
+        {
+          e.preventDefault();
+          e.stopPropagation();
+
+          $dot.unwatch()
+            .unbind_events()
+            .empty()
+            .append( orgContent )
+            .data( 'dotdotdot', false );
+        }
+      );
+      return $dot;
+    };  //  /bind_events
+
+    $dot.unbind_events = function()
+    {
+      $dot.unbind('.dot');
+      return $dot;
+    };  //  /unbind_events
+
+    $dot.watch = function()
+    {
+      $dot.unwatch();
+      if ( opts.watch == 'window' )
+      {
+        var $window = $(window),
+          _wWidth = $window.width(),
+          _wHeight = $window.height();
+
+        $window.bind(
+          'resize.dot' + conf.dotId,
+          function()
+          {
+            if ( _wWidth != $window.width() || _wHeight != $window.height() || !opts.windowResizeFix )
+            {
+              _wWidth = $window.width();
+              _wHeight = $window.height();
+
+              if ( watchInt )
+              {
+                clearInterval( watchInt );
+              }
+              watchInt = setTimeout(
+                function()
+                {
+                  $dot.trigger( 'update.dot' );
+                }, 10
+              );
+            }
+          }
+        );
+      }
+      else
+      {
+        watchOrg = getSizes( $dot );
+        watchInt = setInterval(
+          function()
+          {
+            var watchNew = getSizes( $dot );
+            if ( watchOrg.width  != watchNew.width ||
+               watchOrg.height != watchNew.height )
+            {
+              $dot.trigger( 'update.dot' );
+              watchOrg = getSizes( $dot );
+            }
+          }, 100
+        );
+      }
+      return $dot;
+    };
+    $dot.unwatch = function()
+    {
+      $(window).unbind( 'resize.dot' + conf.dotId );
+      if ( watchInt )
+      {
+        clearInterval( watchInt );
+      }
+      return $dot;
+    };
+
+    var orgContent  = $dot.contents(),
+      opts    = $.extend( true, {}, $.fn.dotdotdot.defaults, o ),
+      conf    = {},
+      watchOrg  = {},
+      watchInt  = null,
+      $inr    = null;
+
+    conf.afterElement = getElement( opts.after, $dot );
+    conf.isTruncated  = false;
+    conf.dotId      = dotId++;
+
+
+    $dot.data( 'dotdotdot', true )
+      .bind_events()
+      .trigger( 'update.dot' );
+
+    if ( opts.watch )
+    {
+      $dot.watch();
+    }
+
+    return $dot;
+  };
+
+
+  //  public
+  $.fn.dotdotdot.defaults = {
+    'ellipsis'  : '... ',
+    'wrap'    : 'word',
+    'lastCharacter': {
+      'remove'    : [ ' ', ',', ';', '.', '!', '?' ],
+      'noEllipsis'  : []
+    },
+    'tolerance' : 0,
+    'callback'  : null,
+    'after'   : null,
+    'height'  : null,
+    'watch'   : false,
+    'windowResizeFix': true,
+    'debug'   : false
+  };
+
+
+  //  private
+  var dotId = 1;
+
+  function children( $elem, o, after )
+  {
+    var $elements   = $elem.children(),
+      isTruncated = false;
+
+    $elem.empty();
+
+    for ( var a = 0, l = $elements.length; a < l; a++ )
+    {
+      var $e = $elements.eq( a );
+      $elem.append( $e );
+      if ( after )
+      {
+        $elem.append( after );
+      }
+      if ( test( $elem, o ) )
+      {
+        $e.remove();
+        isTruncated = true;
+        break;
+      }
+      else
+      {
+        if ( after )
+        {
+          after.remove();
+        }
+      }
+    }
+    return isTruncated;
+  }
+  function ellipsis( $elem, $d, $i, o, after )
+  {
+    var $elements   = $elem.contents(),
+      isTruncated = false;
+
+    $elem.empty();
+
+    var notx = 'table, thead, tbody, tfoot, tr, col, colgroup, object, embed, param, ol, ul, dl, select, optgroup, option, textarea, script, style';
+    for ( var a = 0, l = $elements.length; a < l; a++ )
+    {
+
+      if ( isTruncated )
+      {
+        break;
+      }
+
+      var e = $elements[ a ],
+        $e  = $(e);
+
+      if ( typeof e == 'undefined' )
+      {
+        continue;
+      }
+
+      $elem.append( $e );
+      if ( after )
+      {
+        $elem[ ( $elem.is( notx ) ) ? 'after' : 'append' ]( after );
+      }
+      if ( e.nodeType == 3 )
+      {
+        if ( test( $i, o ) )
+        {
+          isTruncated = ellipsisElement( $e, $d, $i, o, after );
+        }
+      }
+      else
+      {
+        isTruncated = ellipsis( $e, $d, $i, o, after );
+      }
+
+      if ( !isTruncated )
+      {
+        if ( after )
+        {
+          after.remove();
+        }
+      }
+    }
+    return isTruncated;
+  }
+  function ellipsisElement( $e, $d, $i, o, after )
+  {
+    var isTruncated = false,
+      e = $e[ 0 ];
+
+    if ( typeof e == 'undefined' )
+    {
+      return false;
+    }
+
+    var seporator = ( o.wrap == 'letter' ) ? '' : ' ',
+      textArr   = getTextContent( e ).split( seporator ),
+      position  = -1,
+      midPos    = -1,
+      startPos  = 0,
+      endPos    = textArr.length - 1;
+
+    while ( startPos <= endPos )
+    {
+      var m = Math.floor( ( startPos + endPos ) / 2 );
+      if ( m == midPos )
+      {
+        break;
+      }
+      midPos = m;
+
+      setTextContent( e, textArr.slice( 0, midPos + 1 ).join( seporator ) + o.ellipsis );
+
+      if ( !test( $i, o ) )
+      {
+        position = midPos;
+        startPos = midPos;
+      }
+      else
+      {
+        endPos = midPos;
+      }
+    }
+
+    if ( position != -1 && !( textArr.length == 1 && textArr[ 0 ].length == 0 ) )
+    {
+      var txt = addEllipsis( textArr.slice( 0, position + 1 ).join( seporator ), o );
+      isTruncated = true;
+      setTextContent( e, txt );
+    }
+    else
+    {
+      var $w = $e.parent();
+      $e.remove();
+
+      var afterLength = ( after ) ? after.length : 0 ;
+
+      if ( $w.contents().size() > afterLength )
+      {
+        var $n = $w.contents().eq( -1 - afterLength );
+        isTruncated = ellipsisElement( $n, $d, $i, o, after );
+      }
+      else
+      {
+        var e = $w.prev().contents().eq( -1 )[ 0 ];
+
+        if ( typeof e != 'undefined' )
+        {
+          var txt = addEllipsis( getTextContent( e ), o );
+          setTextContent( e, txt );
+          $w.remove();
+          isTruncated = true;
+        }
+
+      }
+    }
+
+    return isTruncated;
+  }
+  function test( $i, o )
+  {
+    return $i.innerHeight() > o.maxHeight;
+  }
+  function addEllipsis( txt, o )
+  {
+    while( $.inArray( txt.slice( -1 ), o.lastCharacter.remove ) > -1 )
+    {
+      txt = txt.slice( 0, -1 );
+    }
+    if ( $.inArray( txt.slice( -1 ), o.lastCharacter.noEllipsis ) < 0 )
+    {
+      txt += o.ellipsis;
+    }
+    return txt;
+  }
+  function getSizes( $d )
+  {
+    return {
+      'width' : $d.innerWidth(),
+      'height': $d.innerHeight()
+    };
+  }
+  function setTextContent( e, content )
+  {
+    if ( e.innerText )
+    {
+      e.innerText = content;
+    }
+    else if ( e.nodeValue )
+    {
+      e.nodeValue = content;
+    }
+    else if (e.textContent)
+    {
+      e.textContent = content;
+    }
+
+  }
+  function getTextContent( e )
+  {
+    if ( e.innerText )
+    {
+      return e.innerText;
+    }
+    else if ( e.nodeValue )
+    {
+      return e.nodeValue;
+    }
+    else if ( e.textContent )
+    {
+      return e.textContent;
+    }
+    else
+    {
+      return "";
+    }
+  }
+  function getElement( e, $i )
+  {
+    if ( typeof e == 'undefined' )
+    {
+      return false;
+    }
+    if ( !e )
+    {
+      return false;
+    }
+    if ( typeof e == 'string' )
+    {
+      e = $(e, $i);
+      return ( e.length )
+        ? e
+        : false;
+    }
+    if ( typeof e == 'object' )
+    {
+      return ( typeof e.jquery == 'undefined' )
+        ? false
+        : e;
+    }
+    return false;
+  }
+  function getTrueInnerHeight( $el )
+  {
+    var h = $el.innerHeight(),
+      a = [ 'paddingTop', 'paddingBottom' ];
+
+    for ( var z = 0, l = a.length; z < l; z++ ) {
+      var m = parseInt( $el.css( a[ z ] ), 10 );
+      if ( isNaN( m ) )
+      {
+        m = 0;
+      }
+      h -= m;
+    }
+    return h;
+  }
+  function debug( d, m )
+  {
+    if ( !d )
+    {
+      return false;
+    }
+    if ( typeof m == 'string' )
+    {
+      m = 'dotdotdot: ' + m;
+    }
+    else
+    {
+      m = [ 'dotdotdot:', m ];
+    }
+
+    if ( typeof window.console != 'undefined' )
+    {
+      if ( typeof window.console.log != 'undefined' )
+      {
+        window.console.log( m );
+      }
+    }
+    return false;
+  }
+
+
+  //  override jQuery.html
+  var _orgHtml = $.fn.html;
+    $.fn.html = function( str ) {
+    if ( typeof str != 'undefined' )
+    {
+      if ( this.data( 'dotdotdot' ) )
+      {
+        if ( typeof str != 'function' )
+        {
+          return this.trigger( 'update', [ str ] );
+        }
+      }
+      return _orgHtml.call( this, str );
+    }
+    return _orgHtml.call( this );
+    };
+
+
+  //  override jQuery.text
+  var _orgText = $.fn.text;
+    $.fn.text = function( str ) {
+    if ( typeof str != 'undefined' )
+    {
+      if ( this.data( 'dotdotdot' ) )
+      {
+        var temp = $( '<div />' );
+        temp.text( str );
+        str = temp.html();
+        temp.remove();
+        return this.trigger( 'update', [ str ] );
+      }
+      return _orgText.call( this, str );
+    }
+        return _orgText.call( this );
+    };
+
+
+})( jQuery );
