@@ -99,14 +99,12 @@
     },
 
     previousPage: function(e) {
-      console.log("sup");
       if (this.currentPage < 1) return;
       this.currentPage -= 1;
       this.goToPage(this.currentPage);
     },
 
     nextPage: function(e) {
-      console.log("sup");
       this.currentPage += 1
       this.goToPage(this.currentPage);
       
@@ -114,8 +112,6 @@
 
     onWaitTimeUpdate: function(data) {
       var restaurant = this.model.get(data.restaurantId);
-      console.log(restaurant);
-      console.log(data.waitTimes);
       if(restaurant) {
         restaurant.set({ waitTimes: data.waitTimes });        
       }

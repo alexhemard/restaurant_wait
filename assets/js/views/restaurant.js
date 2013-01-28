@@ -30,7 +30,6 @@
     },
 
     onWaitTimeUpdate: function(data) {
-      console.log(data);
       if(data.restaurantId) {
         this.model.set({ waitTimes: data.waitTimes})
       }
