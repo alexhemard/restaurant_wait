@@ -30,9 +30,8 @@ $('body').on('touchstart.dropdown', '.dropdown-menu', function (e) { e.stopPropa
       var _this = this;
 
       Backbone.history.start({pushState: true});
-      
-      $(function() {
 
+      $(function() {
       });
     },
 

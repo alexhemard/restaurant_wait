@@ -52,7 +52,7 @@
       this.$('.choices a[data-option]').removeClass('down');
       $button.addClass('down');
 
-      this.model.collection.declareWaitTime(this.model.id, optionId);
+      this.model.declareWaitTime(optionId);
     },
 
   });

@@ -16,7 +16,7 @@
     },
 
     declareWaitTime: function(optionId) {
-      this.collection.socket.emit('waitTime', { restaurant: this.id, option: optionId });
+      App.socket.emit('waitTime', { restaurant: this.id, option: optionId });
     },
 
     getWaitTimeText: function() {
@@ -150,8 +150,8 @@
     },
 
     listen: function() {
-      this.socket = io.connect();
-      this.socket.on('update', _.bind(this.onRestaurantUpdate, this));
+      if(!App.socket) App.socket = io.connect();
+      App.socket.on('update', _.bind(this.onRestaurantUpdate, this));
     },
 
     comparator: function(a, b) {
@@ -170,23 +170,13 @@
     },
 
     onRestaurantUpdate: function(data) {
-      // console.log(data);
       var restaurant = this.get(data.restaurantId);
+
       if(restaurant) {
         restaurant.set({ waitTimes: data.waitTimes });
-        //console.log('Updated restaurant ' + restaurant.id);
       }
-      //else console.log('Tried to update non-existent restaurant ' + data.restaurant._id);
     },
 
-    declareWaitTime: function(restaurantId, optionId) {
-      var restaurant = this.get(restaurantId);
-      if(restaurant) {
-        restaurant.declareWaitTime(optionId);
-        //console.log('Declared wait time ' + optionId + ' for restaurant ' + restaurantId);
-      }
-      //else console.log('Tried to declare wait time ' + optionId + ' for non-existent restaurant ' + restaurantId);
-    }
   });
 
 })(window.App);
