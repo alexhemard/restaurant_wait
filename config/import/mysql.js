@@ -94,9 +94,9 @@ module.exports = function() {
       restaurant.tourismBoard.neighborhoods = neighborhoods;
       restaurant.location = [details.longitude, details.latitude];
 
-      _(Math.floor(Math.random() * 6) + 1).times(function(n) {
-        restaurant.declareWaitTime(Math.floor(Math.random() * 4) + 1, 'swag'+n)
-      });
+      // _(Math.floor(Math.random() * 6) + 1).times(function(n) {
+      //   restaurant.declareWaitTime(Math.floor(Math.random() * 4) + 1, 'swag'+n)
+      // });
 
       restaurant.markModified('tourismBoard');
       restaurant.save(function(err, data) {
