@@ -12,7 +12,7 @@
       $("body").spin();
     },
 
-    render: function() {     
+    render: function() {
 
       if(!this.$restoTiles) {
         this.$el.html(jade.templates[this.template + '.jade']);
@@ -23,14 +23,20 @@
         this.tileView = new App.Views.RestaurantTile({ model: this.model });
         this.$restoTiles.html(this.tileView.render().$el);
       }
-      
+
       this.tileView.updateWaitTimeDisplay();
 
       $("body").spin(false);
-      
+
       App.dropDownMenu.disableSearch();
 
       this.$el.find(".pager").hide();
+      console.log("called");
+
+      $(".details").dotdotdot({
+        after: null,
+        height: 108
+      });
     },
 
     onWaitTimeUpdate: function(data) {
@@ -38,7 +44,7 @@
         this.model.set({ waitTimes: data.waitTimes})
       }
     }
-    
+
   });
 
 })(window.App);

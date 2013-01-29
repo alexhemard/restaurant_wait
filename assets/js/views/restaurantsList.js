@@ -51,10 +51,6 @@
 
       }, this));
 
-      this.$(".details").dotdotdot({
-        after: null,
-        height: 108
-      });
 
       this.$(".cuisine-tags").flextext(14);
 
@@ -63,9 +59,9 @@
       // hacks... forgive me :(
       // need to overhaul pager functionality
 
-      if (this.currentPage == 1) 
+      if (this.currentPage == 1)
         this.$el.find(".swag-previous").addClass('disabled');
-      else 
+      else
         this.$el.find(".pager li.disabled").removeClass('disabled');
 
       if(this.model.length < 9)
@@ -87,13 +83,13 @@
 
       //var firstTime = e.firstTime;
       if(!options.firstTime) {
-      
+
         var $div = $('.location-change-container'),
         newBottom = $div.hasClass('open') ? -50 : 0 ;
-  
+
         if (newBottom == 0)
           $div.show();
-  
+
         $div
           .toggleClass('open')
           .animate({'bottom': newBottom+'px'}, 500, function () {
@@ -101,14 +97,14 @@
               $div.hide();
             }
           });
-          
+
       } else {
         this.updateLocation();
       }
     },
 
     onRefreshLocation: function(e) {
-      e.preventDefault();      
+      e.preventDefault();
       this.updateLocation();
       this.toggleLocationChange();
     },
@@ -136,7 +132,7 @@
 
     nextPage: function(e) {
       this.goToPage(this.currentPage+1);
-      
+
     },
 
     doNothing: function(e) {
