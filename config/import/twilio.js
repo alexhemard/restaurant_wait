@@ -24,7 +24,8 @@ module.exports = function() {
 
       // Info about faking a number purchase is here:
       // http://www.twilio.com/docs/api/rest/test-credentials#test-incoming-phone-numbers
-      // (you'll temporarily have to switch to using a 500 instead of a 504 area code)
+      // (you'll temporarily have to switch to using a 500 instead of a 504 area code).
+      // MAKE SURE TO CHANGE AREA CODE TO 504 BEFORE RUNNING IN PRODUCTION.
 
       // Test credentials don't have application SIDs because they don't have applications.
       // You have to comment out the part where I specify VoiceApplicationSid and
