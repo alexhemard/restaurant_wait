@@ -29,13 +29,13 @@ exports.index = function(req, res, next) {
     result.skip(skip);
   }
 
-  result.limit(RESULT_LIMIT).exec(callback);
+  result.limit(RESULT_LIMIT).populate('vendorWaitTime').exec(callback);
 }
 
 
 exports.search = function(req, res, next) {
 
-  Restaurant.findByName(req.query.name).limit(10).exec(function (err, restaurants) {
+  Restaurant.findByName(req.query.name).limit(10).populate('vendorWaitTime').exec(function (err, restaurants) {
     if (err) return res.send(500);
 
     res.jsonData = _.map(restaurants, function(restaurant) { 
@@ -52,7 +52,7 @@ exports.show = function(req, res, next) {
   if (req.params.id.match(/^[0-9a-fA-F]{24}$/)) {
     query.$or.push({_id: req.params.id});
   }
-  Restaurant.findOne(query, function (err, restaurant) {
+  Restaurant.findOne(query).populate('vendorWaitTime').exec(function (err, restaurant) {
     if (err) return res.send(500);
     restaurant.jazzUpWaitTimes();
     res.jsonData = restaurant;

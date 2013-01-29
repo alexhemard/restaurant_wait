@@ -50,8 +50,8 @@ exports.method('jazzUpWaitTimes', function() {
     return ((currentDate - waitTime._id.getTimestamp()) < oneHour)
   });
 
-  if(this.vendorWaitTime){
-    if(((currentDate - this.vendorWaitTime.getTimestamp()) < oneHour)) {
+  if(this.vendorWaitTime && this.vendorWaitTime.id){
+    if(((currentDate - this.vendorWaitTime.id.getTimestamp()) < oneHour)) {
       this.vendorWaitTime = null;
     }
   }
