@@ -1,0 +1,13 @@
+table
+  tr
+    th placeID
+    th Restaurant
+    th URL
+    th Twilio
+  for restaurant in restaurants
+    tr
+      td= restaurant.tourismBoard.placeID
+      td= restaurant.tourismBoard.name1
+      td
+        a(href="http://www.eatnownola.com/restaurants/#{restaurant.slug}") link
+      td= restaurant.twilio.phone

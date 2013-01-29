@@ -1,7 +1,7 @@
 var config = require('./config')
 , routes = require('./routes/');
 
-module.exports = function(app){
+module.exports = function(app, auth){
   // API routes
   // Do not call res.send(), res.json(), etc. in API route functions
   // Instead, within each API route, set res.jsonData to the JSON data, then call next()
@@ -35,7 +35,7 @@ module.exports = function(app){
   // So explicitly tell the `someNonStandardService` that its `next` is the `sendJson` function:
   //
   // app.get('/api/users/someNonStandardService', routes.api.users.someNonStandardService, sendJson);
-  // 
+  //
   app.all('/api/*', sendJson);
 
   // UI routes
@@ -59,6 +59,8 @@ module.exports = function(app){
   app.get('/restaurants/:id', routes.ui.restaurants.show);
   app.put('/restaurants/:id', routes.ui.restaurants.update)
   app.get('/about', routes.ui.about.index);
+  app.get('/admin', auth, routes.ui.admin.index);
+
   app.delete('/restaurants/:id', routes.ui.restaurants.delete);
 
 }

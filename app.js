@@ -31,7 +31,8 @@ mongoose.connect(config.mongodb);
 var app = express()
   , server = http.createServer(app)
   , io = global.io = socketIo.listen(server)
-;
+
+var auth = express.basicAuth('notmc', 't0ur1sm');
 
 // Make socket.io use RedisStore when config.socketsRedis exists
 if(config.socketsRedis) (function() {
@@ -97,7 +98,7 @@ app.configure(function(){
 });
 
 // Put all the routes in a seperate file -> urls.js
-require('./urls')(app);
+require('./urls')(app, auth);
 
 // Start the sockets
 sockets(io);
