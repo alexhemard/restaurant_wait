@@ -56,8 +56,40 @@
     
 }
 
-@media (max-width: 370px) {
+/* @media (max-width: 370px) { */
+@media (max-width: 470px) {
+  #screw-bootstrap {
+    .dropdown-menu.search-and-filter-menu {
+      left:-127px;
+      &::before {left:194px;}
+      &::after {left:195px;}
+    }
+    .dropdown-menu.about-menu {
+      left:-30px;
+      &::before {left:91px;}
+      &::after {left:92px;}
+    }
+  }
+
   .resto-tile, .about-page-wrapper {margin:30px 7px;}
+  
+  .resto-tile {
+    margin-bottom:0px;
+    
+    width:305px;
+    .choices .btn { padding: 2px 8px;}
+    header {
+      .resto-image {height:125px;}
+      .resto-name {max-width:80%;}
+      .links .link {padding: 0px 3px 8px 3px;}    
+    }
+    .contents {height:230px;}
+    .wait-time {
+      font-size:28px;
+      margin: 7px 0;
+    }
+    .need-info {margin: 7px 5px 7px;}
+  }
 }
 
 

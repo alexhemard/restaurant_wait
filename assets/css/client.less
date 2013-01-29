@@ -166,37 +166,6 @@ hr {
 }
 
 
-.open > .about-menu {
-/*   display: none; */
-
-  #gradient > .vertical(darken(@red, 8%), @red);
-  .border-radius(0px);
-
-  position: absolute;
-  top:65px;
-  right:0px;
-  left:auto;
-  z-index: 100;
-  padding:0;
-  margin:0;
-  width:20%;
-  min-width:230px;
-
-  li  {
-    width:100%;
-    display: block;
-  }
-
-  a {
-    margin:7px;
-
-    &:hover {
-      background-color: desaturate(lighten(@red, 8%), 15%);
-    }
-  }
-
-}
-
 .btn [class^="icon-"] {
   margin-right:7px;
 }
@@ -250,6 +219,8 @@ hr {
   }
 
   header {
+    .border-top-left-radius(@radius);
+    .border-top-right-radius(@radius);
     position: relative;
 
     .resto-image {

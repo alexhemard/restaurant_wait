@@ -1,6 +1,6 @@
 - var bgNum = Math.floor(Math.random() * 3) + 1;
-li.resto-tile(id=_id, style="background: #FFFFFF url(../img/large-placeholder-2.png) no-repeat center top;")
-  header.tile-header
+li.resto-tile(id=_id)
+  header.tile-header(style="background: url(../img/large-placeholder-2.png) no-repeat center top;")
     .resto-image
       img(src="http://www.neworleansonline.com/images/eatnownola/" + tourismBoard.placeID + ".jpg")
       a(href="/restaurants/#{slug ? slug : _id}")
