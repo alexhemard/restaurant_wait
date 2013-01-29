@@ -22,6 +22,10 @@
     handleSearch: function(e) {
       console.log({ name: $(e.target).val() });
       App.trigger('search:restaurants', { name: $(e.target).val() });
+    },
+
+    disableSearch: function() {
+      this.$el.find('li.dropdown').has('ul.search-and-filter-menu').hide();
     }
 
   });
