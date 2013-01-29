@@ -24,7 +24,7 @@ $('body').on('touchstart.dropdown', '.dropdown-menu', function (e) { e.stopPropa
     coords: null,
     coordsUpdated: 0,
     MILES_BEFORE_UPDATE: 0.25,
-    d: [29.950226, -90.081102],
+    SUPERDOME_COORDS: [29.950226, -90.081102],
 
     init: function() {
       var _this = this;

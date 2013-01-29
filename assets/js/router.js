@@ -41,7 +41,7 @@
 
     default: function (page) {
       this.navigate('/restaurants', {trigger: true});
-    },    
+    },
   });
 
 })(window.App);
