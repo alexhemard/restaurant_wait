@@ -108,7 +108,7 @@ server.listen(app.get('port'), function(){
 });
 
 // set up cron job for MySQL import every day at 3am CST (9am GMT/UTC)
-new CronJob('0 * * * * *', function() {
+new CronJob('* * 0 * * *', function() {
   try { mysqlImport(); }
   catch(e) { console.log(e); }
 }, null, true, 'UTC');
