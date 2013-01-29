@@ -51,7 +51,7 @@
       //waitTimes = [];
 
       if(vendorWaitTime) {
-        return bs[vendorWaitTime.option];
+        return bs[vendorWaitTime.option-1];
       }
       else {
         _.each(waitTimes, function(waitTime) {
