@@ -51,19 +51,20 @@ exports.method('jazzUpWaitTimes', function() {
   });
 
   if(this.vendorWaitTime){
-    if(((currentDate - waitTime._id.getTimestamp()) < oneHour)) {
+    if(((currentDate - this.vendorWaitTime.getTimestamp()) < oneHour)) {
       this.vendorWaitTime = null;
     }
   }
 });
 
 exports.method('declareVendorWaitTime', function(option, sessionId) {
+  var _this = this;
   var waitTime = new WaitTime({sessionId: sessionId, option: option});
-  waitTime.save(function(err, restaurant) {
+  waitTime.save(function(err, waitTime) {
     if(!err) {
-      this.vendorWaitTime = waitTime.id;
-    
-      this.save(function(err, restaurant) {
+      _this.vendorWaitTime = waitTime.id;
+
+      _this.save(function(err, resto) {
         // :/
       });
     }
