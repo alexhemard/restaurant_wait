@@ -53,7 +53,7 @@ exports.method('jazzUpWaitTimes', function() {
     
     // HACK
     if(this.vendorWaitTime){
-      if(((currentDate - this.vendorWaitTime.timestamp) < oneHour)) {
+      if(((currentDate - mongoose.Types.ObjectId(vendorWaitTime._id).getTimestamp()) < oneHour)) {
         this.vendorWaitTime = null;
       }
     }
