@@ -43,27 +43,33 @@
         }
       ]
       , waitTimes = this.get('waitTimes')
+      , vendorWaitTime = this.get('vendorWaitTime')
       , counts = [0,0,0,0]
       ;
       
       // uncomment to test with "no-data"
       //waitTimes = [];
 
-      _.each(waitTimes, function(waitTime) {
-        counts[waitTime.option-1] += 1;
-      });
-
-      var swag = _.zip(counts, [1,2,3,4]);
-
-      var basket = _.reduce(swag, function(result, arr) {
-        return result + (arr[0] * arr[1]);
-      },0);
-
-      var total = _.reduce(counts, function(result, count) { return result + count}, 0);
-
-      var choice = total == 0 ? 4 : Math.ceil(basket / total) -1;
-      
-      return bs[Math.ceil(choice)]
+      if(vendorWaitTime) {
+        return bs[vendorWaitTime.option];
+      }
+      else {
+        _.each(waitTimes, function(waitTime) {
+          counts[waitTime.option-1] += 1;
+        });
+        
+        var swag = _.zip(counts, [1,2,3,4]);
+        
+        var basket = _.reduce(swag, function(result, arr) {
+          return result + (arr[0] * arr[1]);
+        },0);
+        
+        var total = _.reduce(counts, function(result, count) { return result + count}, 0);
+        
+        var choice = total == 0 ? 4 : Math.ceil(basket / total) -1;
+        
+        return bs[Math.ceil(choice)]
+      }
     },
 
     getWaitTimeCounts: function() {
