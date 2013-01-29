@@ -43,17 +43,24 @@ exports.method('declareWaitTime', function(option, sessionId) {
 });
 
 exports.method('jazzUpWaitTimes', function() {
-  var oneHour = 60 * 60 * 1000
-  , currentDate = new Date;
-
-  this.waitTimes = _.filter(this.waitTimes, function(waitTime) { 
-    return ((currentDate - waitTime._id.getTimestamp()) < oneHour)
-  });
-
-  if(this.vendorWaitTime && this.vendorWaitTime._id){
-    if(((currentDate - this.vendorWaitTime._id.getTimestamp()) < oneHour)) {
-      this.vendorWaitTime = null;
+  try {
+    var oneHour = 60 * 60 * 1000
+    , currentDate = new Date;
+    
+    this.waitTimes = _.filter(this.waitTimes, function(waitTime) { 
+      return ((currentDate - waitTime._id.getTimestamp()) < oneHour)
+    });
+    
+    // HACK
+    if(this.vendorWaitTime){
+      if(((currentDate - this.vendorWaitTime.timestamp) < oneHour)) {
+        this.vendorWaitTime = null;
+      }
     }
+  }
+  catch(e) {
+    console.log('jazzy blow up. call the authorities');
+    console.log(e);
   }
 });
 
