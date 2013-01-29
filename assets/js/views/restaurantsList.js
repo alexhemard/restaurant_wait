@@ -146,7 +146,7 @@
     onWaitTimeUpdate: function(data) {
       var tileView = this.tileViews[data.restaurantId]
       if(tileView) {
-        tileView.model.set({ waitTimes: data.waitTimes });
+        tileView.model.set({ waitTimes: data.waitTimes, vendorWaitTime: data.vendorWaitTime });
       }
     },
 
