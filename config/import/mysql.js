@@ -26,7 +26,7 @@ module.exports = function() {
   // Select all the places that are still open
   // but avoid the following food types
   // bakeries, barFood, coffee, fastFood, desserts, snowballs
-  mysqlConn.query("select * from places inner join restaurantDetails on places.placeID = restaurantDetails.placeID inner join lookupNeighborhood on places.neighborhood = lookupNeighborhood.neighborhoodID where places.open = 1 and restaurantDetails.bakeries <> 1 and restaurantDetails.barFood <> 1 and restaurantDetails.coffee <> 1 and restaurantDetails.fastFood <> 1 and restaurantDetails.desserts <> 1 and restaurantDetails.snowballs <> 1",
+  mysqlConn.query("select * from places inner join restaurantDetails on places.placeID = restaurantDetails.placeID inner join lookupNeighborhood on places.neighborhood = lookupNeighborhood.neighborhoodID where places.open = 1 and ifnull(restaurantDetails.bakeries,0) <> 1 and ifnull(restaurantDetails.barFood,0) <> 1 and ifnull(restaurantDetails.coffee,0) <> 1 and ifnull(restaurantDetails.fastFood,0) <> 1 and ifnull(restaurantDetails.desserts,0) <> 1 and ifnull(restaurantDetails.snowballs,0) <> 1",
     function(err, rows, fields) {
       if (err) throw err;
       console.log("Fetched data from mysql...");
