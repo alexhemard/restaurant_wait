@@ -27,6 +27,10 @@
       this.tileView.updateWaitTimeDisplay();
 
       $("body").spin(false);
+      
+      App.dropDownMenu.disableSearch();
+
+      this.$el.find(".pager").hide();
     },
 
     onWaitTimeUpdate: function(data) {

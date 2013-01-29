@@ -4,7 +4,8 @@
 
     events: {
       "click .pager .swag-next a": "nextPage",
-      "click .pager .swag-previous a": "previousPage",
+      "click .pager .swag-previous:not(.disabled) a": "previousPage",
+      "click .disabled a": "doNothing",
       "click .update-position-btn": "onRefreshLocation"
     },
 
@@ -29,9 +30,13 @@
 
       App.trigger('show:dropdown');
 
-      this.$el.html(jade.templates[this.template + '.jade']);
-      var $restoTiles = this.$el.find('.resto-tiles');
-      
+      if(!this.$restoTiles){
+        this.$el.html(jade.templates[this.template + '.jade']);
+        this.$restoTiles = this.$el.find('.resto-tiles');
+      }
+
+      this.$restoTiles.html('');
+
       this.model.each(_.bind(function(restaurant) {
         // build tile view if it doesn't exist
         var itemView = this.tileViews[restaurant.id]
@@ -41,7 +46,7 @@
         }
 
         itemView.$el.detach();
-        itemView.render().$el.appendTo($restoTiles);
+        itemView.render().$el.appendTo(this.$restoTiles);
         setTimeout(function() { itemView.updateWaitTimeDisplay() }, 1000);
 
       }, this));
@@ -54,6 +59,19 @@
       this.$(".cuisine-tags").flextext(14);
 
       $("body").spin(false);
+
+      // hacks... forgive me :(
+      // need to overhaul pager functionality
+
+      if (this.currentPage == 1) 
+        this.$el.find(".swag-previous").addClass('disabled');
+      else 
+        this.$el.find(".pager li.disabled").removeClass('disabled');
+
+      if(this.model.length < 9)
+        this.$el.find(".pager").hide();
+      else
+        this.$el.find(".pager").show();
     },
 
     currentPage: 1,
@@ -106,19 +124,23 @@
     },
 
     goToPage: function(page) {
+      if (this.currentPage < 1) return;
+
+      this.currentPage = page;
       this.model.goToPage(page);
     },
 
     previousPage: function(e) {
-      if (this.currentPage < 1) return;
-      this.currentPage -= 1;
-      this.goToPage(this.currentPage);
+      this.goToPage(this.currentPage-1);
     },
 
     nextPage: function(e) {
-      this.currentPage += 1
-      this.goToPage(this.currentPage);
+      this.goToPage(this.currentPage+1);
       
+    },
+
+    doNothing: function(e) {
+      e.preventDefault();
     },
 
     onWaitTimeUpdate: function(data) {
