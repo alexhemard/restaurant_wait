@@ -8,6 +8,8 @@ var config = require('./config')
   , routes = require('./routes')
   , http = require('http')
   , path = require('path')
+  , fs = require('fs')
+  , glob = require('glob')
   , jadeBrowser = require('jade-browser')
   , socketIo = require('socket.io')
   , passportSocketIo = require('passport.socketio')
@@ -72,15 +74,20 @@ app.configure(function(){
   app.set('views', __dirname + '/views');
   app.set('view engine', 'jade');
 
-  // export jade templates to reuse on client side
-  // This includes a kind of terrible cache-buster hack
-  // It generates a new cache-busting query string for the script tag every time the server starts
-  // This should probably only happen every time there's a change to the templates.js file
+  // I think the bootleg cache buster was causing issues when
+  // serving client.js across drones.
+  // this is just a hacky fix
   var jadeTemplatesPath = '/js/templates.js';
   app.use(jadeBrowser(jadeTemplatesPath, ['*.jade', '*/*.jade'], { root: __dirname + '/views', minify: true }));
-  var jadeTemplatesCacheBuster = (new Date()).getTime();
-  var jadeTemplatesSrc = jadeTemplatesPath + '?' + jadeTemplatesCacheBuster;
-  global.jadeTemplates = function() { return '<script src="' + jadeTemplatesSrc + '" type="text/javascript"></script>'; }
+  glob(__dirname + '/views/**/*.jade', function(err,files) {
+    var lastModified = fs.statSync(files.reduce(function(a,b) {
+      return fs.statSync(a).mtime > fs.statSync(b).mtime ? a : b 
+    })).mtime.getTime();
+
+    var jadeTemplatesSrc = jadeTemplatesPath + '?' + lastModified;
+    global.jadeTemplates = function() { return '<script src="' + jadeTemplatesSrc + '" type="text/javascript"></script>'; }
+  });
+
 
   // use the connect assets middleware for Snockets sugar
   app.use(connectAssets());
