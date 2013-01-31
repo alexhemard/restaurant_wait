@@ -37,9 +37,9 @@ module.exports = function() {
         method: 'POST',
         url: '/Accounts/' + config.twilio.account + '/IncomingPhoneNumbers',
         form: {
-          AreaCode: 500
-          // VoiceApplicationSid: config.twilio.application, // wire it up to our application
-          // SmsApplicationSid: config.twilio.application // sms too
+          AreaCode: 504
+          VoiceApplicationSid: config.twilio.application, // wire it up to our application
+          SmsApplicationSid: config.twilio.application // sms too
         }
       };
 
