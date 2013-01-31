@@ -20,8 +20,6 @@ var config = require('./config')
   , sessionStore = new MongoStore({ url: config.mongodb })
   , sockets = require('./sockets')
   , twilio = require('twilio')
-  , CronJob = require('cron').CronJob
-  , mysqlImport = require('./config/import/mysql')
 ;
 
 // connect the database
@@ -111,9 +109,3 @@ sockets(io);
 server.listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));
 });
-
-// set up cron job for MySQL import every day at 3am CST (9am GMT/UTC)
-// new CronJob('* * 0 * * *', function() {
-//   try { mysqlImport(); }
-//   catch(e) { console.log(e); }
-// }, null, true, 'UTC');
