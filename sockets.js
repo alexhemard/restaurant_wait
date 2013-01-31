@@ -25,7 +25,7 @@ module.exports = function(io) {
         var vendorWaitTime = restaurant.vendorWaitTime ? restaurant.vendorWaitTime.toJSON() : null;
 
         io.sockets.emit('update', { restaurantId: restaurant.id, 
-                                    waitTimes: _.compact(restaurant.waitTimes),
+                                    waitTimes: restaurant.waitTimes,
                                     vendorWaitTime: vendorWaitTime
                                   });
       });

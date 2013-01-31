@@ -40,7 +40,7 @@
 
     onWaitTimeUpdate: function(data) {
       if(data.restaurantId == this.tileView.model.id) {
-        this.tileView.model.set({ waitTimes: data.waitTimes, vendorWaitTime: data.vendorWaitTime})
+        this.tileView.model.set({ waitTimes: _.compact(data.waitTimes), vendorWaitTime: data.vendorWaitTime})
       }
     }
 

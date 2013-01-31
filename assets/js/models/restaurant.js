@@ -55,7 +55,9 @@
       }
       else {
         _.each(waitTimes, function(waitTime) {
-          counts[waitTime.option-1] += 1;
+          if(waitTime && waitTime.option) {
+            counts[waitTime.option-1] += 1;
+          }
         });
         
         var swag = _.zip(counts, [1,2,3,4]);
