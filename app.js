@@ -62,6 +62,10 @@ if(config.socketsRedis) (function() {
 
 })();
 
+// Heroku doesn't support WebSockets, so use long-polling
+io.set("transports", ["xhr-polling"]); 
+io.set("polling duration", 10);
+
 // Make socket.io a little quieter
 io.set('log level', 1);
 
