@@ -5,8 +5,7 @@ var models = require('../../models')
 exports.index = function(req, res, next) {
   var callback = function(err,restaurants) {
     res.jsonData = _.map(restaurants, function(restaurant) { 
-      restaurant.jazzUpWaitTimes(); 
-      return restaurant.toObject()
+      return restaurant.toJSON();
     });
 
     next();
@@ -39,7 +38,6 @@ exports.search = function(req, res, next) {
     if (err) return res.send(500);
 
     res.jsonData = _.map(restaurants, function(restaurant) { 
-      restaurant.jazzUpWaitTimes(); 
       return restaurant.toObject()
     });
 
@@ -54,8 +52,7 @@ exports.show = function(req, res, next) {
   }
   Restaurant.findOne(query).populate('vendorWaitTime').exec(function (err, restaurant) {
     if (err) return res.send(500);
-    restaurant.jazzUpWaitTimes();
-    res.jsonData = restaurant;
+    res.jsonData = restaurant.toJSON();
     next();
   });
 };

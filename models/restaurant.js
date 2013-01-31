@@ -37,42 +37,31 @@ exports.method('declareWaitTime', function(option, sessionId) {
   console.log(this.waitTimes);
 
   if(this.waitTimes.length > 5) this.waitTimes.shift();
-  this.save(function(err, restaurant) {
-  // BREAK STUFF
-  });
 });
 
-exports.method('jazzUpWaitTimes', function() {
-  try {
-    var oneHour = 60 * 60 * 1000
-    , currentDate = new Date;
-    
-    this.waitTimes = _.filter(this.waitTimes, function(waitTime) { 
-      return ((currentDate - waitTime._id.getTimestamp()) < oneHour)
-    });
-    
-    // HACK
-    if(this.vendorWaitTime){
-      if(((currentDate - mongoose.Types.ObjectId(this.vendorWaitTime._id).getTimestamp()) < oneHour)) {
-        this.vendorWaitTime = null;
-      }
-    }
+
+exports.method('toJSON', function() {
+  var obj = this.toObject();
+
+  if(typeof this.vendorWaitTime === 'object') {
+    obj.vendorWaitTime = this.vendorWaitTime.toJSON();
   }
-  catch(e) {
-    console.log('jazzy blow up. call the authorities');
-    console.log(e);
-  }
+
+  obj.waitTimes = _.compact(this.waitTimes);
+
+  return obj;
 });
 
-exports.method('declareVendorWaitTime', function(option, sessionId) {
+
+exports.method('declareVendorWaitTime', function(option, sessionId, callback) {
   var _this = this;
   var waitTime = new WaitTime({sessionId: sessionId, option: option});
   waitTime.save(function(err, waitTime) {
     if(!err) {
       _this.vendorWaitTime = waitTime.id;
 
-      _this.save(function(err, resto) {
-        // :/
+      _this.save(function(err, restaurant) {
+        typeof callback === 'function' && callback(err, restaurant);
       });
     }
   });
