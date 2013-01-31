@@ -17,4 +17,6 @@ exports.twilio = {
   account: 'AC20b5cb6e81f6a56c0887dac33d5c10e1',
   token: '2821686ca49e315068dcc0bfbfe3aca0',
   application: 'AP267190721b56867bd1c6cc79c606cc2f'
+  VoiceApplicationSid: 'AP267190721b56867bd1c6cc79c606cc2f',
+  SmsApplicationSid: 'AP267190721b56867bd1c6cc79c606cc2f'
 };

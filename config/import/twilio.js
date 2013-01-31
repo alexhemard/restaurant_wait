@@ -4,6 +4,7 @@ module.exports = function() {
   var twilio       = require('twilio')
     , mongoose     = require('mongoose')
     , async        = require('async')
+    , _            = require('underscore')
     , config       = require(__dirname + '/../')
     , models       = require(__dirname + '/../../models')
     , twilioClient = twilio(config.twilio.account, config.twilio.token)
@@ -37,10 +38,16 @@ module.exports = function() {
         method: 'POST',
         url: '/Accounts/' + config.twilio.account + '/IncomingPhoneNumbers',
         form: {
-          AreaCode: 504
-          VoiceApplicationSid: config.twilio.application, // wire it up to our application
-          SmsApplicationSid: config.twilio.application // sms too
+          AreaCode: config.twilioAreaCode
         }
+      };
+
+      if (config.twilio.VoiceApplicationSid) {
+        _.extend(twilioRequestOptions.form, {VoiceApplicationSid: config.twilio.VoiceApplicationSid});
+      };
+
+      if (config.twilio.SmsApplicationSid) {
+        _.extend(twilioRequestOptions.form, {SmsApplicationSid: config.twilio.SmsApplicationSid});
       };
 
       var twilioRequestCallback = function(err, data) {

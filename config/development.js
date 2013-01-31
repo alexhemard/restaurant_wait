@@ -3,6 +3,13 @@ exports.useErrorHandler = true;
 exports.mongodb = 'mongodb://localhost/boilerplate';
 exports.sessionSecret = 'your secret here';
 
+
+exports.twilioAreaCode = 504;
+
+exports.useErrorHandler = true;
+exports.mongodb = 'mongodb://localhost/boilerplate';
+exports.sessionSecret = 'your secret here';
+
 exports.enableGuestLogin = true;
 exports.enableEmailLogin = true;
 exports.twitter = {
@@ -27,5 +34,3 @@ exports.twilio = {
   token: '25674d4e42f21209ba26b64cf4541e18',
   application: 'AP5bf78e6aa4ba48da90b4c01a6ebcdd9d'
 };
-
-

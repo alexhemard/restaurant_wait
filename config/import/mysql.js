@@ -20,7 +20,7 @@ module.exports = function() {
   });
 
   mysqlConn.connect();
-  mongoose.connect(config.mongodb);
+  // mongoose.connect(config.mongodb);
 
   // From phone call with JP (1/20/2013):
   // Select all the places that are still open
