@@ -4,19 +4,20 @@
       li.desktop-hidden.phone-display
         a.dropdown-toggle.home-btn(role="button",href="/") Home
       li.dropdown
-        a.dropdown-toggle(role="button", data-toggle="dropdown")
+        //- a.dropdown-toggle(role="button", data-toggle="dropdown")
+        a.menu-btn(data-behavior="how-to-use", href='/about',role="button")
           | About
-          b.caret
+        //-  b.caret
         ul.dropdown-menu.about-menu(role="menu")
-          li
-            a(data-behavior="how-to-use", href='/about#how-to-use')
-              | How do I use Eat Now?
-          li
-            a(data-behavior="our-data", href='/about#our-data')
-              | Where do we get our data?
-          li
-            a(data-behavior="how-to-register", href='/about#register')
-              | Register your restaurant...  
+        //-  li
+        //-    a(data-behavior="how-to-use", href='/about#how-to-use')
+        //-      | How do I use Eat Now?
+        //-  li
+        //-    a(data-behavior="our-data", href='/about#our-data')
+        //-      | Where do we get our data?
+        //-  li
+        //-    a(data-behavior="how-to-register", href='/about#register')
+        //-      | Register your restaurant...  
       li.dropdown
         a.dropdown-toggle(role="button", data-toggle="dropdown")
           | Search
@@ -37,4 +38,4 @@
                 option Cuisine 3
             li.divider
           li.search-bar
-            input.search-query(type="text", placeholder="Search...")
+            input.search-query(type="text", placeholder="Search by Name...")
