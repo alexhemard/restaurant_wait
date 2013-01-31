@@ -54,6 +54,11 @@
 
       this.$(".cuisine-tags").flextext(14);
 
+      $(".details").dotdotdot({
+        after: null,
+        height: 108
+      });
+
       $("body").spin(false);
 
       // hacks... forgive me :(

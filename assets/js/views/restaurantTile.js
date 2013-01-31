@@ -31,7 +31,7 @@
       , $waitTimeText = this.$el.find('.time-text')
       , info = this.model.getWaitTimeText()
       ;
-      
+
       if (vendorWaitTime){
         this.$el.addClass('verified');
       }
