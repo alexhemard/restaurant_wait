@@ -19,7 +19,7 @@ exports.method('toJSON', function() {
     return obj;
   }
   else {
-    return null;
+    return;
   }
 
 });

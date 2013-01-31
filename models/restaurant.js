@@ -34,7 +34,6 @@ exports.method('declareWaitTime', function(option, sessionId) {
 
   this.waitTimes.push({sessionId: sessionId, option: option});
 
-  console.log(this.waitTimes);
 
   if(this.waitTimes.length > 5) this.waitTimes.shift();
 });
@@ -47,7 +46,9 @@ exports.method('toJSON', function() {
     obj.vendorWaitTime = this.vendorWaitTime.toJSON();
   }
 
-  obj.waitTimes = _.compact(this.waitTimes);
+  obj.waitTimes = _.compact(_.collect(this.waitTimes, function(time) {
+    return time.toJSON();
+  }));
 
   return obj;
 });
