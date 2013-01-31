@@ -54,7 +54,7 @@
 
       this.$(".cuisine-tags").flextext(14);
 
-      $(".details").dotdotdot({
+      this.$(".details").dotdotdot({
         after: null,
         height: 108
       });

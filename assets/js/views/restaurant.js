@@ -32,7 +32,7 @@
 
       this.$el.find(".pager").hide();
 
-      $(".details").dotdotdot({
+      this.$(".details").dotdotdot({
         after: null,
         height: 108
       });
