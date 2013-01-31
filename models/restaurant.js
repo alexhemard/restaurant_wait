@@ -53,15 +53,14 @@ exports.method('toJSON', function() {
 });
 
 
-exports.method('declareVendorWaitTime', function(option, sessionId, callback) {
+exports.method('declareVendorWaitTime', function(option, sessionId) {
   var _this = this;
   var waitTime = new WaitTime({sessionId: sessionId, option: option});
   waitTime.save(function(err, waitTime) {
     if(!err) {
       _this.vendorWaitTime = waitTime.id;
-
       _this.save(function(err, restaurant) {
-        typeof callback === 'function' && callback(err, restaurant);
+        // whatever
       });
     }
   });

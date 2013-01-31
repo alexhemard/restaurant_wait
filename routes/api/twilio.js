@@ -34,12 +34,10 @@ exports.sms = function(req, res) {
         sendSms('This is a valid EatNowNola number, but it has no associated restaurant.');
         return;
       }
-      restaurant.declareVendorWaitTime(waitTimeOption, userNumber, function(err, restaurant) {
-        if(err) sendSms('An error has occured!');
-        var vendorWaitTime = WaitTime.findById(restaurant.vendorWaitTime).toJSON();
-        io.sockets.emit('update', { restaurantId: restaurant.id, waitTimes: restaurant.waitTimes, vendorWaitTime: vendorWaitTime}); // Send the updated waitTimes
-        sendSms('Wait time updated!');
-      });
+      restaurant.declareVendorWaitTime(waitTimeOption, userNumber);
+      restaurant.save(); // dont care
+      io.sockets.emit('update', { restaurantId: restaurant.id, waitTimes: restaurant.waitTimes, vendorWaitTime: {option: waitTimeOption}}); // Send the updated waitTimes
+      sendSms('Wait time updated!');
     });
   }
   else {
@@ -107,12 +105,9 @@ exports.voiceWaitEntered = function(req, res) {
       twilres.say('This is a valid Eat Now Nola number, but it has no associated restaurant.').hangup();
     }
     else {
-      restaurant.declareVendorWaitTime(waitTimeOption, userNumber, function(err, restaurant){
-        if(err) twilres.say("We're sorry. An error has occured. Please try again.").hangup();
-        var vendorWaitTime = WaitTime.findById(restaurant.vendorWaitTime).toJSON();
-        io.sockets.emit('update', { restaurantId: restaurant.id, waitTimes: restaurant.waitTimes, vendorWaitTime: vendorWaitTime}); // Send the updated waitTimes
-        twilres.say('Thank you. The wait time has been updated. Goodbye.').hangup();
-      });
+      restaurant.declareVendorWaitTime(waitTimeOption, userNumber)
+      io.sockets.emit('update', { restaurantId: restaurant.id, waitTimes: restaurant.waitTimes, vendorWaitTime: {option: waitTimeOption}}); // Send the updated waitTimes
+      twilres.say('Thank you. The wait time has been updated. Goodbye.').hangup();
     }
 
     res.type('text/xml');
