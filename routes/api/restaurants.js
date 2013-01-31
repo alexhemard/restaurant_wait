@@ -38,7 +38,7 @@ exports.search = function(req, res, next) {
     if (err) return res.send(500);
 
     res.jsonData = _.map(restaurants, function(restaurant) { 
-      return restaurant.toObject()
+      return restaurant.toJSON();
     });
 
     next();
