@@ -19,12 +19,15 @@ module.exports = function(io) {
     socket.on('waitTime', function(data) {
 
       Restaurant.findById(data.restaurant).populate('vendorWaitTime').exec(function(err, restaurant) {
-        var vendorWaitJSON
-        ;
         restaurant.declareWaitTime(data.option, socket.handshake.sessionID);
         restaurant.save(); // We don't need to wait for the save to succeed
-        if(restaurant.vendorWaitTime) vendorWaitJSON = restaurant.vendorWaitTime.toJSON();
-        io.sockets.emit('update', { restaurantId: restaurant.id, waitTimes: restaurant.waitTimes, vendorWaitTime: restaurant.vendorWaitJSON }); // Send the updated waitTimes 
+
+        var vendorWaitTime = restaurant.vendorWaitTime ? restaurant.vendorWaitTime.toJSON() : null;
+
+        io.sockets.emit('update', { restaurantId: restaurant.id, 
+                                    waitTimes: _.compact(restaurant.waitTimes),
+                                    vendorWaitTime: vendorWaitTime
+                                  });
       });
     });
   });
