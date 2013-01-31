@@ -28,7 +28,7 @@
     "cron": "*",
     "time": "*",
     "slug": "*",
-    "glob": "*",
+    "glob": "3.1.x",
     "passport.socketio": "*"
   },
   "devDependencies": {
