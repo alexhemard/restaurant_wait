@@ -39,7 +39,7 @@
 
       this.model.each(_.bind(function(restaurant) {
         // build tile view if it doesn't exist
-        var itemView = this.tileViews[restaurant.id]
+        var itemView = this.tileViews[restaurant.id];
 
         if(!itemView) {
           itemView = this.tileViews[restaurant.id] = new App.Views.RestaurantTile({ model: restaurant });
@@ -140,7 +140,7 @@
     },
 
     onWaitTimeUpdate: function(data) {
-      var tileView = this.tileViews[data.restaurantId]
+      var tileView = this.tileViews[data.restaurantId];
       if(tileView) {
         tileView.model.set({ waitTimes: data.waitTimes, vendorWaitTime: data.vendorWaitTime });
       }

@@ -21,17 +21,16 @@
 
       if(!this.tileView) {
         this.tileView = new App.Views.RestaurantTile({ model: this.model });
-        this.$restoTiles.html(this.tileView.render().$el);
+        this.$restoTiles.append(this.tileView.render().$el);
       }
 
-      this.tileView.updateWaitTimeDisplay();
-
       $("body").spin(false);
+
+      this.tileView.updateWaitTimeDisplay();
 
       App.dropDownMenu.disableSearch();
 
       this.$el.find(".pager").hide();
-      console.log("called");
 
       $(".details").dotdotdot({
         after: null,
@@ -40,8 +39,8 @@
     },
 
     onWaitTimeUpdate: function(data) {
-      if(data.restaurantId) {
-        this.model.set({ waitTimes: data.waitTimes})
+      if(data.restaurantId == this.tileView.model.id) {
+        this.tileView.model.set({ waitTimes: data.waitTimes, vendorWaitTime: data.vendorWaitTime})
       }
     }
 

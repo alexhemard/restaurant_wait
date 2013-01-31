@@ -9,7 +9,7 @@
     },
 
     initialize: function() {
-      this.model.on('change:waitTimes', _.bind(this.updateWaitTimeDisplay, this))
+      this.model.on('change:waitTimes change:vendorWaitTime', _.bind(this.updateWaitTimeDisplay, this));
     },
 
     render: function() {
@@ -26,24 +26,25 @@
 
     updateWaitTimeDisplay: function() {
       var percents = this.model.getWaitTimePercents()
-        , vendorWaitTime = this.model.get('vendorWaitTime')
-        , $waitTimeBar
+      , vendorWaitTime = this.model.get('vendorWaitTime')
+      , $waitTimeBar
+      , $waitTimeText = this.$el.find('.time-text')
+      , info = this.model.getWaitTimeText()
       ;
       
-      if (vendorWaitTime)
+      if (vendorWaitTime){
         this.$el.addClass('verified');
+      }
 
       _.each(percents, _.bind(function(percent, option) {
         //console.log('Setting resto ' + model.id + ' option ' + option + ' bar to ' + percent + '%');
-        $waitTimeBar = this.$('.graph [data-option="' + option + '"]');
+        $waitTimeBar = this.$el.find('.graph [data-option="' + option + '"]');
         $waitTimeBar.height(percent + '%');
-        $waitTimeText = this.$('.time-text');
-
-        var info = this.model.getWaitTimeText();
-        $waitTimeText.html(info.name);
-        this.$("[data-behavior='wait-color']").attr("class", "wait-color " + info.color);
-
       }, this));
+
+      $waitTimeText.html(info.name);
+      this.$el.find("[data-behavior='wait-color']").attr("class", "wait-color " + info.color);
+
     },
 
     onClickWaitTimeButton: function(e) {
